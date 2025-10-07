@@ -1,0 +1,11 @@
+{
+  "name": "mrs-ice-athlete",
+  "private": true,
+  "workspaces": ["apps/*"],
+  "scripts": {
+    "dev:web": "npm --workspace apps/web run dev",
+    "dev:studio": "npm --workspace apps/studio run dev",
+    "format": "prettier . --write",
+    "lint": "eslint ."
+  }
+}

@@ -1,0 +1,9 @@
+# Node
+node_modules
+# Build
+.next
+dist
+# Env & local
+.env*
+.vercel
+.DS_Store
