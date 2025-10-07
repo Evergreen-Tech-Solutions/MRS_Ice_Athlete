@@ -1,4 +1,4 @@
-# 🧗 Ice Athlete — Portfolio & Class Booking Platform  
+# 🧗 Ice Athlete — Portfolio & CMS Platform  
 **Built by [DevNest Studio](https://thedevnest.ca)**  
 
 A full-stack website for a professional ice-climbing athlete, Mohamad Reza Safdarian.  
@@ -49,3 +49,29 @@ git clone https://github.com/DevNest-Studio/ice-athlete.git
 cd ice-athlete
 npm install
 ```
+---
+
+## 🛠️ Roadmap
+- Sprint	Focus	Status
+- 0	Project bootstrap (repo, Next.js, Sanity)	⏳
+- 1	Sanity schemas & content model	⏳
+- 2	Public site (portfolio, classes)	⏳
+- 3	Auth & dashboards	⏳
+- 4	Bookings & Stripe payments	⏳
+- 5	Launch, SEO, and optimizations	⏳
+
+---
+
+## 🧩 Contributors
+
+DevNest Studio
+Building modern digital experiences with simplicity, creativity, and performance.
+📧 devnest.studio@gmail.com
+
+🌐 [thedevnest.ca](https://thedevnest.ca)
+
+---
+
+🪪 License
+
+MIT License © 2025 DevNest Studio
