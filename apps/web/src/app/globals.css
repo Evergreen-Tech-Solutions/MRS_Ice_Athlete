@@ -24,3 +24,19 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+/* Reusable bottom-fade gradient overlay */
+.page-bottom-fade {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 33%;
+  background-image: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.3), transparent);
+  pointer-events: none;
+}
+
+nav img:hover {
+  filter: drop-shadow(0 0 6px rgba(253, 9, 9, 0.4));
+  transition: filter 0.3s ease;
+}
