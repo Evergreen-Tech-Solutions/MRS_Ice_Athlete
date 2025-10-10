@@ -1,30 +1,55 @@
+/* --- Tailwind v4 core --- */
 @import "tailwindcss";
 
+/* --- Brand tokens (editable) --- */
 :root {
+  /* Light mode */
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Font vars: Roboto Flex is injected as --font-roboto-flex from next/font,
+     BBH Sans Bartle comes from the <link> in <head> */
+  --font-heading: var(--font-michroma), system-ui, sans-serif; 
+  --font-body: var(--font-roboto-flex), system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
+/* Dark mode (auto via OS preference; you can also toggle via a .dark class if you want) */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #000000;  /* solid black base fits your design */
     --foreground: #ededed;
   }
 }
 
+/* Expose tokens to Tailwind via @theme (v4) */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  /* Optional: brand palette */
+  --color-brand: #f59e0b;        /* amber-500 */
+  --color-brand-600: #d97706;    /* amber-600 */
+  --color-brand-300: #fcd34d;    /* amber-300 */
+
+  /* Map Tailwind font families */
+  --font-sans: var(--font-body);
+  --font-heading: var(--font-heading);
+}
+
+/* Global element styles */
+html, body { height: 100%; }
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
 }
 
+/* Font utility helpers (nice to use in JSX) */
+@layer utilities {
+  .font-heading { font-family: var(--font-heading); }
+  .font-body    { font-family: var(--font-body); }
+}
 
 /* Reusable bottom-fade gradient overlay */
 .page-bottom-fade {
@@ -32,10 +57,16 @@ body {
   inset-inline: 0;
   bottom: 0;
   height: 33%;
-  background-image: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.3), transparent);
+  background-image: linear-gradient(
+    to top,
+    rgba(0,0,0,0.9),
+    rgba(0,0,0,0.3),
+    transparent
+  );
   pointer-events: none;
 }
 
+/* Logo hover glow */
 nav img:hover {
   filter: drop-shadow(0 0 6px rgba(253, 9, 9, 0.4));
   transition: filter 0.3s ease;

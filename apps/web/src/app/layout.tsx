@@ -1,7 +1,8 @@
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Roboto_Flex, Michroma } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const body = Roboto_Flex({ subsets: ["latin"], variable: "--font-roboto-flex", display: "swap" });
+const heading = Michroma({ weight: "400", subsets: ["latin"], variable: "--font-michroma", display: "swap" });
 
 export const metadata = {
   title: "Ice Athlete",
@@ -10,10 +11,8 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="h-full">
-      <body className={`${inter.className} h-full bg-black text-white`}>
-        {children}
-      </body>
+    <html lang="en" className={`${body.variable} ${heading.variable} h-full`}>
+      <body className="h-full bg-black text-white overflow-hidden">{children}</body>
     </html>
   );
 }
