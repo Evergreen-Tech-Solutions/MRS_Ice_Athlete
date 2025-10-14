@@ -7,7 +7,17 @@ import { useState, ReactNode } from "react";
 import IceAxePng from "./IceAxe"; // your PNG-mask icon
 
 // Font Awesome (via react-icons)
-import { FaHouse, FaPhone, FaGaugeHigh } from "react-icons/fa6";
+import {
+  FaHouse,
+  FaPhone,
+  FaGaugeHigh,
+  FaEnvelope,
+  FaWhatsapp,
+  FaFacebook,
+  FaXTwitter,
+  FaLinkedin,
+  FaInstagram,
+} from "react-icons/fa6";
 
 type Item = {
   label: string;
@@ -29,9 +39,7 @@ const NAV_ITEMS: Item[] = [
     match: "startsWith",
     // keep your axe for brand flair
     icon: (
-      <IceAxePng
-        className="h-5 w-5 md:h-6 md:w-6 -rotate-12 shrink-0 transition-transform group-hover:scale-110"
-      />
+      <IceAxePng className="h-5 w-5 md:h-6 md:w-6 -rotate-12 shrink-0 transition-transform group-hover:scale-110" />
     ),
   },
   {
@@ -46,6 +54,45 @@ const NAV_ITEMS: Item[] = [
     match: "startsWith",
     // pick a performance/status feel
     icon: <FaGaugeHigh className="h-5 w-5 shrink-0" aria-hidden="true" />,
+  },
+];
+
+type Social = {
+  label: string;
+  href: string;
+  icon: ReactNode;
+};
+
+const SOCIALS: Social[] = [
+  {
+    label: "Email",
+    href: "mailto:ISFAHANICECLIMBING@GMAIL.COM",
+    icon: <FaEnvelope className="h-10 w-10" />,
+  },
+  {
+    label: "WhatsApp",
+    href: "https://api.whatsapp.com/send/?phone=989301031003&text&type=phone_number&app_absent=0",
+    icon: <FaWhatsapp className="h-10 w-10" />,
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/mohammad-reza-safdarian-87b37b1b8/",
+    icon: <FaLinkedin className="h-10 w-10" />,
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/safdarian_mohammadreza",
+    icon: <FaInstagram className="h-10 w-10" />,
+  },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/safdarian.mohammadreza",
+    icon: <FaFacebook className="h-10 w-10" />,
+  },
+  {
+    label: "X (Twitter)",
+    href: "https://twitter.com/SafdarianM",
+    icon: <FaXTwitter className="h-10 w-10" />,
   },
 ];
 
@@ -73,21 +120,31 @@ export default function Sidebar() {
         </button>
 
         <Link href="/" className="flex items-center gap-2">
-          <Image src="/images/logo.svg" alt="Ice Athlete" width={24} height={24} />
+          <Image
+            src="/images/logo.svg"
+            alt="Ice Athlete"
+            width={24}
+            height={24}
+          />
         </Link>
 
         <div className="w-9" />
       </div>
 
       {/* Desktop sidebar */}
-      <aside className="hidden md:flex md:flex-col h-screen sticky z-10 pt-5 w-64 border-r border-amber-500 bg-black/50 backdrop-blur">
-        <div className="grid place-items-center mb-6 mr-2">
+      <aside className="hidden md:flex md:flex-col h-screen sticky z-10 pt-5 w-58 border-r border-amber-500 bg-black/50 backdrop-blur">
+        <div className="grid place-items-center mt-5 mr-3">
           <Link href="/" className="flex gap-3">
-            <Image src="/images/logo.svg" alt="Ice Athlete" width={92} height={92} />
+            <Image
+              src="/images/logo.svg"
+              alt="Ice Athlete"
+              width={100}
+              height={100}
+            />
           </Link>
         </div>
 
-        <nav className="font-heading p-2 space-y-3">
+        <nav className="font-heading p-2 space-y-3 mt-8">
           {NAV_ITEMS.map((item) => {
             const active = isActive(pathname, item);
             return (
@@ -98,7 +155,9 @@ export default function Sidebar() {
                 aria-current={active ? "page" : undefined}
                 className={[
                   "group flex items-center gap-3 px-3 py-2 rounded-lg transition",
-                  active ? "bg-amber-500/20 text-amber-300" : "hover:bg-white/10 text-white/80",
+                  active
+                    ? "bg-amber-500/20 text-amber-300"
+                    : "hover:bg-amber-300/20 text-white/80",
                 ].join(" ")}
               >
                 {/* icon inherits current text color */}
@@ -109,9 +168,33 @@ export default function Sidebar() {
           })}
         </nav>
 
+        {/* Social buttons */}
+        <div className="mt-8 px-3">
+          <div className="grid grid-cols-2 gap-3">
+            {SOCIALS.map((s) => (
+              <a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-center h-15 rounded-4xl border border-white/10 
+                   text-white/80 hover:text-amber-300 hover:border-amber-500 hover:bg-amber-500/10 
+                   transition-all duration-300 shadow-md hover:shadow-amber-500/20"
+                aria-label={s.label}
+                title={s.label}
+              >
+                <span className="text-2xl">{s.icon}</span>
+              </a>
+            ))}
+          </div>
+        </div>
         <div className="mt-auto p-3 text-xs text-white/60">
           © {new Date().getFullYear()}{" "}
-          <a href="https://www.thedevnest.ca/" className="hover:text-amber-300" target="_blank">
+          <a
+            href="https://www.thedevnest.ca/"
+            className="hover:text-amber-300"
+            target="_blank"
+          >
             Powered by DevNest Studio
           </a>
         </div>
@@ -131,7 +214,12 @@ export default function Sidebar() {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="h-12 inline-flex items-center gap-2 border-b border-amber-500 mb-2">
-              <Image src="/images/logo.svg" alt="Ice Athlete" width={24} height={24} />
+              <Image
+                src="/images/logo.svg"
+                alt="Ice Athlete"
+                width={24}
+                height={24}
+              />
               <span className="font-semibold">Ice Athlete</span>
               <button
                 aria-label="Close navigation"
@@ -154,7 +242,9 @@ export default function Sidebar() {
                     aria-current={active ? "page" : undefined}
                     className={[
                       "block px-3 py-2 rounded-lg transition",
-                      active ? "bg-amber-500/20 text-amber-300" : "hover:bg-white/10 text-white/80",
+                      active
+                        ? "bg-amber-500/20 text-amber-300"
+                        : "hover:bg-white/10 text-white/80",
                     ].join(" ")}
                   >
                     <span className="inline-flex items-center gap-3">
@@ -165,6 +255,28 @@ export default function Sidebar() {
                 );
               })}
             </nav>
+
+            {/* Social buttons (mobile) */}
+            <div className="mt-4 px-2">
+              <div className="grid grid-cols-2 gap-3">
+                {SOCIALS.map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setOpen(false)}
+                    className="group flex items-center justify-center h-14 rounded-xl border border-white/10 bg-black/40 
+                   text-white/80 hover:text-amber-300 hover:border-amber-500 hover:bg-amber-500/10 
+                   transition-all duration-300 shadow-md hover:shadow-amber-500/20"
+                    aria-label={s.label}
+                    title={s.label}
+                  >
+                    <span className="text-2xl">{s.icon}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       )}

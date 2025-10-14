@@ -19,28 +19,25 @@ function GlassSection({
       className={`relative overflow-hidden rounded-3xl border border-white/10 bg-black/60 backdrop-blur ${className}`}
     >
       {/* We’ll wrap children with a padded div inside the section */}
-      <div className="relative z-10 p-5 md:p-8">
-        {children}
-      </div>
+      <div className="relative z-10 p-5 md:p-8">{children}</div>
     </section>
   );
 }
 
-
 export default function HomePage() {
   return (
     <main className="relative h-full">
-      <div className="fixed inset-0 -z-20 bg-gradient-to-b from-[#1b120f] to-[#ffa900]" />
+      <div className="fixed inset-0 -z-20 bg-gradient-to-b from-[#364e68] to-[#98ccd3]" />
       {/* Background image */}
-      {/* <div className="fixed inset-0 -z-10">
+      <div className="fixed inset-0 -z-10">
         <Image
-          src="/images/bg2.jpg"
+          src="/images/bg_mountain.png"
           alt=""
           fill
           priority
-          className="object-cover"
+          className=""
         />
-      </div> */}
+      </div>
 
       {/* Page content */}
       <div className="mx-auto max-w-8xl px-4 py-8 md:py-12 space-y-6 md:space-y-8">
@@ -66,22 +63,24 @@ export default function HomePage() {
           <div className="space-y-3">
             {/* Name */}
             <h1 className="font-heading text-3xl md:text-5xl tracking-tight">
-              MOHAMMADREZA SAFDARIAN
+              MOHAMMADREZA <br /> SAFDARIAN
             </h1>
 
             {/* Divider */}
             <div className="h-1 w-16 rounded-full bg-amber-500 mb-5" />
 
             {/* Tagline */}
-            <p className="font-heading text-lg md:text-lg text-white/90">
-              ROPE ACCESS IRATA LEVEL THREE INSTRUCTOR & ICE CLIMBING WORLD
-              CHAMPION
-            </p>
+            <ul className="font-heading text-lg md:text-xl text-white/90">
+              <li>World Champion Ice Climber</li>
+              <li>Firefighter & Rescue Specialist</li> 
+              <li>Rope Access level three Technician (IRATA)</li>
+            </ul>
 
             {/* Stats line */}
-            
+
             <p className="font-heading text-base md:text-lg text-amber-300 mb-5">
-              <FaMedal className="inline text-amber-200 mr-1 text-2xl" /> 25 international medals
+              <FaMedal className="inline text-amber-200 mr-1 text-2xl" /> 25
+              international medals
             </p>
           </div>
 
@@ -266,12 +265,65 @@ export default function HomePage() {
               </h3>
               <div className="mt-2 h-0.5 w-8 bg-amber-500 rounded-full" />
               <p className="mt-3 text-white/85 leading-7">
-                Esfahan Technical and Vocational College (Mohajer) 
+                Esfahan Technical and Vocational College (Mohajer)
               </p>
               <span className="text-sm text-white/75">
-              Associate’s degree 2011 - 2014
+                Associate’s degree 2011 - 2014
               </span>
             </article>
+          </div>
+        </GlassSection>
+
+        {/* ===== Section 4: TEDx Talk ===== */}
+        <GlassSection id="tedx" className="space-y-4">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="h-6 w-1 rounded-full bg-amber-500" />
+            <h2 className="font-heading text-2xl md:text-3xl tracking-tight">
+              TEDx Talk
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 items-start">
+            {/* Video */}
+            <div className="rounded-2xl overflow-hidden border border-white/10 bg-black/30">
+              <div className="relative aspect-video">
+                <iframe
+                  className="absolute inset-0 h-full w-full"
+                  src="https://www.youtube-nocookie.com/embed/3kEfysvyhHQ?start=2&rel=0&modestbranding=1&playsinline=1"
+                  title="TEDx Talk — Mohammadreza Safdarian"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+
+            {/* Copy */}
+            <div className="space-y-3">
+              <h3 className="font-heading text-xl md:text-2xl tracking-tight">
+                An ice climber from the heart of desert | Mohammad Reza Safdarian Korouyeh | TEDxEsfahan
+              </h3>
+              <div className="h-0.5 w-10 bg-amber-500 rounded-full" />
+              <p className="text-white/85 leading-7">
+                In this TEDx talk, Mohammadreza shares the mindset, discipline,
+                and resilience behind his journey from a young climber in
+                Isfahan to a world champion in ice climbing. It’s a story about
+                focus under pressure, learning from failure, and using fear as a
+                tool for performance.
+              </p>
+
+              <div className="pt-2">
+                <Link
+                  href="https://www.youtube.com/watch?v=3kEfysvyhHQ&t=2s"
+                  target="_blank"
+                  className="inline-flex items-center gap-2 rounded-xl border border-amber-500/50 bg-amber-500/10 px-4 py-2 font-heading text-sm hover:bg-amber-500/20 transition"
+                >
+                  Watch on YouTube
+                  <span aria-hidden>↗</span>
+                </Link>
+              </div>
+            </div>
           </div>
         </GlassSection>
       </div>
