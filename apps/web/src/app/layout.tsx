@@ -5,8 +5,8 @@ const body = Roboto_Flex({ subsets: ["latin"], variable: "--font-roboto-flex", d
 const heading = Michroma({ weight: "400", subsets: ["latin"], variable: "--font-michroma", display: "swap" });
 
 export const metadata = {
-  title: "Ice Athlete",
-  description: "Portfolio & class booking platform",
+  title: "MohammadReza Safdarian",
+  description: "My Portfolio & Rock Climbing Class Booking Platform",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

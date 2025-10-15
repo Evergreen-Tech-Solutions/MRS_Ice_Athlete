@@ -21,7 +21,7 @@ export function GlassSection({
       className={`relative overflow-hidden rounded-3xl border border-white/10 bg-black/60 backdrop-blur ${className}`}
     >
       {/* We’ll wrap children with a padded div inside the section */}
-      <div className="relative z-10 p-5 md:p-8">{children}</div>
+      <div className="relative z-10 p-4 sm:p-6 md:p-8">{children}</div>
     </section>
   );
 }
@@ -126,7 +126,7 @@ export function StatsSection() {
 
   return (
     <div ref={ref}>
-      <GlassSection id="stats" className="space-y-4">
+      <GlassSection id="stats" className="space-y-4 mt-4 sm:mt-6">
         <div className="flex items-center gap-3 mb-2">
           <div className="h-6 w-1 rounded-full bg-amber-500" />
           <h2 className="font-heading text-2xl md:text-3xl tracking-tight">Achievements</h2>
@@ -160,8 +160,7 @@ export function StatsSection() {
 
 export default function HomePage() {
   return (
-    <main className="relative h-full">
-      {/* <div className="fixed inset-0 -z-20 bg-gradient-to-b from-[#364e68] to-[#98ccd3]" /> */}
+    <main className="relative w-full h-full">
       {/* Background image */}
       <div className="fixed inset-0 -z-10">
         <Image
@@ -169,15 +168,16 @@ export default function HomePage() {
           alt=""
           fill
           priority
-          className=""
+          className="object-cover"
         />
+        <div className="absolute inset-0 bg-black/40" />
       </div>
 
       {/* Page content */}
-      <div className="mx-auto max-w-8xl px-4 py-8 md:py-12 space-y-6 md:space-y-8">
+      <div className="mx-auto w-full  px-3 sm:px-4 lg:px-2 py-2 lg:py-2 space-y-5 lg:space-y-4">
         {/* ===== Section 1: Hero / Intro ===== */}
         <GlassSection id="intro" className="space-y-6">
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3">
+          <div className="pointer-events-none absolute inset-y-0 right-0 hidden sm:block sm:w-1/2 md:w-1/3">
             <Image
               src="/images/mrs2.jpeg"
               alt=""
@@ -185,10 +185,8 @@ export default function HomePage() {
               className="object-cover"
               style={{
                 // fade from solid on the right to transparent on the left
-                WebkitMaskImage:
-                  "linear-gradient(to left, black 75%, transparent 100%)",
-                maskImage:
-                  "linear-gradient(to left, black 75%, transparent 100%)",
+                WebkitMaskImage: "linear-gradient(to left, black 65%, transparent 100%)",
+       maskImage: "linear-gradient(to left, black 65%, transparent 100%)",
                 opacity: 0.9, // optional subtle blend
               }}
               priority
@@ -196,7 +194,7 @@ export default function HomePage() {
           </div>
           <div className="space-y-3">
             {/* Name */}
-            <h1 className="font-heading text-3xl md:text-5xl tracking-tight">
+            <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl tracking-tight leading-tight [text-wrap:balance]">
               MOHAMMADREZA <br /> SAFDARIAN
             </h1>
 
@@ -204,7 +202,7 @@ export default function HomePage() {
             <div className="h-1 w-16 rounded-full bg-amber-500 mb-5" />
 
             {/* Tagline */}
-            <ul className="font-heading text-lg md:text-xl text-white/90">
+            <ul className="font-heading text-base sm:text-lg md:text-xl text-white/90 space-y-1.5">
               <li>World Champion Ice Climber</li>
               <li>Firefighter & Rescue Specialist</li> 
               <li>Rope Access Level Three Technician (IRATA)</li>
@@ -256,7 +254,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 gap-4">
             {/* Card 1 */}
             <article className="rounded-2xl border border-white/10 bg-black/30 p-4 md:p-5">
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {/* left 1/3 */}
                 <div className="col-span-1 text-white/75">
                   <p className="font-heading text-sm">Mar 2017 — Jan 2024</p>
@@ -348,42 +346,42 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* Card A */}
             <article className="rounded-2xl border border-white/10 bg-black/30 p-4 md:p-5">
-              <h3 className="font-heading text-lg md:text-xl tracking-tight">
+              <h3 className="font-heading text-base sm:text-lg md:text-xl tracking-tight">
                 Health, Safety, Environment (HSE)
               </h3>
               <div className="mt-2 h-0.5 w-8 bg-amber-500 rounded-full" />
               <p className="mt-3 text-white/85 leading-7">
                 University Of Applied Sience
               </p>
-              <span className="text-sm text-white/75">
+              <span className="text-xs sm:text-sm text-white/75">
                 bachelor's degree 2017 - 2019
               </span>
             </article>
 
             {/* Card B */}
             <article className="rounded-2xl border border-white/10 bg-black/30 p-4 md:p-5">
-              <h3 className="font-heading text-lg md:text-xl tracking-tight">
+              <h3 className="font-heading text-base sm:text-lg md:text-xl tracking-tight">
                 Health, Safety, Environment (HSE)
               </h3>
               <div className="mt-2 h-0.5 w-8 bg-amber-500 rounded-full" />
               <p className="mt-3 text-white/85 leading-7">
                 Amirkabir University of Technology
               </p>
-              <span className="text-sm text-white/75">
+              <span className="text-xs sm:text-sm text-white/75">
                 Master's degree 2021 - 2023
               </span>
             </article>
 
             {/* Card C */}
             <article className="rounded-2xl border border-white/10 bg-black/30 p-4 md:p-5">
-              <h3 className="font-heading text-lg md:text-xl tracking-tight">
+              <h3 className="font-heading text-base sm:text-lg md:text-xl tracking-tight">
                 Electrotechnics
               </h3>
               <div className="mt-2 h-0.5 w-8 bg-amber-500 rounded-full" />
               <p className="mt-3 text-white/85 leading-7">
                 Esfahan Technical and Vocational College (Mohajer)
               </p>
-              <span className="text-sm text-white/75">
+              <span className="text-xs sm:text-sm text-white/75">
                 Associate’s degree 2011 - 2014
               </span>
             </article>
@@ -401,7 +399,7 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 items-start">
             {/* Video */}
-            <div className="rounded-2xl overflow-hidden border border-white/10 bg-black/30">
+            <div className="rounded-2xl overflow-hidden border border-white/10 bg-black/30 min-h-0">
               <div className="relative aspect-video">
                 <iframe
                   className="absolute inset-0 h-full w-full"
@@ -416,7 +414,7 @@ export default function HomePage() {
             </div>
 
             {/* Copy */}
-            <div className="space-y-3">
+            <div className="space-y-3 text-sm sm:text-base md:text-lg">
               <h3 className="font-heading text-xl md:text-2xl tracking-tight">
                 An ice climber from the heart of desert | Mohammad Reza Safdarian Korouyeh | TEDxEsfahan
               </h3>

@@ -73,5 +73,4 @@ Building modern digital experiences with simplicity, creativity, and performance
 ---
 
 🪪 License
-
-MIT License © 2025 DevNest Studio
+©2025 DevNest Studio

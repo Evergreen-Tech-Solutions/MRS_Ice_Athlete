@@ -87,7 +87,7 @@ export default function ContactPage() {
 
           {/* Contact form */}
           <form onSubmit={handleSubmit} className="grid gap-5">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
               <div>
                 <label htmlFor="name" className="block text-sm font-semibold text-white/80 mb-1">
                   Name

@@ -9,7 +9,7 @@ import IceAxePng from "./IceAxe"; // your PNG-mask icon
 // Font Awesome (via react-icons)
 import {
   FaHouse,
-  FaPhone,
+  FaMobile,
   FaGaugeHigh,
   FaEnvelope,
   FaWhatsapp,
@@ -46,7 +46,7 @@ const NAV_ITEMS: Item[] = [
     label: "Contact",
     href: "/contact",
     match: "exact",
-    icon: <FaPhone className="h-6 w-6 shrink-0 transition-transform group-hover:scale-120" aria-hidden="true" />,
+    icon: <FaMobile className="h-6 w-6 shrink-0 transition-transform group-hover:scale-120" aria-hidden="true" />,
   },
   {
     label: "Dashboard",
@@ -132,7 +132,7 @@ export default function Sidebar() {
       </div>
 
       {/* Desktop sidebar */}
-      <aside className="hidden md:flex md:flex-col h-screen sticky z-10 pt-5 w-58 border-r border-amber-500 bg-black/50 backdrop-blur">
+      <aside className="hidden md:flex md:flex-col h-screen sticky z-10 pt-5 w-64 border-r border-amber-500 bg-black/50 backdrop-blur">
         <div className="grid place-items-center mt-5 mr-3">
           <Link href="/" className="flex gap-3 transition hover:scale-120">
             <Image
@@ -177,7 +177,7 @@ export default function Sidebar() {
                 href={s.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-center h-15 rounded-lg border border-white/10 
+                className="group flex items-center justify-center h-16 rounded-lg border border-white/10 
                    text-white/80 hover:text-amber-300 hover:border-amber-500 hover:bg-amber-500/10 
                    transition-all duration-300 shadow-md hover:shadow-amber-500/20"
                 aria-label={s.label}
@@ -220,7 +220,6 @@ export default function Sidebar() {
                 width={24}
                 height={24}
               />
-              <span className="font-semibold">Ice Athlete</span>
               <button
                 aria-label="Close navigation"
                 onClick={() => setOpen(false)}
