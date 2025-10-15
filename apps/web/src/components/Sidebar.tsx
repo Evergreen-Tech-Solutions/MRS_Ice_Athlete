@@ -31,7 +31,7 @@ const NAV_ITEMS: Item[] = [
     label: "Home",
     href: "/",
     match: "exact",
-    icon: <FaHouse className="h-5 w-5 shrink-0" aria-hidden="true" />,
+    icon: <FaHouse className="h-6 w-6 shrink-0 transition-transform group-hover:scale-120" aria-hidden="true" />,
   },
   {
     label: "Classes",
@@ -39,21 +39,21 @@ const NAV_ITEMS: Item[] = [
     match: "startsWith",
     // keep your axe for brand flair
     icon: (
-      <IceAxePng className="h-5 w-5 md:h-6 md:w-6 -rotate-12 shrink-0 transition-transform group-hover:scale-110" />
+      <IceAxePng className="h-6 w-6 -rotate-12 shrink-0 transition-transform group-hover:scale-130" />
     ),
   },
   {
     label: "Contact",
     href: "/contact",
     match: "exact",
-    icon: <FaPhone className="h-5 w-5 shrink-0" aria-hidden="true" />,
+    icon: <FaPhone className="h-6 w-6 shrink-0 transition-transform group-hover:scale-120" aria-hidden="true" />,
   },
   {
     label: "Dashboard",
     href: "/dashboard",
     match: "startsWith",
     // pick a performance/status feel
-    icon: <FaGaugeHigh className="h-5 w-5 shrink-0" aria-hidden="true" />,
+    icon: <FaGaugeHigh className="h-6 w-6 shrink-0 transition-transform group-hover:scale-120" aria-hidden="true" />,
   },
 ];
 
@@ -67,32 +67,32 @@ const SOCIALS: Social[] = [
   {
     label: "Email",
     href: "mailto:ISFAHANICECLIMBING@GMAIL.COM",
-    icon: <FaEnvelope className="h-10 w-10" />,
+    icon: <FaEnvelope className="h-8 w-8" />,
   },
   {
     label: "WhatsApp",
     href: "https://api.whatsapp.com/send/?phone=989301031003&text&type=phone_number&app_absent=0",
-    icon: <FaWhatsapp className="h-10 w-10" />,
+    icon: <FaWhatsapp className="h-8 w-8" />,
   },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/mohammad-reza-safdarian-87b37b1b8/",
-    icon: <FaLinkedin className="h-10 w-10" />,
+    icon: <FaLinkedin className="h-8 w-8" />,
   },
   {
     label: "Instagram",
     href: "https://www.instagram.com/safdarian_mohammadreza",
-    icon: <FaInstagram className="h-10 w-10" />,
+    icon: <FaInstagram className="h-8 w-8" />,
   },
   {
     label: "Facebook",
     href: "https://www.facebook.com/safdarian.mohammadreza",
-    icon: <FaFacebook className="h-10 w-10" />,
+    icon: <FaFacebook className="h-8 w-8" />,
   },
   {
     label: "X (Twitter)",
     href: "https://twitter.com/SafdarianM",
-    icon: <FaXTwitter className="h-10 w-10" />,
+    icon: <FaXTwitter className="h-8 w-8" />,
   },
 ];
 
@@ -134,7 +134,7 @@ export default function Sidebar() {
       {/* Desktop sidebar */}
       <aside className="hidden md:flex md:flex-col h-screen sticky z-10 pt-5 w-58 border-r border-amber-500 bg-black/50 backdrop-blur">
         <div className="grid place-items-center mt-5 mr-3">
-          <Link href="/" className="flex gap-3">
+          <Link href="/" className="flex gap-3 transition hover:scale-120">
             <Image
               src="/images/logo.svg"
               alt="Ice Athlete"
@@ -154,7 +154,7 @@ export default function Sidebar() {
                 prefetch
                 aria-current={active ? "page" : undefined}
                 className={[
-                  "group flex items-center gap-3 px-3 py-2 rounded-lg transition",
+                  "group flex items-center gap-3 px-3 py-2 rounded-lg transition text-lg hover:scale-105",
                   active
                     ? "bg-amber-500/20 text-amber-300"
                     : "hover:bg-amber-300/20 text-white/80",
@@ -177,7 +177,7 @@ export default function Sidebar() {
                 href={s.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-center h-15 rounded-4xl border border-white/10 
+                className="group flex items-center justify-center h-15 rounded-lg border border-white/10 
                    text-white/80 hover:text-amber-300 hover:border-amber-500 hover:bg-amber-500/10 
                    transition-all duration-300 shadow-md hover:shadow-amber-500/20"
                 aria-label={s.label}
@@ -188,7 +188,7 @@ export default function Sidebar() {
             ))}
           </div>
         </div>
-        <div className="mt-auto p-3 text-xs text-white/60">
+        <div className="mt-auto p-3 text-xs text-amber-200/80">
           © {new Date().getFullYear()}{" "}
           <a
             href="https://www.thedevnest.ca/"

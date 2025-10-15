@@ -1,10 +1,12 @@
 // apps/web/src/app/page.tsx
+"use client";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { FaMedal } from "react-icons/fa6";
+import { FaMedal, FaPersonRunning, FaTrophy} from "react-icons/fa6";
 
-function GlassSection({
+export function GlassSection({
   id,
   children,
   className = "",
@@ -24,14 +26,146 @@ function GlassSection({
   );
 }
 
+/** Count up number once when `start` flips true */
+function CountUpNumber({
+  to,
+  duration = 2000, // ms
+  className = "",
+  start = false,
+}: {
+  to: number;
+  duration?: number;
+  className?: string;
+  start?: boolean;
+}) {
+  const [val, setVal] = useState(0);
+  const rafRef = useRef<number | null>(null);
+  const startRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    if (!start) return;
+    const ease = (t: number) => 1 - Math.pow(1 - t, 3); // easeOutCubic
+
+    const step = (ts: number) => {
+      if (startRef.current === null) startRef.current = ts;
+      const p = Math.min(1, (ts - startRef.current) / duration);
+      setVal(Math.round(to * ease(p)));
+      if (p < 1) rafRef.current = requestAnimationFrame(step);
+    };
+
+    rafRef.current = requestAnimationFrame(step);
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      startRef.current = null;
+    };
+  }, [start, to, duration]);
+
+  return <span className={className}>{new Intl.NumberFormat().format(val)}</span>;
+}
+
+/** Hook: in-view once */
+function useInViewOnce<T extends HTMLElement>(rootMargin = "0px") {
+  const ref = useRef<T | null>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    if (!ref.current || inView) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          obs.disconnect();
+        }
+      },
+      { root: null, rootMargin, threshold: 0.3 }
+    );
+    obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, [inView, rootMargin]);
+
+  return { ref, inView };
+}
+
+/** Pretty stat card */
+function StatCard({
+  icon,
+  label,
+  value,
+  start,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  value: number;
+  start: boolean;
+}) {
+  return (
+    <div className="rounded-2xl border border-white/10 bg-black/30 px-5 py-6 md:px-6 md:py-8
+                    shadow-md hover:shadow-amber-500/10 transition">
+      <div className="flex items-center gap-4">
+        <div className="grid h-14 w-14 place-items-center rounded-xl 
+                        bg-gradient-to-br from-amber-400/30 to-amber-600/30 
+                        border border-amber-300/30 text-amber-200">
+          <span className="text-3xl">{icon}</span>
+        </div>
+        <div>
+          <CountUpNumber
+            to={value}
+            start={start}
+            className="block font-heading text-3xl md:text-4xl leading-none text-white"
+          />
+          <p className="mt-1 text-sm md:text-base text-white/80">{label}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/** Section wrapper that uses your GlassSection */
+export function StatsSection() {
+  const { ref, inView } = useInViewOnce<HTMLDivElement>("0px");
+
+  return (
+    <div ref={ref}>
+      <GlassSection id="stats" className="space-y-4">
+        <div className="flex items-center gap-3 mb-2">
+          <div className="h-6 w-1 rounded-full bg-amber-500" />
+          <h2 className="font-heading text-2xl md:text-3xl tracking-tight">Achievements</h2>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          <StatCard
+            icon={<FaPersonRunning aria-hidden className="shrink-0" />}
+            label="International competitions participated"
+            value={42}
+            start={inView}
+          />
+          <StatCard
+            icon={<FaMedal aria-hidden className="shrink-0" />}
+            label="International medals"
+            value={25}
+            start={inView}
+          />
+          <StatCard
+            icon={<FaTrophy aria-hidden className="shrink-0" />}
+            label="National medals"
+            value={58}
+            start={inView}
+          />
+        </div>
+      </GlassSection>
+    </div>
+  );
+}
+
+
 export default function HomePage() {
   return (
     <main className="relative h-full">
-      <div className="fixed inset-0 -z-20 bg-gradient-to-b from-[#364e68] to-[#98ccd3]" />
+      {/* <div className="fixed inset-0 -z-20 bg-gradient-to-b from-[#364e68] to-[#98ccd3]" /> */}
       {/* Background image */}
       <div className="fixed inset-0 -z-10">
         <Image
-          src="/images/bg_mountain.png"
+          src="/images/pic.jpg"
           alt=""
           fill
           priority
@@ -73,20 +207,13 @@ export default function HomePage() {
             <ul className="font-heading text-lg md:text-xl text-white/90">
               <li>World Champion Ice Climber</li>
               <li>Firefighter & Rescue Specialist</li> 
-              <li>Rope Access level three Technician (IRATA)</li>
+              <li>Rope Access Level Three Technician (IRATA)</li>
             </ul>
-
-            {/* Stats line */}
-
-            <p className="font-heading text-base md:text-lg text-amber-300 mb-5">
-              <FaMedal className="inline text-amber-200 mr-1 text-2xl" /> 25
-              international medals
-            </p>
           </div>
 
           {/* About me */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-            <div className="md:col-span-2">
+            <div className="md:col-span-2 mt-5">
               <h2 className="font-heading text-xl md:text-2xl tracking-tight">
                 About Me
               </h2>
@@ -112,21 +239,10 @@ export default function HomePage() {
                 Athletes’ Commission.
               </p>
             </div>
-
-            {/* Quick links / CTAs */}
-            {/* <div className="flex md:justify-end">
-              <div className="grid gap-3 w-full md:w-64">
-                <Image
-                  src="/images/mrs2.jpeg"
-                  alt="Mohamad Reza Safdarian"
-                  width={300}
-                  height={400}
-                  className="rounded-2xl border border-white/10 bg-black/30 p-2 md:p-3"
-                />
-              </div>
-            </div> */}
           </div>
         </GlassSection>
+
+        <StatsSection />
 
         {/* ===== Section 2: Experience ===== */}
         <GlassSection id="experience" className="space-y-4">
