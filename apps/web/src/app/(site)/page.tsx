@@ -135,7 +135,7 @@ export function StatsSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           <StatCard
             icon={<FaPersonRunning aria-hidden className="shrink-0" />}
-            label="International competitions participated"
+            label="International competitions"
             value={42}
             start={inView}
           />
@@ -416,7 +416,7 @@ export default function HomePage() {
             {/* Copy */}
             <div className="space-y-3 text-sm sm:text-base md:text-lg">
               <h3 className="font-heading text-xl md:text-2xl tracking-tight">
-                An ice climber from the heart of desert | Mohammad Reza Safdarian Korouyeh | TEDxEsfahan
+                An ice climber from the heart of desert | Mohammad Reza Safdarian Korouyeh | TEDx Esfahan
               </h3>
               <div className="h-0.5 w-10 bg-amber-500 rounded-full" />
               <p className="text-white/85 leading-7">
