@@ -5,9 +5,10 @@ export default withAuth(
   function middleware(_req: NextRequest) {},
   {
     callbacks: {
-      // TEMP while wiring: allow anyone; later enforce admin:
-      // authorized: ({ token }) => (token as any)?.role === "admin"
-      authorized: () => true,
+      authorized: ({ token }) => (token as any)?.role === "admin",
+    },
+    pages: {
+      signIn: "/signin",
     },
   }
 );
