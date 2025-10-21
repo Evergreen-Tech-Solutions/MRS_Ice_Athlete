@@ -18,7 +18,7 @@ export function GlassSection({
   return (
     <section
       id={id}
-      className={`relative overflow-hidden rounded-3xl border border-white/10 bg-black/60 backdrop-blur ${className}`}
+      className={`relative overflow-hidden rounded-3xl bg-white/10 backdrop-blur ${className}`}
     >
       {/* We’ll wrap children with a padded div inside the section */}
       <div className="relative z-10 p-4 sm:p-6 md:p-8">{children}</div>
@@ -194,7 +194,7 @@ export default function HomePage() {
           </div>
           <div className="space-y-3">
             {/* Name */}
-            <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl tracking-tight leading-tight [text-wrap:balance]">
+            <h1 className="font-heading text-3xl text-white sm:text-4xl md:text-5xl tracking-tight leading-tight [text-wrap:balance]">
               MOHAMMADREZA <br /> SAFDARIAN
             </h1>
 

@@ -9,6 +9,7 @@ import IceAxePng from "./IceAxe"; // your PNG-mask icon
 // Font Awesome (via react-icons)
 import {
   FaHouse,
+  FaUpLong,
   FaMobile,
   FaGaugeHigh,
   FaEnvelope,
@@ -28,10 +29,10 @@ type Item = {
 
 const NAV_ITEMS: Item[] = [
   {
-    label: "Home",
+    label: "My Story",
     href: "/",
     match: "exact",
-    icon: <FaHouse className="h-6 w-6 shrink-0 transition-transform group-hover:scale-120" aria-hidden="true" />,
+    icon: <FaUpLong className="h-6 w-6 shrink-0 transition-transform group-hover:scale-120" aria-hidden="true" />,
   },
   {
     label: "Classes",
@@ -108,7 +109,7 @@ export default function Sidebar() {
   return (
     <>
       {/* Mobile top bar */}
-      <div className="md:hidden sticky top-0 z-40 flex items-center justify-between bg-black/70 backdrop-blur border-b border-amber-500 px-3 h-12">
+      <div className="md:hidden sticky top-0 z-40 flex items-center justify-between bg-white/70 backdrop-blur border-b border-amber-500 px-3 h-12">
         <button
           aria-label="Open navigation"
           onClick={() => setOpen(true)}
@@ -132,7 +133,7 @@ export default function Sidebar() {
       </div>
 
       {/* Desktop sidebar */}
-      <aside className="hidden md:flex md:flex-col h-screen sticky z-10 pt-5 w-64 border-r border-amber-500 bg-black/50 backdrop-blur">
+      <aside className="hidden md:flex md:flex-col h-screen sticky z-10 pt-5 w-64 border-r border-amber-500 bg-white/10 backdrop-blur">
         <div className="grid place-items-center mt-5 mr-3">
           <Link href="/" className="flex gap-3 transition hover:scale-120">
             <Image
@@ -157,7 +158,7 @@ export default function Sidebar() {
                   "group flex items-center gap-3 px-3 py-2 rounded-lg transition text-lg hover:scale-105",
                   active
                     ? "bg-amber-500/20 text-amber-300"
-                    : "hover:bg-amber-300/20 text-white/80",
+                    : "hover:bg-amber-300/20 text-black/80",
                 ].join(" ")}
               >
                 {/* icon inherits current text color */}
@@ -178,7 +179,7 @@ export default function Sidebar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center justify-center h-16 rounded-lg border border-white/10 
-                   text-white/80 hover:text-amber-300 hover:border-amber-500 hover:bg-amber-500/10 
+                   text-black/80 hover:text-amber-300 hover:border-amber-500 hover:bg-amber-500/10 
                    transition-all duration-300 shadow-md hover:shadow-amber-500/20"
                 aria-label={s.label}
                 title={s.label}
@@ -188,7 +189,7 @@ export default function Sidebar() {
             ))}
           </div>
         </div>
-        <div className="mt-auto p-3 text-xs text-amber-200/80">
+        <div className="mt-auto p-3 text-sm text-black/80">
           © {new Date().getFullYear()}{" "}
           <a
             href="https://www.thedevnest.ca/"
