@@ -8,8 +8,7 @@ import IceAxePng from "./IceAxe"; // your PNG-mask icon
 
 // Font Awesome (via react-icons)
 import {
-  FaHouse,
-  FaUpLong,
+  FaBookOpen,
   FaMobile,
   FaGaugeHigh,
   FaEnvelope,
@@ -32,7 +31,7 @@ const NAV_ITEMS: Item[] = [
     label: "My Story",
     href: "/",
     match: "exact",
-    icon: <FaUpLong className="h-6 w-6 shrink-0 transition-transform group-hover:scale-120" aria-hidden="true" />,
+    icon: <FaBookOpen className="h-6 w-6 shrink-0 transition-transform group-hover:scale-120" aria-hidden="true" />,
   },
   {
     label: "Classes",

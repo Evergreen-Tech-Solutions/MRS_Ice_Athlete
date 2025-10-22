@@ -1,9 +1,9 @@
+// apps/web/src/app/%28dashboard%29/dashboard/page.tsx
 import StatCard from "@/components/StatCard";
-import { createBrowserSupabaseClient } from "@/lib/supabaseBrowser";
+import { createServerClient } from "@/lib/supabaseServer";
 
 export default async function DashboardHome() {
-  const supabase = createBrowserSupabaseClient();
-
+  const supabase = await createServerClient();
   const now = new Date();
   const startOfMonth = new Date(
     now.getFullYear(),
@@ -12,30 +12,37 @@ export default async function DashboardHome() {
   ).toISOString();
   const nowIso = now.toISOString();
 
-  // ---- Fetch KPI counts in parallel ----
+  // Fetch various metrics in parallel
   const [classesRes, sessionsRes, bookingsRes, paymentsRes, recentPaymentsRes] =
     await Promise.all([
+      // 1) Count published classes
       supabase
         .from("classes")
         .select("*", { count: "exact", head: true })
         .eq("is_published", true),
+
+      // 2) Count upcoming sessions
       supabase
-        .from("class_sessions") // ✅ correct table name
+        .from("class_sessions")
         .select("*", { count: "exact", head: true })
         .gte("start_time", nowIso),
+
+      // 3) Count bookings created MTD
       supabase
         .from("bookings")
         .select("*", { count: "exact", head: true })
         .gte("created_at", startOfMonth),
+
+      // 4) Sum payments (succeeded) MTD
       supabase
         .from("payments")
-        .select("amount_cents,status,created_at")
+        .select("amount_cents, status")
         .gte("created_at", startOfMonth),
+
+      // 5) Recent payments
       supabase
         .from("payments")
-        .select(
-          "id, booking_id, amount_cents, currency, status, receipt_url, created_at"
-        )
+        .select("*")
         .order("created_at", { ascending: false })
         .limit(10),
     ]);
