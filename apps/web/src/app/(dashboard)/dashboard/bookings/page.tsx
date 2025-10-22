@@ -1,5 +1,4 @@
 // apps/web/src/app/(dashboard)/dashboard/bookings/page.tsx
-import { requireAdmin } from "@/lib/requireAdmin";
 import { createSupabaseServerClient } from "@/lib/supabaseServer";
 
 type SessionRow = {
@@ -23,7 +22,6 @@ type RawBooking = {
 type BookingRow = Omit<RawBooking, "session"> & { session: SessionRow | null };
 
 export default async function AdminBookingsPage() {
-  await requireAdmin();
   const supabase = await createSupabaseServerClient();
 
   // Use the explicit FK name if you know it; we'll also handle array/object just in case.
