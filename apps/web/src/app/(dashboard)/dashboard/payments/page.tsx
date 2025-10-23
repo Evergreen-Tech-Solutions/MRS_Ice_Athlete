@@ -1,10 +1,9 @@
 // apps/web/src/app/(dashboard)/dashboard/payments/page.tsx
-import { requireAdmin } from "@/lib/requireAdmin";
-import { createSupabaseServerClient } from "@/lib/supabaseServer";
+import { createServerClient } from "@/lib/supabaseServer";
 
 type PaymentRow = {
-  id: number;
-  booking_id: number;
+  id: string;          // uuid
+  booking_id: string;  // uuid
   amount_cents: number;
   currency: string;
   status: "requires_payment" | "succeeded" | "refunded" | "failed";
@@ -13,10 +12,7 @@ type PaymentRow = {
 };
 
 export default async function AdminPaymentsPage() {
-  await requireAdmin();
-
-  // ⬇️ IMPORTANT: await the async factory
-  const supabase = await createSupabaseServerClient();
+  const supabase = await createServerClient();
 
   const { data, error } = await supabase
     .from("payments")

@@ -13,7 +13,6 @@ export default async function SiteLayout({
     <div className="flex h-screen min-h-0">
       <Sidebar />
       <main className="flex-1 min-w-0 h-screen overflow-y-auto p-4 md:p-8">
-        <body>
           <header className="flex justify-end">
             <div>
               {me ? (
@@ -31,7 +30,6 @@ export default async function SiteLayout({
             </div>
           </header>
           {children}
-        </body>
       </main>
     </div>
   );

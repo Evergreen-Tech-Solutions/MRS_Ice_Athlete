@@ -1,5 +1,6 @@
 // apps/web/src/app/(dashboard)/dashboard/bookings/page.tsx
-import { createSupabaseServerClient } from "@/lib/supabaseServer";
+import { createServerClient } from "@/lib/supabaseServer";
+
 
 type SessionRow = {
   id: number;
@@ -22,21 +23,16 @@ type RawBooking = {
 type BookingRow = Omit<RawBooking, "session"> & { session: SessionRow | null };
 
 export default async function AdminBookingsPage() {
-  const supabase = await createSupabaseServerClient();
+const supabase = await createServerClient();
 
-  // Use the explicit FK name if you know it; we'll also handle array/object just in case.
   const { data, error } = await supabase
-    .from("bookings")
-    .select(
-      `
-      id, status, seats, created_at, user_id, session_id,
-      session:sessions!bookings_session_id_fkey (
-        id, start_time, end_time, class_id
-      )
-    `
-    )
-    .order("created_at", { ascending: false })
-    .limit(100);
+  .from("bookings")
+  .select(`
+    id, status, seats, created_at, user_id, session_id,
+    session:class_sessions ( id, start_time, end_time, class_id )
+  `)
+  .order("created_at", { ascending: false })
+  .limit(100);
 
   if (error) return <div className="p-6 text-red-400">Error: {error.message}</div>;
 

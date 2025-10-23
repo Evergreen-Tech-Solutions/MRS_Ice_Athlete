@@ -1,32 +1,35 @@
 // apps/web/src/app/(dashboard)/dashboard/classes/page.tsx
-import { requireAdmin } from "@/lib/requireAdmin";
-import { createSupabaseServerClient } from "@/lib/supabaseServer";
+import { createServerClient } from "@/lib/supabaseServer";
 import Link from "next/link";
 
-type SessionRow = { id: number; start_time: string; end_time: string; class_id: number };
+type SessionRow = { id: string; start_time: string; end_time: string; class_id: string };
 type RawClass = {
-  id: number;
+  id: string;
   title: string;
   price_cents: number;
   capacity: number;
   is_published: boolean;
   created_at: string;
-  sessions?: SessionRow[]; // nested relation comes back as an array
+  sessions?: SessionRow[];
 };
 
 export default async function AdminClassesPage() {
-  await requireAdmin();
-  const supabase = await createSupabaseServerClient();
+  const supabase = await createServerClient();
+  const nowIso = new Date().toISOString();
 
   const { data, error } = await supabase
     .from("classes")
     .select(`
       id, title, price_cents, capacity, is_published, created_at,
-      sessions ( id, start_time, end_time, class_id )
+      sessions:class_sessions (
+        id, start_time, end_time, class_id
+      )
     `)
     .order("created_at", { ascending: false });
 
-  if (error) return <div className="p-6 text-red-400">Error: {error.message}</div>;
+  if (error) {
+    return <div className="p-6 text-red-400">Error: {error.message}</div>;
+  }
 
   const classes = (data ?? []) as RawClass[];
 
@@ -34,7 +37,10 @@ export default async function AdminClassesPage() {
     <div className="p-6 space-y-4">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold">Classes</h1>
-        <Link href="/dashboard/classes/new" className="rounded-lg px-4 py-2 bg-white/10 hover:bg-white/20">
+        <Link
+          href="/dashboard/classes/new"
+          className="rounded-lg px-4 py-2 bg-white/10 hover:bg-white/20"
+        >
           New Class
         </Link>
       </div>
@@ -57,7 +63,11 @@ export default async function AdminClassesPage() {
               const sorted = [...(c.sessions ?? [])].sort(
                 (a, b) => new Date(a.start_time).getTime() - new Date(b.start_time).getTime()
               );
-              const next = sorted.find(s => new Date(s.start_time).getTime() >= Date.now()) ?? sorted[0] ?? null;
+              const now = Date.now();
+              const next =
+                sorted.find((s) => new Date(s.start_time).getTime() >= now) ??
+                sorted[0] ??
+                null;
 
               return (
                 <tr key={c.id} className="border-t border-white/10">
@@ -67,10 +77,12 @@ export default async function AdminClassesPage() {
                   <td className="p-3 text-center">{c.is_published ? "Yes" : "No"}</td>
                   <td className="p-3 text-center">{c.sessions?.length ?? 0}</td>
                   <td className="p-3 text-center">
-                    {next ? `${new Date(next.start_time).toLocaleString()}` : "—"}
+                    {next ? new Date(next.start_time).toLocaleString() : "—"}
                   </td>
                   <td className="p-3 text-right">
-                    <Link className="underline" href={`/dashboard/classes/${c.id}`}>Edit</Link>
+                    <Link className="underline" href={`/dashboard/classes/${c.id}`}>
+                      Edit
+                    </Link>
                   </td>
                 </tr>
               );

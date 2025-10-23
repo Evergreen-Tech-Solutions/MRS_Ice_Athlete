@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { FaMedal, FaPersonRunning, FaTrophy} from "react-icons/fa6";
+import { FaMedal, FaPersonRunning, FaTrophy } from "react-icons/fa6";
 
 export function GlassSection({
   id,
@@ -60,7 +60,9 @@ function CountUpNumber({
     };
   }, [start, to, duration]);
 
-  return <span className={className}>{new Intl.NumberFormat().format(val)}</span>;
+  return (
+    <span className={className}>{new Intl.NumberFormat().format(val)}</span>
+  );
 }
 
 /** Hook: in-view once */
@@ -99,12 +101,16 @@ function StatCard({
   start: boolean;
 }) {
   return (
-    <div className="rounded-2xl border border-white/10 bg-black/30 px-5 py-6 md:px-6 md:py-8
-                    shadow-md hover:shadow-amber-500/10 transition">
+    <div
+      className="rounded-2xl border border-white/10 bg-black/30 px-5 py-6 md:px-6 md:py-8
+                    shadow-md hover:shadow-amber-500/10 transition"
+    >
       <div className="flex items-center gap-4">
-        <div className="grid h-14 w-14 place-items-center rounded-xl 
+        <div
+          className="grid h-14 w-14 place-items-center rounded-xl 
                         bg-gradient-to-br from-amber-400/30 to-amber-600/30 
-                        border border-amber-300/30 text-amber-200">
+                        border border-amber-300/30 text-amber-200"
+        >
           <span className="text-3xl">{icon}</span>
         </div>
         <div>
@@ -129,7 +135,9 @@ export function StatsSection() {
       <GlassSection id="stats" className="space-y-4 mt-4 sm:mt-6">
         <div className="flex items-center gap-3 mb-2">
           <div className="h-6 w-1 rounded-full bg-amber-500" />
-          <h2 className="font-heading text-2xl md:text-3xl tracking-tight">Achievements</h2>
+          <h2 className="font-heading text-2xl md:text-3xl tracking-tight">
+            Achievements
+          </h2>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
@@ -156,7 +164,6 @@ export function StatsSection() {
     </div>
   );
 }
-
 
 export default function HomePage() {
   return (
@@ -185,8 +192,10 @@ export default function HomePage() {
               className="object-cover"
               style={{
                 // fade from solid on the right to transparent on the left
-                WebkitMaskImage: "linear-gradient(to left, black 65%, transparent 100%)",
-       maskImage: "linear-gradient(to left, black 65%, transparent 100%)",
+                WebkitMaskImage:
+                  "linear-gradient(to left, black 65%, transparent 100%)",
+                maskImage:
+                  "linear-gradient(to left, black 65%, transparent 100%)",
                 opacity: 0.9, // optional subtle blend
               }}
               priority
@@ -204,7 +213,7 @@ export default function HomePage() {
             {/* Tagline */}
             <ul className="font-heading text-base sm:text-lg md:text-xl text-white/90 space-y-1.5">
               <li>World Champion Ice Climber</li>
-              <li>Firefighter & Rescue Specialist</li> 
+              <li>Firefighter & Rescue Specialist</li>
               <li>Rope Access Level Three Technician (IRATA)</li>
             </ul>
           </div>
@@ -416,7 +425,8 @@ export default function HomePage() {
             {/* Copy */}
             <div className="space-y-3 text-sm sm:text-base md:text-lg">
               <h3 className="font-heading text-xl md:text-2xl tracking-tight">
-                An ice climber from the heart of desert | Mohammad Reza Safdarian Korouyeh | TEDx Esfahan
+                An ice climber from the heart of desert | Mohammad Reza
+                Safdarian Korouyeh | TEDx Esfahan
               </h3>
               <div className="h-0.5 w-10 bg-amber-500 rounded-full" />
               <p className="text-white/85 leading-7">

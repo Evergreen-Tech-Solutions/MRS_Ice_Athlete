@@ -67,32 +67,32 @@ const SOCIALS: Social[] = [
   {
     label: "Email",
     href: "mailto:ISFAHANICECLIMBING@GMAIL.COM",
-    icon: <FaEnvelope className="h-8 w-8" />,
+    icon: <FaEnvelope className="h-5 w-5" />,
   },
   {
     label: "WhatsApp",
     href: "https://api.whatsapp.com/send/?phone=989301031003&text&type=phone_number&app_absent=0",
-    icon: <FaWhatsapp className="h-8 w-8" />,
+    icon: <FaWhatsapp className="h-5 w-5" />,
   },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/mohammad-reza-safdarian-87b37b1b8/",
-    icon: <FaLinkedin className="h-8 w-8" />,
+    icon: <FaLinkedin className="h-5 w-5" />,
   },
   {
     label: "Instagram",
     href: "https://www.instagram.com/safdarian_mohammadreza",
-    icon: <FaInstagram className="h-8 w-8" />,
+    icon: <FaInstagram className="h-5 w-5" />,
   },
   {
     label: "Facebook",
     href: "https://www.facebook.com/safdarian.mohammadreza",
-    icon: <FaFacebook className="h-8 w-8" />,
+    icon: <FaFacebook className="h-5 w-5" />,
   },
   {
     label: "X (Twitter)",
     href: "https://twitter.com/SafdarianM",
-    icon: <FaXTwitter className="h-8 w-8" />,
+    icon: <FaXTwitter className="h-5 w-5" />,
   },
 ];
 
@@ -170,14 +170,14 @@ export default function Sidebar() {
 
         {/* Social buttons */}
         <div className="mt-8 px-3">
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-3 gap-3">
             {SOCIALS.map((s) => (
               <a
                 key={s.label}
                 href={s.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-center h-16 rounded-lg border border-white/10 
+                className="group flex items-center justify-center h-8 rounded-lg border border-white/10 
                    text-black/80 hover:text-amber-300 hover:border-amber-500 hover:bg-amber-500/10 
                    transition-all duration-300 shadow-md hover:shadow-amber-500/20"
                 aria-label={s.label}
