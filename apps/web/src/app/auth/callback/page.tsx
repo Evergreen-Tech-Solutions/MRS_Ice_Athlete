@@ -3,10 +3,10 @@
 
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { createBrowserSupabaseClient } from "@/lib/supabaseBrowser";
+import { getBrowserSupabase } from "@/lib/supabaseBrowser";
 
 export default function AuthCallbackPage() {
-  const supabase = createBrowserSupabaseClient();
+  const supabase = getBrowserSupabase();
   const router = useRouter();
   const search = useSearchParams();
 
