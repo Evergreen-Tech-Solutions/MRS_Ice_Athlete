@@ -1,11 +1,14 @@
 // apps/web/src/app/signin/page.tsx
 "use client";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getBrowserSupabase } from "@/lib/supabaseBrowser";
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default function SignInPage() {
-  const supabase = getBrowserSupabase();
+  const supabase = useMemo(() => getBrowserSupabase(), []);
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
