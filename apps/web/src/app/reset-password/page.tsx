@@ -4,9 +4,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { getBrowserSupabase } from "@/lib/supabaseBrowser";
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
-
 
 export default function ResetPasswordPage() {
   const supabase = useMemo(() => getBrowserSupabase(), []);

@@ -4,9 +4,6 @@ import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getBrowserSupabase } from "@/lib/supabaseBrowser";
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
-
 export default function SignInPage() {
   const supabase = useMemo(() => getBrowserSupabase(), []);
   const router = useRouter();
