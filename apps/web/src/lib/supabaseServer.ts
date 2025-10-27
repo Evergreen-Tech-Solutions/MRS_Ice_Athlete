@@ -1,26 +1,23 @@
-// apps/web/src/lib/supabaseServer.ts
 import { cookies } from "next/headers";
 import { createServerClient as _createServerClient } from "@supabase/ssr";
 
-/**
- * Server-side Supabase client for RSC/SSR (Next 15).
- * NOTE: cookies() is async in your environment → await it.
- */
 export async function createServerClient() {
-  const cookieStore = await cookies(); // ✅ await the Promise<ReadonlyRequestCookies>
+  const cookieStore = await cookies(); 
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const anon = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  if (!url || !anon) {
+    // Fail fast at runtime (never at build now that /auth/callback is dynamic)
+    throw new Error("@supabase/ssr: missing env at runtime");
+  }
 
-  return _createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
-      cookies: {
-        get(name: string) {
-          return cookieStore.get(name)?.value;
-        },
-        // no-ops in RSC; do real set/remove in route handlers if needed
-        set() {},
-        remove() {},
+  return _createServerClient(url, anon, {
+    cookies: {
+      get(name: string) {
+        return cookieStore.get(name)?.value ?? null;
       },
-    }
-  );
+      // no-ops in RSC; implement set/remove in route handlers if you need to write cookies
+      set() {},
+      remove() {},
+    },
+  });
 }

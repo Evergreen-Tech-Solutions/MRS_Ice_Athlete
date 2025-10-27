@@ -1,12 +1,14 @@
 // apps/web/src/app/auth/callback/page.tsx
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { getBrowserSupabase } from "@/lib/supabaseBrowser";
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default function AuthCallbackPage() {
-  const supabase = getBrowserSupabase();
   const router = useRouter();
   const search = useSearchParams();
 
@@ -19,6 +21,8 @@ export default function AuthCallbackPage() {
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [updating, setUpdating] = useState(false);
+
+  const supabase = useMemo(() => getBrowserSupabase(), []);
 
   useEffect(() => {
     (async () => {
