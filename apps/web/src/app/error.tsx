@@ -1,6 +1,7 @@
 'use client';
-
 export default function Error({ error, reset }: { error: Error; reset: () => void }) {
+  // Logs land in the Function logs for the request
+  console.error('Page error boundary:', error);
   return (
     <div style={{ padding: 24 }}>
       <h2>Page error</h2>

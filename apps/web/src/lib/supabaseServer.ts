@@ -5,9 +5,12 @@ export async function createServerClient() {
   const cookieStore = await cookies(); 
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const anon = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  if (!url || !anon) {
-    // Fail fast at runtime (never at build now that /auth/callback is dynamic)
-    throw new Error("@supabase/ssr: missing env at runtime");
+   if (!url || !anon) {
+    console.error("Supabase envs missing at runtime", {
+      HAS_URL: !!url,
+      HAS_ANON: !!anon,
+    });
+    return null; 
   }
 
   return _createServerClient(url, anon, {

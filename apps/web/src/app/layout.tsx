@@ -2,6 +2,8 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { Roboto_Flex, Michroma } from "next/font/google";
 
+export const runtime = 'nodejs';
+
 const body = Roboto_Flex({
   subsets: ["latin"],
   variable: "--font-roboto-flex",
