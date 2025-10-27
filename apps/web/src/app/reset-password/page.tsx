@@ -1,11 +1,15 @@
 // apps/web/src/app/reset-password/page.tsx
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { getBrowserSupabase } from "@/lib/supabaseBrowser";
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
+
 export default function ResetPasswordPage() {
-  const supabase = getBrowserSupabase();
+  const supabase = useMemo(() => getBrowserSupabase(), []);
   const [email, setEmail] = useState("");
   const [busy, setBusy] = useState(false);
   const [msg, setMsg] = useState<string | null>(null);
