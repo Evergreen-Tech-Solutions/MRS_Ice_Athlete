@@ -1,9 +1,10 @@
 // apps/web/src/app/%28dashboard%29/dashboard/page.tsx
 import StatCard from "@/components/StatCard";
-import { createServerClient } from "@/lib/supabaseServer";
+import { createServerClientSafe } from "@/lib/supabaseServer";
+import { redirect } from "next/navigation";
 
 export default async function DashboardHome() {
-  const supabase = await createServerClient();
+  const supabase = await createServerClientSafe();
   const now = new Date();
   const startOfMonth = new Date(
     now.getFullYear(),
@@ -11,6 +12,7 @@ export default async function DashboardHome() {
     1
   ).toISOString();
   const nowIso = now.toISOString();
+  if (!supabase) redirect("/signin");
 
   // Fetch various metrics in parallel
   const [classesRes, sessionsRes, bookingsRes, paymentsRes, recentPaymentsRes] =
