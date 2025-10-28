@@ -1,8 +1,12 @@
 // apps/web/src/lib/getSessionProfile.ts
-import { createServerClient } from "@/lib/supabaseServer";
+import { createServerClientSafe } from "@/lib/supabaseServer";
+import { redirect } from "next/navigation";
 
 export async function getSessionProfile() {
-  const supabase = await createServerClient();
+  const supabase = await createServerClientSafe();
+  if (!supabase) {
+    redirect("/signin");
+  }
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return null;
 
