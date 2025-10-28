@@ -4,9 +4,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, ReactNode } from "react";
-import IceAxePng from "./IceAxe"; // your PNG-mask icon
+import IceAxePng from "./IceAxe";
+import Avatar from "./Avatar";
 
-// Font Awesome (via react-icons)
 import {
   FaBookOpen,
   FaMobile,
@@ -26,6 +26,18 @@ type Item = {
   icon: ReactNode;
 };
 
+type Social = {
+  label: string;
+  href: string;
+  icon: ReactNode;
+};
+
+type Me = {
+  full_name?: string | null;
+  email?: string | null;
+  image?: string | null;
+} | null;
+
 const NAV_ITEMS: Item[] = [
   {
     label: "My Story",
@@ -37,10 +49,7 @@ const NAV_ITEMS: Item[] = [
     label: "Classes",
     href: "/classes",
     match: "startsWith",
-    // keep your axe for brand flair
-    icon: (
-      <IceAxePng className="h-6 w-6 -rotate-12 shrink-0 transition-transform group-hover:scale-130" />
-    ),
+    icon: <IceAxePng className="h-6 w-6 -rotate-12 shrink-0 transition-transform group-hover:scale-130" />,
   },
   {
     label: "Contact",
@@ -52,48 +61,17 @@ const NAV_ITEMS: Item[] = [
     label: "Dashboard",
     href: "/dashboard",
     match: "startsWith",
-    // pick a performance/status feel
     icon: <FaGaugeHigh className="h-6 w-6 shrink-0 transition-transform group-hover:scale-120" aria-hidden="true" />,
   },
 ];
 
-type Social = {
-  label: string;
-  href: string;
-  icon: ReactNode;
-};
-
 const SOCIALS: Social[] = [
-  {
-    label: "Email",
-    href: "mailto:ISFAHANICECLIMBING@GMAIL.COM",
-    icon: <FaEnvelope className="h-5 w-5" />,
-  },
-  {
-    label: "WhatsApp",
-    href: "https://api.whatsapp.com/send/?phone=989301031003&text&type=phone_number&app_absent=0",
-    icon: <FaWhatsapp className="h-5 w-5" />,
-  },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/mohammad-reza-safdarian-87b37b1b8/",
-    icon: <FaLinkedin className="h-5 w-5" />,
-  },
-  {
-    label: "Instagram",
-    href: "https://www.instagram.com/safdarian_mohammadreza",
-    icon: <FaInstagram className="h-5 w-5" />,
-  },
-  {
-    label: "Facebook",
-    href: "https://www.facebook.com/safdarian.mohammadreza",
-    icon: <FaFacebook className="h-5 w-5" />,
-  },
-  {
-    label: "X (Twitter)",
-    href: "https://twitter.com/SafdarianM",
-    icon: <FaXTwitter className="h-5 w-5" />,
-  },
+  { label: "Email", href: "mailto:ISFAHANICECLIMBING@GMAIL.COM", icon: <FaEnvelope className="h-5 w-5" /> },
+  { label: "WhatsApp", href: "https://api.whatsapp.com/send/?phone=989301031003&text&type=phone_number&app_absent=0", icon: <FaWhatsapp className="h-5 w-5" /> },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/mohammad-reza-safdarian-87b37b1b8/", icon: <FaLinkedin className="h-5 w-5" /> },
+  { label: "Instagram", href: "https://www.instagram.com/safdarian_mohammadreza", icon: <FaInstagram className="h-5 w-5" /> },
+  { label: "Facebook", href: "https://www.facebook.com/safdarian.mohammadreza", icon: <FaFacebook className="h-5 w-5" /> },
+  { label: "X (Twitter)", href: "https://twitter.com/SafdarianM", icon: <FaXTwitter className="h-5 w-5" /> },
 ];
 
 function isActive(pathname: string, item: Item) {
@@ -101,7 +79,7 @@ function isActive(pathname: string, item: Item) {
   return pathname === item.href || pathname.startsWith(item.href + "/");
 }
 
-export default function Sidebar() {
+export default function Sidebar({ me }: { me?: Me }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
@@ -120,30 +98,22 @@ export default function Sidebar() {
         </button>
 
         <Link href="/" className="flex items-center gap-2">
-          <Image
-            src="/images/logo.svg"
-            alt="Ice Athlete"
-            width={24}
-            height={24}
-          />
+          <Image src="/images/logo.svg" alt="Ice Athlete" width={24} height={24} />
         </Link>
 
         <div className="w-9" />
       </div>
 
       {/* Desktop sidebar */}
-      <aside className="hidden md:flex md:flex-col h-screen sticky z-10 pt-5 w-64 border-r border-amber-500 bg-white/10 backdrop-blur">
+      <aside className="hidden md:flex md:flex-col h-screen sticky z-10 pt-5 w-58 border-r border-amber-500 bg-white/10 backdrop-blur">
+        {/* Brand */}
         <div className="grid place-items-center mt-5 mr-3">
           <Link href="/" className="flex gap-3 transition hover:scale-120">
-            <Image
-              src="/images/logo.svg"
-              alt="Ice Athlete"
-              width={100}
-              height={100}
-            />
+            <Image src="/images/logo.svg" alt="Ice Athlete" width={100} height={100} />
           </Link>
         </div>
 
+        {/* Nav */}
         <nav className="font-heading p-2 space-y-3 mt-8">
           {NAV_ITEMS.map((item) => {
             const active = isActive(pathname, item);
@@ -155,12 +125,9 @@ export default function Sidebar() {
                 aria-current={active ? "page" : undefined}
                 className={[
                   "group flex items-center gap-3 px-3 py-2 rounded-lg transition text-lg hover:scale-105",
-                  active
-                    ? "bg-amber-500/20 text-amber-300"
-                    : "hover:bg-amber-300/20 text-black/80",
+                  active ? "bg-amber-500/20 text-amber-300" : "hover:bg-amber-300/20 text-black/80",
                 ].join(" ")}
               >
-                {/* icon inherits current text color */}
                 <span className="text-current pr-1">{item.icon}</span>
                 <span className="font-medium">{item.label}</span>
               </Link>
@@ -168,7 +135,7 @@ export default function Sidebar() {
           })}
         </nav>
 
-        {/* Social buttons */}
+        {/* Socials */}
         <div className="mt-8 px-3">
           <div className="grid grid-cols-3 gap-3">
             {SOCIALS.map((s) => (
@@ -188,43 +155,55 @@ export default function Sidebar() {
             ))}
           </div>
         </div>
-        <div className="mt-auto p-3 text-sm text-black/80">
-          © {new Date().getFullYear()}{" "}
-          <a
-            href="https://www.thedevnest.ca/"
-            className="hover:text-amber-300"
-            target="_blank"
-          >
-            Powered by DevNest Studio
-          </a>
+        {/* Account block pinned to bottom */}
+        <div className="mt-auto px-2 pt-3 pb-2 border-t border-amber-500/40">
+          {me ? (
+            <Link
+              href="/dashboard"
+              className="flex items-center gap-3 rounded-lg px-2 py-2 hover:bg-amber-500/10 transition"
+              aria-label="Go to dashboard"
+            >
+              <Avatar fullName={me.full_name ?? ""} email={me.email ?? ""} size={30} />
+              <div className="min-w-0">
+                <div className="text-sm font-medium truncate">{me.full_name || me.email}</div>
+                <div className="text-xs opacity-70 truncate">{me.email}</div>
+              </div>
+            </Link>
+          ) : (
+            <Link
+              href="/signin"
+              className="inline-flex items-center justify-center w-full rounded-lg border border-amber-500/60 hover:border-amber-500 px-3 py-2
+                         bg-white/5 hover:bg-amber-500/10 text-sm font-medium transition"
+            >
+              Sign in
+            </Link>
+          )}
+
+          <div className="mt-3 text-xs text-black/80">
+            © {new Date().getFullYear()}{" "}
+            <a
+              href="https://www.thedevnest.ca/"
+              className="hover:text-amber-300"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Powered by DevNest Studio
+            </a>
+          </div>
         </div>
       </aside>
 
       {/* Mobile drawer */}
       {open && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          className="md:hidden fixed inset-0 z-50"
-          onClick={() => setOpen(false)}
-        >
+        <div role="dialog" aria-modal="true" className="md:hidden fixed inset-0 z-50" onClick={() => setOpen(false)}>
           <div className="absolute inset-0 bg-black/60" />
           <div
-            className="absolute left-0 top-0 bottom-0 w-72 bg-black border-r border-amber-500 p-3"
+            className="absolute left-0 top-0 bottom-0 w-72 bg-black border-r border-amber-500 p-3 flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="h-12 inline-flex items-center gap-2 border-b border-amber-500 mb-2">
-              <Image
-                src="/images/logo.svg"
-                alt="Ice Athlete"
-                width={24}
-                height={24}
-              />
-              <button
-                aria-label="Close navigation"
-                onClick={() => setOpen(false)}
-                className="ml-auto p-2 rounded hover:bg-white/10"
-              >
+              <Image src="/images/logo.svg" alt="Ice Athlete" width={24} height={24} />
+              <button aria-label="Close navigation" onClick={() => setOpen(false)} className="ml-auto p-2 rounded hover:bg-white/10">
                 ✕
               </button>
             </div>
@@ -241,9 +220,7 @@ export default function Sidebar() {
                     aria-current={active ? "page" : undefined}
                     className={[
                       "block px-3 py-2 rounded-lg transition",
-                      active
-                        ? "bg-amber-500/20 text-amber-300"
-                        : "hover:bg-white/10 text-white/80",
+                      active ? "bg-amber-500/20 text-amber-300" : "hover:bg-white/10 text-white/80",
                     ].join(" ")}
                   >
                     <span className="inline-flex items-center gap-3">
@@ -266,8 +243,8 @@ export default function Sidebar() {
                     rel="noopener noreferrer"
                     onClick={() => setOpen(false)}
                     className="group flex items-center justify-center h-14 rounded-xl border border-white/10 bg-black/40 
-                   text-white/80 hover:text-amber-300 hover:border-amber-500 hover:bg-amber-500/10 
-                   transition-all duration-300 shadow-md hover:shadow-amber-500/20"
+                       text-white/80 hover:text-amber-300 hover:border-amber-500 hover:bg-amber-500/10 
+                       transition-all duration-300 shadow-md hover:shadow-amber-500/20"
                     aria-label={s.label}
                     title={s.label}
                   >
@@ -275,6 +252,33 @@ export default function Sidebar() {
                   </a>
                 ))}
               </div>
+            </div>
+
+            {/* Account block pinned to bottom on mobile */}
+            <div className="mt-auto pt-3 border-t border-white/10">
+              {me ? (
+                <Link
+                  href="/dashboard"
+                  onClick={() => setOpen(false)}
+                  className="flex items-center gap-3 rounded-lg px-2 py-2 hover:bg-amber-500/10 transition"
+                  aria-label="Go to dashboard"
+                >
+                  <Avatar fullName={me.full_name ?? ""} email={me.email ?? ""} size={28} />
+                  <div className="min-w-0">
+                    <div className="text-sm font-medium truncate">{me.full_name || me.email}</div>
+                    <div className="text-xs opacity-70 truncate">{me.email}</div>
+                  </div>
+                </Link>
+              ) : (
+                <Link
+                  href="/signin"
+                  onClick={() => setOpen(false)}
+                  className="inline-flex items-center justify-center w-full rounded-lg border border-amber-500/60 hover:border-amber-500 px-3 py-2
+                             bg-white/5 hover:bg-amber-500/10 text-sm font-medium transition"
+                >
+                  Sign in
+                </Link>
+              )}
             </div>
           </div>
         </div>
