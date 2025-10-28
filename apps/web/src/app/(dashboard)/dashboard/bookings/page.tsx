@@ -1,5 +1,6 @@
 // apps/web/src/app/(dashboard)/dashboard/bookings/page.tsx
-import { createServerClient } from "@/lib/supabaseServer";
+import { createServerClientSafe } from "@/lib/supabaseServer";
+import { redirect } from "next/navigation";
 
 
 type SessionRow = {
@@ -23,7 +24,8 @@ type RawBooking = {
 type BookingRow = Omit<RawBooking, "session"> & { session: SessionRow | null };
 
 export default async function AdminBookingsPage() {
-const supabase = await createServerClient();
+  const supabase = await createServerClientSafe();
+  if (!supabase) redirect("/signin");
 
   const { data, error } = await supabase
   .from("bookings")

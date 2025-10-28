@@ -1,6 +1,7 @@
 // apps/web/src/app/(dashboard)/dashboard/classes/page.tsx
-import { createServerClient } from "@/lib/supabaseServer";
+import { createServerClientSafe } from "@/lib/supabaseServer";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 type SessionRow = { id: string; start_time: string; end_time: string; class_id: string };
 type RawClass = {
@@ -14,8 +15,9 @@ type RawClass = {
 };
 
 export default async function AdminClassesPage() {
-  const supabase = await createServerClient();
+  const supabase = await createServerClientSafe();
   const nowIso = new Date().toISOString();
+  if (!supabase) redirect("/signin"); 
 
   const { data, error } = await supabase
     .from("classes")

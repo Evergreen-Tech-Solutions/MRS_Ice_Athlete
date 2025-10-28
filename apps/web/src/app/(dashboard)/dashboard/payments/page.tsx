@@ -1,5 +1,6 @@
 // apps/web/src/app/(dashboard)/dashboard/payments/page.tsx
-import { createServerClient } from "@/lib/supabaseServer";
+import { createServerClientSafe } from "@/lib/supabaseServer";
+import { redirect } from "next/navigation";
 
 type PaymentRow = {
   id: string;          // uuid
@@ -12,8 +13,9 @@ type PaymentRow = {
 };
 
 export default async function AdminPaymentsPage() {
-  const supabase = await createServerClient();
-
+  const supabase = await createServerClientSafe();
+  if (!supabase) redirect("/signin");
+  
   const { data, error } = await supabase
     .from("payments")
     .select("id, booking_id, amount_cents, currency, status, receipt_url, created_at")
