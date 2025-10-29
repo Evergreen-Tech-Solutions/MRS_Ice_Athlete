@@ -18,7 +18,7 @@ export function GlassSection({
   return (
     <section
       id={id}
-      className={`relative overflow-hidden rounded-3xl bg-white/10 backdrop-blur ${className}`}
+      className={`relative overflow-hidden rounded-lg bg-white/10 backdrop-blur ${className}`}
     >
       {/* We’ll wrap children with a padded div inside the section */}
       <div className="relative z-10 p-4 sm:p-6 md:p-8">{children}</div>

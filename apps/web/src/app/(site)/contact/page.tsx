@@ -68,11 +68,11 @@ export default function ContactPage() {
                 alt=""
                 fill
                 priority
-                className=""
+                className="object-cover"
               />
             </div>
 
-      <div className="mx-auto max-w-4xl px-4 py-10 md:py-16">
+      <div className="mx-auto max-w-4xl px-4 py-10 md:py-16 text-black/80">
         <GlassSection id="contact" className="space-y-8">
           {/* Title */}
           <div className="flex items-center gap-3">
@@ -81,7 +81,7 @@ export default function ContactPage() {
           </div>
 
           {/* Description */}
-          <p className="text-white/80 max-w-2xl mt-3 mb-3">
+          <p className=" max-w-2xl mt-3 mb-3">
             For collaborations, class inquiries, or media opportunities, reach out using the form below or connect directly through social platforms.
           </p>
 
@@ -89,7 +89,7 @@ export default function ContactPage() {
           <form onSubmit={handleSubmit} className="grid gap-5">
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
               <div>
-                <label htmlFor="name" className="block text-sm font-semibold text-white/80 mb-1">
+                <label htmlFor="name" className="block text-sm font-semibold text-black/80 mb-1">
                   Name
                 </label>
                 <input
@@ -103,7 +103,7 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-semibold text-white/80 mb-1">
+                <label htmlFor="email" className="block text-sm font-semibold text-black/80 mb-1">
                   Email
                 </label>
                 <input
@@ -118,7 +118,7 @@ export default function ContactPage() {
             </div>
 
             <div>
-              <label htmlFor="subject" className="block text-sm font-semibold text-white/80 mb-1">
+              <label htmlFor="subject" className="block text-sm font-semibold text-black/80 mb-1">
                 Subject
               </label>
               <input
@@ -131,7 +131,7 @@ export default function ContactPage() {
             </div>
 
             <div>
-              <label htmlFor="message" className="block text-sm font-semibold text-white/80 mb-1">
+              <label htmlFor="message" className="block text-sm font-semibold text-black/80 mb-1">
                 Message
               </label>
               <textarea
@@ -148,7 +148,7 @@ export default function ContactPage() {
               type="submit"
               disabled={status === "sending"}
               className="mt-2 inline-flex items-center justify-center rounded-xl border border-amber-500/50 bg-amber-500/20 
-                         px-6 py-2.5 font-heading text-white hover:bg-amber-500/30 transition disabled:opacity-50"
+                         px-6 py-2.5 font-heading text-black/80 hover:bg-amber-500/30 transition disabled:opacity-50"
             >
               {status === "sending" ? "Sending..." : status === "sent" ? "Sent!" : "Send Message"}
             </button>
