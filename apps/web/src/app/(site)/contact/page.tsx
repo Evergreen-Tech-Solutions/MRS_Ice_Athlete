@@ -62,7 +62,7 @@ export default function ContactPage() {
   return (
     <main className="relative min-h-screen">
       {/* Background image */}
-            <div className="fixed inset-0 -z-10">
+            {/* <div className="fixed inset-0 -z-10">
               <Image
                 src="/images/pic.jpg"
                 alt=""
@@ -70,13 +70,14 @@ export default function ContactPage() {
                 priority
                 className="object-cover"
               />
-            </div>
+            </div> */}
+            <div className="fixed inset-0 -z-10 bg-gradient-to-b from-white/70 via-sky-300 to-sky-500/90" />
 
       <div className="mx-auto max-w-4xl px-4 py-10 md:py-16 text-black/80">
         <GlassSection id="contact" className="space-y-8">
           {/* Title */}
           <div className="flex items-center gap-3">
-            <div className="h-6 w-1 rounded-full bg-amber-500" />
+            <div className="h-6 w-1 rounded-full bg-sky-500" />
             <h1 className="font-heading text-3xl md:text-4xl tracking-tight">Get in Touch</h1>
           </div>
 
@@ -98,7 +99,7 @@ export default function ContactPage() {
                   name="name"
                   type="text"
                   placeholder="Your name"
-                  className="w-full rounded-xl bg-black/30 border border-white/10 px-4 py-2 text-white placeholder-white/40 focus:border-amber-500 focus:outline-none"
+                  className="w-full rounded-xl bg-black/30 border border-white/10 px-4 py-2 text-white placeholder-white/40 focus:border-sky-500 focus:outline-none"
                 />
               </div>
 
@@ -112,7 +113,7 @@ export default function ContactPage() {
                   name="email"
                   type="email"
                   placeholder="your@email.com"
-                  className="w-full rounded-xl bg-black/30 border border-white/10 px-4 py-2 text-white placeholder-white/40 focus:border-amber-500 focus:outline-none"
+                  className="w-full rounded-xl bg-black/30 border border-white/10 px-4 py-2 text-white placeholder-white/40 focus:border-sky-500 focus:outline-none"
                 />
               </div>
             </div>
@@ -126,7 +127,7 @@ export default function ContactPage() {
                 name="subject"
                 type="text"
                 placeholder="What’s this about?"
-                className="w-full rounded-xl bg-black/30 border border-white/10 px-4 py-2 text-white placeholder-white/40 focus:border-amber-500 focus:outline-none"
+                className="w-full rounded-xl bg-black/30 border border-white/10 px-4 py-2 text-white placeholder-white/40 focus:border-sky-500 focus:outline-none"
               />
             </div>
 
@@ -140,15 +141,15 @@ export default function ContactPage() {
                 name="message"
                 rows={5}
                 placeholder="Write your message..."
-                className="w-full rounded-xl bg-black/30 border border-white/10 px-4 py-2 text-white placeholder-white/40 focus:border-amber-500 focus:outline-none"
+                className="w-full rounded-xl bg-black/30 border border-white/10 px-4 py-2 text-white placeholder-white/40 focus:border-sky-500 focus:outline-none"
               ></textarea>
             </div>
 
             <button
               type="submit"
               disabled={status === "sending"}
-              className="mt-2 inline-flex items-center justify-center rounded-xl border border-amber-500/50 bg-amber-500/20 
-                         px-6 py-2.5 font-heading text-black/80 hover:bg-amber-500/30 transition disabled:opacity-50"
+              className="mt-2 inline-flex items-center justify-center rounded-xl border border-white/50 bg-sky-300/80 
+                         px-6 py-2.5 font-heading text-black/80 hover:bg-emerald-300/50 transition disabled:opacity-50"
             >
               {status === "sending" ? "Sending..." : status === "sent" ? "Sent!" : "Send Message"}
             </button>
@@ -168,8 +169,8 @@ export default function ContactPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-center justify-center h-16 rounded-xl border border-white/10 bg-black/40 
-                            text-white/80 hover:text-amber-300 hover:border-amber-500 hover:bg-amber-500/10 
-                            transition-all duration-300 shadow-md hover:shadow-amber-500/20"
+                            text-white/80 hover:text-sky-300 hover:border-sky-500 hover:bg-sky-500/10 
+                            transition-all duration-300 shadow-md hover:shadow-sky-500/20"
                   aria-label={s.label}
                   title={s.label}
                 >

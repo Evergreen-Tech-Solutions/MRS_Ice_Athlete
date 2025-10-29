@@ -180,7 +180,7 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-black/40" />
       </div> */}
       {/* gradient white to light blue from top to bottom */}
-      <div className="fixed inset-0 -z-10 bg-gradient-to-b from-white/70 via-sky-300 to-sky-500/90" />
+      <div className="fixed inset-0 -z-10 bg-gradient-to-b from-white/80 via-sky-300/80 to-sky-800" />
 
       {/* Page content */}
       <div className="mx-auto w-full  px-3 sm:px-4 lg:px-2 py-2 lg:py-2 space-y-5 lg:space-y-4">

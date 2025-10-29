@@ -171,13 +171,13 @@ export default function Sidebar({ me }: { me?: Me }) {
                 {" "}
                 {/* 48px box */}
                 <Image
-                  src="/images/bg-ice.png" // 192×192 source PNG
+                  src="/images/bg-ice.png"
                   alt="Ice Athlete"
-                  width={96} // render at the hover size
+                  width={96} 
                   height={96}
-                  quality={100} // highest JPEG/WEBP quality (PNG compression unaffected, but keeps transforms sharp)
+                  quality={100}
                   className="origin-center transition-transform duration-300
-                 scale-50 group-hover:scale-200" // start at 0.5 → 1.0
+                  group-hover:scale-200"
                   priority
                 />
               </div>
@@ -207,7 +207,7 @@ export default function Sidebar({ me }: { me?: Me }) {
                     "group/nav flex items-center gap-3 px-4 py-2 rounded-lg transition text-base",
                     "hover:scale-[1.02]",
                     active
-                      ? "bg-sky-500/20 text-sky-300"
+                      ? "bg-sky-500/20 text-sky-800"
                       : "hover:bg-sky-400/60 text-black/80",
                   ].join(" ")}
                 >
