@@ -103,13 +103,13 @@ function StatCard({
   return (
     <div
       className="rounded-2xl border border-white/10 bg-black/30 px-5 py-6 md:px-6 md:py-8
-                    shadow-md hover:shadow-amber-500/10 transition"
+                    shadow-md hover:shadow-sky-500/10 transition"
     >
       <div className="flex items-center gap-4">
         <div
           className="grid h-14 w-14 place-items-center rounded-xl 
-                        bg-gradient-to-br from-amber-400/30 to-amber-600/30 
-                        border border-amber-300/30 text-amber-200"
+                        bg-gradient-to-br from-sky-400/30 to-sky-600/30 
+                        border border-sky-300/30 text-sky-200"
         >
           <span className="text-3xl">{icon}</span>
         </div>
@@ -117,9 +117,9 @@ function StatCard({
           <CountUpNumber
             to={value}
             start={start}
-            className="block font-heading text-3xl md:text-4xl leading-none text-white"
+            className="block font-heading text-3xl md:text-4xl leading-none text-black"
           />
-          <p className="mt-1 text-sm md:text-base text-white/80">{label}</p>
+          <p className="mt-1 text-sm md:text-base text-black/80">{label}</p>
         </div>
       </div>
     </div>
@@ -134,7 +134,7 @@ export function StatsSection() {
     <div ref={ref}>
       <GlassSection id="stats" className="space-y-4 mt-4 sm:mt-6">
         <div className="flex items-center gap-3 mb-2">
-          <div className="h-6 w-1 rounded-full bg-amber-500" />
+          <div className="h-6 w-1 rounded-full bg-sky-500" />
           <h2 className="font-heading text-2xl md:text-3xl tracking-tight">
             Achievements
           </h2>
@@ -169,7 +169,7 @@ export default function HomePage() {
   return (
     <main className="relative w-full h-full">
       {/* Background image */}
-      <div className="fixed inset-0 -z-10">
+      {/* <div className="fixed inset-0 -z-10">
         <Image
           src="/images/pic.jpg"
           alt=""
@@ -178,7 +178,9 @@ export default function HomePage() {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-black/40" />
-      </div>
+      </div> */}
+      {/* gradient white to light blue from top to bottom */}
+      <div className="fixed inset-0 -z-10 bg-gradient-to-b from-white/70 via-sky-300 to-sky-500/90" />
 
       {/* Page content */}
       <div className="mx-auto w-full  px-3 sm:px-4 lg:px-2 py-2 lg:py-2 space-y-5 lg:space-y-4">
@@ -203,15 +205,15 @@ export default function HomePage() {
           </div>
           <div className="space-y-3">
             {/* Name */}
-            <h1 className="font-heading text-3xl text-white sm:text-4xl md:text-5xl tracking-tight leading-tight [text-wrap:balance]">
+            <h1 className="font-heading text-3xl text-black sm:text-4xl md:text-5xl tracking-tight leading-tight [text-wrap:balance]">
               MOHAMMADREZA <br /> SAFDARIAN
             </h1>
 
             {/* Divider */}
-            <div className="h-1 w-16 rounded-full bg-amber-500 mb-5" />
+            <div className="h-1 w-16 rounded-full bg-sky-500 mb-5" />
 
             {/* Tagline */}
-            <ul className="font-heading text-base sm:text-lg md:text-xl text-white/90 space-y-1.5">
+            <ul className="font-heading text-base sm:text-lg md:text-xl text-black/90 space-y-1.5">
               <li>World Champion Ice Climber</li>
               <li>Firefighter & Rescue Specialist</li>
               <li>Rope Access Level Three Technician (IRATA)</li>
@@ -221,11 +223,11 @@ export default function HomePage() {
           {/* About me */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             <div className="md:col-span-2 mt-5">
-              <h2 className="font-heading text-xl md:text-2xl tracking-tight">
+              <h2 className="font-heading text-black text-xl md:text-2xl tracking-tight">
                 About Me
               </h2>
-              <div className="mt-2 h-0.5 w-10 bg-amber-500 rounded-full" />
-              <p className="mt-3 text-white/85 leading-7">
+              <div className="mt-2 h-0.5 w-10 bg-sky-500 rounded-full" />
+              <p className="mt-3 text-black/85 leading-7">
                 The history-making ice-climbing boy of the world was born in
                 Isfahan in November 1992. He started his rock climbing activity
                 at the age of 12 and entered the field of ice climbing
@@ -254,8 +256,8 @@ export default function HomePage() {
         {/* ===== Section 2: Experience ===== */}
         <GlassSection id="experience" className="space-y-4">
           <div className="flex items-center gap-3 mb-8">
-            <div className="h-6 w-1 rounded-full bg-amber-500" />
-            <h2 className="font-heading text-2xl md:text-3xl tracking-tight">
+            <div className="h-6 w-1 rounded-full bg-sky-500" />
+            <h2 className="font-heading text-black text-2xl md:text-3xl tracking-tight">
               Experience
             </h2>
           </div>
@@ -265,7 +267,7 @@ export default function HomePage() {
             <article className="rounded-2xl border border-white/10 bg-black/30 p-4 md:p-5">
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {/* left 1/3 */}
-                <div className="col-span-1 text-white/75">
+                <div className="col-span-1 text-black/75">
                   <p className="font-heading text-sm">Mar 2017 — Jan 2024</p>
                   <p className="mt-1 font-heading">
                     Isfahan Firefighting And Safety Services Organization (IFSO)
@@ -277,8 +279,8 @@ export default function HomePage() {
                   <h3 className="font-heading text-lg md:text-xl tracking-tight">
                     Chief of Rescue at height and mountain team
                   </h3>
-                  <div className="mt-2 h-0.5 w-8 bg-amber-500 rounded-full" />
-                  <p className="mt-3 text-white/85 leading-7">
+                  <div className="mt-2 h-0.5 w-8 bg-sky-500 rounded-full" />
+                  <p className="mt-3 text-black/85 leading-7">
                     Mohammad Reza Safdarian is employed as a firefighter in the
                     Isfahan Fire Department, and after a short period, he is
                     appointed as the commander of the rescue team in high
@@ -294,7 +296,7 @@ export default function HomePage() {
             {/* Card 2 */}
             <article className="rounded-2xl border border-white/10 bg-black/30 p-4 md:p-5">
               <div className="grid grid-cols-3 gap-4">
-                <div className="col-span-1 text-white/75">
+                <div className="col-span-1 text-black/75">
                   <p className="font-heading text-sm">Jun 2017 — Present</p>
                   <p className="mt-1 font-heading">
                     Farafan amooz ilia (OT/7035) Irata
@@ -305,8 +307,8 @@ export default function HomePage() {
                   <h3 className="font-heading text-lg md:text-xl tracking-tight">
                     Rope Access Technician
                   </h3>
-                  <div className="mt-2 h-0.5 w-8 bg-amber-500 rounded-full" />
-                  <p className="mt-3 text-white/85 leading-7">
+                  <div className="mt-2 h-0.5 w-8 bg-sky-500 rounded-full" />
+                  <p className="mt-3 text-black/85 leading-7">
                     Training in rope access and experience participating in
                     industrial and construction projects such as building façade
                     cleaning and repairs, as well as experience in teaching rope
@@ -319,7 +321,7 @@ export default function HomePage() {
             {/* Card 3 */}
             <article className="rounded-2xl border border-white/10 bg-black/30 p-4 md:p-5">
               <div className="grid grid-cols-3 gap-4">
-                <div className="col-span-1 text-white/75">
+                <div className="col-span-1 text-black/75">
                   <p className="font-heading text-sm">Oct 2012 — Present</p>
                   <p className="mt-1 font-heading">
                     I. R. Iran Mountaineering & Sport Climbing Federation
@@ -330,8 +332,8 @@ export default function HomePage() {
                   <h3 className="font-heading text-lg md:text-xl tracking-tight">
                     Member of Ice Climbing of the National team
                   </h3>
-                  <div className="mt-2 h-0.5 w-8 bg-amber-500 rounded-full" />
-                  <p className="mt-3 text-white/85 leading-7">
+                  <div className="mt-2 h-0.5 w-8 bg-sky-500 rounded-full" />
+                  <p className="mt-3 text-black/85 leading-7">
                     Mohammad Reza Safdarian, with 22 international medals, is
                     one of the most prestigious Iranian figure skaters, who has
                     been actively participating as a key member of the national
@@ -346,8 +348,8 @@ export default function HomePage() {
         {/* ===== Section 3: Education ===== */}
         <GlassSection id="education" className="space-y-4">
           <div className="flex items-center gap-3 mb-8">
-            <div className="h-6 w-1 rounded-full bg-amber-500" />
-            <h2 className="font-heading text-2xl md:text-3xl tracking-tight">
+            <div className="h-6 w-1 rounded-full bg-sky-500" />
+            <h2 className="font-heading text-black text-2xl md:text-3xl tracking-tight">
               Education
             </h2>
           </div>
@@ -358,11 +360,11 @@ export default function HomePage() {
               <h3 className="font-heading text-base sm:text-lg md:text-xl tracking-tight">
                 Health, Safety, Environment (HSE)
               </h3>
-              <div className="mt-2 h-0.5 w-8 bg-amber-500 rounded-full" />
-              <p className="mt-3 text-white/85 leading-7">
+              <div className="mt-2 h-0.5 w-8 bg-sky-500 rounded-full" />
+              <p className="mt-3 text-black/85 leading-7">
                 University Of Applied Sience
               </p>
-              <span className="text-xs sm:text-sm text-white/75">
+              <span className="text-xs sm:text-sm text-black/75">
                 bachelor's degree 2017 - 2019
               </span>
             </article>
@@ -372,11 +374,11 @@ export default function HomePage() {
               <h3 className="font-heading text-base sm:text-lg md:text-xl tracking-tight">
                 Health, Safety, Environment (HSE)
               </h3>
-              <div className="mt-2 h-0.5 w-8 bg-amber-500 rounded-full" />
-              <p className="mt-3 text-white/85 leading-7">
+              <div className="mt-2 h-0.5 w-8 bg-sky-500 rounded-full" />
+              <p className="mt-3 text-black/85 leading-7">
                 Amirkabir University of Technology
               </p>
-              <span className="text-xs sm:text-sm text-white/75">
+              <span className="text-xs sm:text-sm text-black/75">
                 Master's degree 2021 - 2023
               </span>
             </article>
@@ -386,11 +388,11 @@ export default function HomePage() {
               <h3 className="font-heading text-base sm:text-lg md:text-xl tracking-tight">
                 Electrotechnics
               </h3>
-              <div className="mt-2 h-0.5 w-8 bg-amber-500 rounded-full" />
-              <p className="mt-3 text-white/85 leading-7">
+              <div className="mt-2 h-0.5 w-8 bg-sky-500 rounded-full" />
+              <p className="mt-3 text-black/85 leading-7">
                 Esfahan Technical and Vocational College (Mohajer)
               </p>
-              <span className="text-xs sm:text-sm text-white/75">
+              <span className="text-xs sm:text-sm text-black/75">
                 Associate’s degree 2011 - 2014
               </span>
             </article>
@@ -400,8 +402,8 @@ export default function HomePage() {
         {/* ===== Section 4: TEDx Talk ===== */}
         <GlassSection id="tedx" className="space-y-4">
           <div className="flex items-center gap-3 mb-6">
-            <div className="h-6 w-1 rounded-full bg-amber-500" />
-            <h2 className="font-heading text-2xl md:text-3xl tracking-tight">
+            <div className="h-6 w-1 rounded-full bg-sky-500" />
+            <h2 className="font-heading text-black text-2xl md:text-3xl tracking-tight">
               TEDx Talk
             </h2>
           </div>
@@ -424,12 +426,12 @@ export default function HomePage() {
 
             {/* Copy */}
             <div className="space-y-3 text-sm sm:text-base md:text-lg">
-              <h3 className="font-heading text-xl md:text-2xl tracking-tight">
+              <h3 className="font-heading text-black text-xl md:text-2xl tracking-tight">
                 An ice climber from the heart of desert | Mohammad Reza
                 Safdarian Korouyeh | TEDx Esfahan
               </h3>
-              <div className="h-0.5 w-10 bg-amber-500 rounded-full" />
-              <p className="text-white/85 leading-7">
+              <div className="h-0.5 w-10 bg-sky-500 rounded-full" />
+              <p className="text-black/85 leading-7">
                 In this TEDx talk, Mohammadreza shares the mindset, discipline,
                 and resilience behind his journey from a young climber in
                 Isfahan to a world champion in ice climbing. It’s a story about
@@ -441,7 +443,7 @@ export default function HomePage() {
                 <Link
                   href="https://www.youtube.com/watch?v=3kEfysvyhHQ&t=2s"
                   target="_blank"
-                  className="inline-flex items-center gap-2 rounded-xl border border-amber-500/50 bg-amber-500/10 px-4 py-2 font-heading text-sm hover:bg-amber-500/20 transition"
+                  className="inline-flex items-center gap-2 rounded-xl border border-sky-500/50 bg-sky-500/10 px-4 py-2 font-heading text-sm hover:bg-sky-500/20 transition"
                 >
                   Watch on YouTube
                   <span aria-hidden>↗</span>

@@ -1,6 +1,7 @@
 // apps/web/src/app/(auth)/signin/layout.tsx
 import { Suspense, ReactNode } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { redirect } from "next/navigation";
 import { createServerClientSafe } from "@/lib/supabaseServer";
 
@@ -27,7 +28,9 @@ export default async function SignInLayout({
       {/* Left: brand / message (desktop only) */}
       <aside className="hidden lg:flex flex-col justify-between p-8 border-r border-white/10">
         <header className="flex items-center gap-3">
-          <div className="h-9 w-9 rounded-xl bg-white/10" />
+          <Link href="/" className="flex items-center gap-2">
+          <Image src="/images/logo.svg" alt="Ice Athlete" width={24} height={24} />
+        </Link>
           <span className="text-sm opacity-80">Mohammad Reza Safdarian</span>
         </header>
 
@@ -60,7 +63,7 @@ export default async function SignInLayout({
           <div className="mb-6 flex items-center justify-between lg:hidden">
             <div className="flex items-center gap-3">
               <div className="h-8 w-8 rounded-xl bg-white/10" />
-              <span className="text-sm opacity-80">Ice Athlete</span>
+              <span className="text-sm opacity-80">Mohammad Reza Safdarian</span>
             </div>
             <Link
               href="/"
