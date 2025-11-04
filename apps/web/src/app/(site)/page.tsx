@@ -103,13 +103,13 @@ function StatCard({
   return (
     <div
       className="rounded-2xl border border-white/10 bg-black/30 px-5 py-6 md:px-6 md:py-8
-                    shadow-md hover:shadow-sky-500/10 transition"
+                    shadow-md hover:shadow-amber-500/10 transition"
     >
       <div className="flex items-center gap-4">
         <div
           className="grid h-14 w-14 place-items-center rounded-xl 
-                        bg-gradient-to-br from-sky-400/30 to-sky-600/30 
-                        border border-sky-300/30 text-sky-200"
+                        bg-gradient-to-br from-amber-400/30 to-amber-600/30 
+                        border border-amber-300/30 text-amber-200"
         >
           <span className="text-3xl">{icon}</span>
         </div>
@@ -134,8 +134,8 @@ export function StatsSection() {
     <div ref={ref}>
       <GlassSection id="stats" className="space-y-4 mt-4 sm:mt-6">
         <div className="flex items-center gap-3 mb-2">
-          <div className="h-6 w-1 rounded-full bg-sky-500" />
-          <h2 className="font-heading text-2xl md:text-3xl tracking-tight">
+          <div className="h-6 w-1 rounded-full bg-amber-500" />
+          <h2 className="font-heading text-black text-2xl md:text-3xl tracking-tight">
             Achievements
           </h2>
         </div>
@@ -179,8 +179,7 @@ export default function HomePage() {
         />
         <div className="absolute inset-0 bg-black/40" />
       </div> */}
-      {/* gradient white to light blue from top to bottom */}
-      <div className="fixed inset-0 -z-10 bg-gradient-to-b from-white/80 via-sky-300/80 to-sky-800" />
+      <div className="fixed inset-0 -z-10 bg-gradient-to-b from-white/80 via-amber-200 to-amber-600" />
 
       {/* Page content */}
       <div className="mx-auto w-full  px-3 sm:px-4 lg:px-2 py-2 lg:py-2 space-y-5 lg:space-y-4">
@@ -210,7 +209,7 @@ export default function HomePage() {
             </h1>
 
             {/* Divider */}
-            <div className="h-1 w-16 rounded-full bg-sky-500 mb-5" />
+            <div className="h-1 w-16 rounded-full bg-amber-500 mb-5" />
 
             {/* Tagline */}
             <ul className="font-heading text-base sm:text-lg md:text-xl text-black/90 space-y-1.5">
@@ -226,26 +225,24 @@ export default function HomePage() {
               <h2 className="font-heading text-black text-xl md:text-2xl tracking-tight">
                 About Me
               </h2>
-              <div className="mt-2 h-0.5 w-10 bg-sky-500 rounded-full" />
+              <div className="mt-2 h-0.5 w-10 bg-amber-500 rounded-full" />
               <p className="mt-3 text-black/85 leading-7">
-                The history-making ice-climbing boy of the world was born in
-                Isfahan in November 1992. He started his rock climbing activity
-                at the age of 12 and entered the field of ice climbing
-                professionally at the age of 18. Mohammad Reza Safdarian, who
-                was named the world’s history-making ice-climbing boy in 2018
-                according to the official website of the International Climbing
-                and Mountaineering Federation (UIAA), recorded the first world
-                gold medal in Iranian ice climbing history for Iran under the
-                title “Ice Climbing World Cup held in Italy” in the same year,
-                And also in the same year, he won the world bronze medal in the
-                Ice Climbing World Cup in Switzerland and the bronze medal of
-                the World Champion in Russia, and recently in 2022, he won the
-                gold medal in the UIAA ice climbing world championship, and
-                until this day he won 21 International world and asian medals.
-                and Asian has been achieved and currently he is the most proud
-                ice climber in the history of Iran and an official member of
-                International Climbing and Mountaineering Federation (UIAA)
-                Athletes’ Commission.
+                Hi, I&apos;m Mohammad Reza Safdarian, a professional ice climber
+                    from Isfahan, Iran. I was born in November 1992 and started
+                    rock climbing when I was 12 years old. By the age of 18, I
+                    found my true passion in ice climbing and began competing
+                    professionally. In 2018, the International Climbing and
+                    Mountaineering Federation (UIAA) called me “the world&apos;s
+                    history-making ice-climbing boy” after I became the first
+                    Iranian to ever win a world gold medal in ice climbing at
+                    the UIAA World Cup in Italy. That same year, I also earned
+                    two bronze medals, one in Switzerland and another at the
+                    World Championships in Russia. In 2022, I won another gold
+                    medal at the UIAA Ice Climbing World Championship, bringing
+                    my total to 21 international medals from world and Asian
+                    competitions. I&apos;m proud to represent Iran on the global
+                    stage and to serve as a member of the UIAA Athletes&apos;
+                    Commission, helping grow and inspire the sport I love.
               </p>
             </div>
           </div>
@@ -256,7 +253,7 @@ export default function HomePage() {
         {/* ===== Section 2: Experience ===== */}
         <GlassSection id="experience" className="space-y-4">
           <div className="flex items-center gap-3 mb-8">
-            <div className="h-6 w-1 rounded-full bg-sky-500" />
+            <div className="h-6 w-1 rounded-full bg-amber-500" />
             <h2 className="font-heading text-black text-2xl md:text-3xl tracking-tight">
               Experience
             </h2>
@@ -279,7 +276,7 @@ export default function HomePage() {
                   <h3 className="font-heading text-lg md:text-xl tracking-tight">
                     Chief of Rescue at height and mountain team
                   </h3>
-                  <div className="mt-2 h-0.5 w-8 bg-sky-500 rounded-full" />
+                  <div className="mt-2 h-0.5 w-8 bg-amber-500 rounded-full" />
                   <p className="mt-3 text-black/85 leading-7">
                     Mohammad Reza Safdarian is employed as a firefighter in the
                     Isfahan Fire Department, and after a short period, he is
@@ -307,7 +304,7 @@ export default function HomePage() {
                   <h3 className="font-heading text-lg md:text-xl tracking-tight">
                     Rope Access Technician
                   </h3>
-                  <div className="mt-2 h-0.5 w-8 bg-sky-500 rounded-full" />
+                  <div className="mt-2 h-0.5 w-8 bg-amber-500 rounded-full" />
                   <p className="mt-3 text-black/85 leading-7">
                     Training in rope access and experience participating in
                     industrial and construction projects such as building façade
@@ -332,7 +329,7 @@ export default function HomePage() {
                   <h3 className="font-heading text-lg md:text-xl tracking-tight">
                     Member of Ice Climbing of the National team
                   </h3>
-                  <div className="mt-2 h-0.5 w-8 bg-sky-500 rounded-full" />
+                  <div className="mt-2 h-0.5 w-8 bg-amber-500 rounded-full" />
                   <p className="mt-3 text-black/85 leading-7">
                     Mohammad Reza Safdarian, with 22 international medals, is
                     one of the most prestigious Iranian figure skaters, who has
@@ -348,7 +345,7 @@ export default function HomePage() {
         {/* ===== Section 3: Education ===== */}
         <GlassSection id="education" className="space-y-4">
           <div className="flex items-center gap-3 mb-8">
-            <div className="h-6 w-1 rounded-full bg-sky-500" />
+            <div className="h-6 w-1 rounded-full bg-amber-500" />
             <h2 className="font-heading text-black text-2xl md:text-3xl tracking-tight">
               Education
             </h2>
@@ -360,7 +357,7 @@ export default function HomePage() {
               <h3 className="font-heading text-base sm:text-lg md:text-xl tracking-tight">
                 Health, Safety, Environment (HSE)
               </h3>
-              <div className="mt-2 h-0.5 w-8 bg-sky-500 rounded-full" />
+              <div className="mt-2 h-0.5 w-8 bg-amber-500 rounded-full" />
               <p className="mt-3 text-black/85 leading-7">
                 University Of Applied Sience
               </p>
@@ -374,7 +371,7 @@ export default function HomePage() {
               <h3 className="font-heading text-base sm:text-lg md:text-xl tracking-tight">
                 Health, Safety, Environment (HSE)
               </h3>
-              <div className="mt-2 h-0.5 w-8 bg-sky-500 rounded-full" />
+              <div className="mt-2 h-0.5 w-8 bg-amber-500 rounded-full" />
               <p className="mt-3 text-black/85 leading-7">
                 Amirkabir University of Technology
               </p>
@@ -388,7 +385,7 @@ export default function HomePage() {
               <h3 className="font-heading text-base sm:text-lg md:text-xl tracking-tight">
                 Electrotechnics
               </h3>
-              <div className="mt-2 h-0.5 w-8 bg-sky-500 rounded-full" />
+              <div className="mt-2 h-0.5 w-8 bg-amber-500 rounded-full" />
               <p className="mt-3 text-black/85 leading-7">
                 Esfahan Technical and Vocational College (Mohajer)
               </p>
@@ -402,7 +399,7 @@ export default function HomePage() {
         {/* ===== Section 4: TEDx Talk ===== */}
         <GlassSection id="tedx" className="space-y-4">
           <div className="flex items-center gap-3 mb-6">
-            <div className="h-6 w-1 rounded-full bg-sky-500" />
+            <div className="h-6 w-1 rounded-full bg-amber-500" />
             <h2 className="font-heading text-black text-2xl md:text-3xl tracking-tight">
               TEDx Talk
             </h2>
@@ -430,7 +427,7 @@ export default function HomePage() {
                 An ice climber from the heart of desert | Mohammad Reza
                 Safdarian Korouyeh | TEDx Esfahan
               </h3>
-              <div className="h-0.5 w-10 bg-sky-500 rounded-full" />
+              <div className="h-0.5 w-10 bg-amber-500 rounded-full" />
               <p className="text-black/85 leading-7">
                 In this TEDx talk, Mohammadreza shares the mindset, discipline,
                 and resilience behind his journey from a young climber in
@@ -443,7 +440,7 @@ export default function HomePage() {
                 <Link
                   href="https://www.youtube.com/watch?v=3kEfysvyhHQ&t=2s"
                   target="_blank"
-                  className="inline-flex items-center gap-2 rounded-xl border border-sky-500/50 bg-sky-500/10 px-4 py-2 font-heading text-sm hover:bg-sky-500/20 transition"
+                  className="inline-flex items-center gap-2 rounded-xl border border-amber-500/50 bg-amber-500/10 px-4 py-2 font-heading text-sm hover:bg-amber-500/20 transition"
                 >
                   Watch on YouTube
                   <span aria-hidden>↗</span>

@@ -128,11 +128,11 @@ export default function Sidebar({ me }: { me?: Me }) {
   return (
     <>
       {/* Mobile top bar */}
-      <div className="md:hidden sticky top-0 z-40 flex items-center justify-between bg-white/70 backdrop-blur border-b border-sky-500 px-3 h-12">
+      <div className="md:hidden sticky top-0 z-40 flex items-center justify-between bg-white/70 backdrop-blur border-b border-amber-500 px-3 h-12">
         <button
           aria-label="Open navigation"
           onClick={() => setOpen(true)}
-          className="p-2 rounded hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-sky-500"
+          className="p-2 rounded hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-amber-500"
         >
           <div className="w-5 h-0.5 bg-white mb-1" />
           <div className="w-5 h-0.5 bg-white mb-1" />
@@ -156,7 +156,7 @@ export default function Sidebar({ me }: { me?: Me }) {
         <aside
           className={[
             // collapsed -> expanded width with smooth transition
-            "sticky top-0 z-10 h-screen border-r border-sky-300 bg-white/10 backdrop-blur",
+            "sticky top-0 z-10 h-screen border-r border-amber-300 bg-white/10 backdrop-blur",
             "w-20 group-hover:w-58", // collapsed/expanded widths
             "transition-[width] duration-300 ease-in-out",
             "overflow-hidden", // hide labels while collapsed
@@ -171,7 +171,7 @@ export default function Sidebar({ me }: { me?: Me }) {
                 {" "}
                 {/* 48px box */}
                 <Image
-                  src="/images/bg-ice.png"
+                  src="/images/bg-orange.png"
                   alt="Ice Athlete"
                   width={96} 
                   height={96}
@@ -207,8 +207,8 @@ export default function Sidebar({ me }: { me?: Me }) {
                     "group/nav flex items-center gap-3 px-4 py-2 rounded-lg transition text-base",
                     "hover:scale-[1.02]",
                     active
-                      ? "bg-sky-500/20 text-sky-800"
-                      : "hover:bg-sky-400/60 text-black/80",
+                      ? "bg-amber-500/20 text-amber-500"
+                      : "hover:bg-amber-400/60 text-black/80",
                   ].join(" ")}
                 >
                   <span className="text-current pr-1">{item.icon}</span>
@@ -247,8 +247,8 @@ export default function Sidebar({ me }: { me?: Me }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-center justify-center mb-2 h-8 rounded-lg border border-black/50 
-                   text-black/80 hover:text-white hover:border-sky-500 hover:bg-sky-500/10 
-                   transition-all duration-300 shadow-md hover:shadow-sky-500/20"
+                   text-black/80 hover:text-amber-500 hover:border-amber-500 hover:bg-amber-500/10 
+                   transition-all duration-300 shadow-md hover:shadow-amber-500/20"
                   aria-label={s.label}
                   title={s.label}
                 >
@@ -259,11 +259,11 @@ export default function Sidebar({ me }: { me?: Me }) {
           </div>
 
           {/* Account (pinned bottom): avatar always; name/email only when expanded */}
-          <div className="mt-auto px-2 pt-3 pb-2 border-t border-sky-500/40 absolute bottom-0 left-0 right-0">
+          <div className="mt-auto px-2 pt-3 pb-2 border-t border-amber-500/40 absolute bottom-0 left-0 right-0">
             {me ? (
               <Link
                 href="/dashboard"
-                className="flex items-center gap-3 rounded-lg px-2 py-2 hover:bg-sky-500/10 transition"
+                className="flex items-center gap-3 rounded-lg px-2 py-2 hover:bg-amber-500/10 transition"
                 aria-label="Go to dashboard"
               >
                 <Avatar
@@ -294,14 +294,14 @@ export default function Sidebar({ me }: { me?: Me }) {
                   "justify-center group-hover:justify-center",
                   "gap-0 group-hover:gap-3 transition-[gap]",
                   // visuals
-                  "border border-sky-500/60 hover:border-sky-500",
-                  "bg-white/5 hover:bg-sky-500/10 text-sm font-medium",
+                  "border border-amber-500/60 hover:border-amber-500",
+                  "bg-white/5 hover:bg-amber-500/10 text-sm font-medium",
                 ].join(" ")}
                 aria-label="Sign in"
                 title="Sign in"
               >
                 <FaRightToBracket
-                  className="h-5 w-5 shrink-0 text-black/80 hover:text-sky-300"
+                  className="h-5 w-5 shrink-0 text-black/80 hover:text-amber-300"
                   aria-hidden="true"
                 />
 
@@ -327,7 +327,7 @@ export default function Sidebar({ me }: { me?: Me }) {
               © {new Date().getFullYear()}{" "}
               <a
                 href="https://www.thedevnest.ca/"
-                className="hover:text-sky-300"
+                className="hover:text-amber-300"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -348,10 +348,10 @@ export default function Sidebar({ me }: { me?: Me }) {
         >
           <div className="absolute inset-0 bg-black/60" />
           <div
-            className="absolute left-0 top-0 bottom-0 w-72 bg-black border-r border-sky-500 p-3 flex flex-col"
+            className="absolute left-0 top-0 bottom-0 w-72 bg-black border-r border-amber-500 p-3 flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="h-12 inline-flex items-center gap-2 border-b border-sky-500 mb-2">
+            <div className="h-12 inline-flex items-center gap-2 border-b border-amber-500 mb-2">
               <Image
                 src="/images/logo.svg"
                 alt="Ice Athlete"
@@ -380,7 +380,7 @@ export default function Sidebar({ me }: { me?: Me }) {
                     className={[
                       "block px-3 py-2 rounded-lg transition",
                       active
-                        ? "bg-sky-500/20 text-sky-300"
+                        ? "bg-amber-500/20 text-amber-300"
                         : "hover:bg-white/10 text-white/80",
                     ].join(" ")}
                   >
@@ -404,8 +404,8 @@ export default function Sidebar({ me }: { me?: Me }) {
                     rel="noopener noreferrer"
                     onClick={() => setOpen(false)}
                     className="group flex items-center justify-center h-14 rounded-xl border border-white/10 bg-black/40 
-                       text-white/80 hover:text-sky-300 hover:border-sky-500 hover:bg-sky-500/10 
-                       transition-all duration-300 shadow-md hover:shadow-sky-500/20"
+                       text-white/80 hover:text-amber-300 hover:border-amber-500 hover:bg-amber-500/10 
+                       transition-all duration-300 shadow-md hover:shadow-amber-500/20"
                     aria-label={s.label}
                     title={s.label}
                   >
@@ -421,7 +421,7 @@ export default function Sidebar({ me }: { me?: Me }) {
                 <Link
                   href="/dashboard"
                   onClick={() => setOpen(false)}
-                  className="flex items-center gap-3 rounded-lg px-2 py-2 hover:bg-sky-500/10 transition"
+                  className="flex items-center gap-3 rounded-lg px-2 py-2 hover:bg-amber-500/10 transition"
                   aria-label="Go to dashboard"
                 >
                   <Avatar
@@ -442,8 +442,8 @@ export default function Sidebar({ me }: { me?: Me }) {
                 <Link
                   href="/signin"
                   onClick={() => setOpen(false)}
-                  className="inline-flex items-center justify-center w-full rounded-lg border border-sky-500/60 hover:border-sky-500 px-3 py-2
-                             bg-white/5 hover:bg-sky-500/10 text-sm font-medium transition"
+                  className="inline-flex items-center justify-center w-full rounded-lg border border-amber-500/60 hover:border-amber-500 px-3 py-2
+                             bg-white/5 hover:bg-amber-500/10 text-sm font-medium transition"
                 >
                   Sign in
                 </Link>
