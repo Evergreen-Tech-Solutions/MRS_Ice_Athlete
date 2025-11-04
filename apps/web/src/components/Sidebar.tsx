@@ -259,7 +259,7 @@ export default function Sidebar({ me }: { me?: Me }) {
           </div>
 
           {/* Account (pinned bottom): avatar always; name/email only when expanded */}
-          <div className="mt-auto px-2 pt-3 pb-2 border-t border-amber-500/40 absolute bottom-0 left-0 right-0">
+          <div className="mt-auto px-2 pt-3 pb-2 border-t border-amber-300 absolute bottom-0 left-0 right-0">
             {me ? (
               <Link
                 href="/dashboard"
@@ -294,8 +294,8 @@ export default function Sidebar({ me }: { me?: Me }) {
                   "justify-center group-hover:justify-center",
                   "gap-0 group-hover:gap-3 transition-[gap]",
                   // visuals
-                  "border border-amber-500/60 hover:border-amber-500",
-                  "bg-white/5 hover:bg-amber-500/10 text-sm font-medium",
+                  "border border-amber-300 hover:border-amber-500",
+                  "bg-white/5 hover:bg-amber-300 hover:text-black text-sm font-medium",
                 ].join(" ")}
                 aria-label="Sign in"
                 title="Sign in"
