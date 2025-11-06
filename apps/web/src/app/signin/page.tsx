@@ -31,12 +31,12 @@ export default function SignInPage() {
   }
 
   return (
-    <div className="min-h-[60vh] grid place-items-center p-6">
-      <form onSubmit={handleSubmit} className="max-w-sm w-full rounded-xl border border-white/10 bg-white/5 p-6 text-center">
+    <div className="min-h-[60vh] grid place-items-center p-6 text-white">
+      <form onSubmit={handleSubmit} className="max-w-sm w-full rounded-xl border border-white/10 bg-white/5 p-6 hover:shadow-lg shadow-zinc-300 transition-shadow duration-300 text-center">
         <h1 className="text-2xl font-bold mb-2">{mode === "signin" ? "Sign In" : "Sign Up"}</h1>
         <input type="email" value={email} onChange={e=>setEmail(e.target.value)} placeholder="Email" className="w-full mb-2 p-2 rounded bg-black/20" required/>
         <input type="password" value={password} onChange={e=>setPassword(e.target.value)} placeholder="Password" className="w-full mb-4 p-2 rounded bg-black/20" required/>
-        <button type="submit" className="w-full bg-white/10 hover:bg-white/20 rounded-lg py-2">
+        <button type="submit" className="w-full bg-white/10 hover:bg-amber-300/70 rounded-lg py-2">
           {mode === "signin" ? "Sign In" : "Create Account"}
         </button>
         <p onClick={()=>setMode(mode==='signin'?'signup':'signin')} className="mt-4 text-sm underline cursor-pointer">

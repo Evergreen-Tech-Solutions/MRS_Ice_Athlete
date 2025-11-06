@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import { createServerClientSafe } from "@/lib/supabaseServer";
+import { FaHouse, FaCircleQuestion } from "react-icons/fa6";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -24,29 +25,42 @@ export default async function SignInLayout({
   }
 
   return (
-    <div className="min-h-screen grid lg:grid-cols-2 bg-gradient-to-b from-black to-zinc-900 text-white">
+    <div
+      className="
+      relative isolate min-h-screen grid lg:grid-cols-3 text-white
+      bg-[url('/images/bg-rock.png')] bg-cover bg-center bg-no-repeat
+      before:content-[''] before:absolute before:inset-0
+      before:bg-gradient-to-l before:from-black/80 before:via-black/50 before:to-zinc-400/30
+      before:-z-10
+    "
+    >
       {/* Left: brand / message (desktop only) */}
-      <aside className="hidden lg:flex flex-col justify-between p-8 border-r border-white/10">
-        <header className="flex items-center gap-3">
-          <Link href="/" className="flex items-center gap-2">
-          <Image src="/images/logo.svg" alt="Ice Athlete" width={24} height={24} />
-        </Link>
-          <span className="text-sm opacity-80">Mohammad Reza Safdarian</span>
+      <aside className="hidden lg:flex flex-col lg:col-span-1 justify-between p-8 border-r border-white/50">
+        <header className="flex ">
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/images/bg-orange.png"
+              alt="Ice Athlete"
+              width={48}
+              height={48}
+              className="hover:scale-120 transition-transform"
+            />
+          </Link>
         </header>
 
         <div>
           <h1 className="text-3xl font-bold mb-3">Welcome back</h1>
-          <p className="opacity-70 max-w-md">
+          <p className="max-w-md">
             Sign in to manage classes, bookings, and payments.
           </p>
         </div>
 
-        <footer className="text-xs opacity-60">
-          <div className="mt-3 text-xs text-white/80">
+        <footer className="text-sm">
+          <div className="mt-3 text-sm text-white">
             © {new Date().getFullYear()}{" "}
             <a
               href="https://www.thedevnest.ca/"
-              className="hover:text-amber-300"
+              className="hover:text-amber-200"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -57,22 +71,8 @@ export default async function SignInLayout({
       </aside>
 
       {/* Right: centered auth card + Suspense fallback */}
-      <main className="flex items-center justify-center p-6">
+      <main className="flex items-center lg:col-span-2 justify-center p-6">
         <div className="w-full max-w-md">
-          {/* Mobile top bar */}
-          <div className="mb-6 flex items-center justify-between lg:hidden">
-            <div className="flex items-center gap-3">
-              <div className="h-8 w-8 rounded-xl bg-white/10" />
-              <span className="text-sm opacity-80">Mohammad Reza Safdarian</span>
-            </div>
-            <Link
-              href="/"
-              className="text-sm underline underline-offset-4 opacity-80 hover:opacity-100"
-            >
-              Back to site
-            </Link>
-          </div>
-
           <div className="rounded-2xl border border-white/10 bg-black/50 backdrop-blur p-6 shadow-xl">
             <Suspense
               fallback={
@@ -87,11 +87,24 @@ export default async function SignInLayout({
             </Suspense>
           </div>
 
-          <div className="mt-4 flex items-center justify-between text-sm opacity-80">
-            <Link href="/" className="underline underline-offset-4">
+          <div className="mt-2 flex flex-wrap justify-between gap-3">
+            <Link
+              href="/"
+              className="inline-flex gap-2 rounded-xl border border-white/25 px-3 py-2 text-sm font-medium text-white/90
+                   hover:border-white/60 hover:bg-white/5 hover:text-white
+                   focus:outline-none focus:ring-2 focus:ring-white/30 transition"
+            >
+              <FaHouse className="size-4 shrink-0" />
               Home
             </Link>
-            <Link href="/help" className="underline underline-offset-4">
+
+            <Link
+              href="/contact/"
+              className="inline-flex gap-2 rounded-xl border border-white/25 px-3 py-2 text-sm font-medium text-white/90
+                   hover:border-white/60 hover:bg-white/5 hover:text-white
+                   focus:outline-none focus:ring-2 focus:ring-white/30 transition"
+            >
+              <FaCircleQuestion className="size-4 shrink-0" />
               Need help?
             </Link>
           </div>
