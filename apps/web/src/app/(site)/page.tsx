@@ -179,7 +179,7 @@ export default function HomePage() {
         />
         <div className="absolute inset-0 bg-black/40" />
       </div> */}
-      <div className="fixed inset-0 -z-10 bg-gradient-to-b from-white/80 via-amber-200 to-amber-600" />
+      <div className="fixed inset-0 -z-10 bg-gradient-to-b from-zinc-600 via-[#fab95b] to-amber-500" />
 
       {/* Page content */}
       <div className="mx-auto w-full  px-3 sm:px-4 lg:px-2 py-2 lg:py-2 space-y-5 lg:space-y-4">

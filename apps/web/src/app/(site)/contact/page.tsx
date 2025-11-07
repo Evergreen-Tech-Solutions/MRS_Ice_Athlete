@@ -71,7 +71,7 @@ export default function ContactPage() {
                 className="object-cover"
               />
             </div> */}
-            <div className="fixed inset-0 -z-10 bg-gradient-to-b from-white/80 via-amber-200 to-amber-500" />
+            <div className="fixed inset-0 -z-10 bg-gradient-to-b from-zinc-600 via-[#fab95b] to-amber-500" />
 
       <div className="mx-auto max-w-4xl px-4 py-10 md:py-16 text-black/80">
         <GlassSection id="contact" className="space-y-8">

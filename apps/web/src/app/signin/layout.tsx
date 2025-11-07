@@ -49,10 +49,29 @@ export default async function SignInLayout({
         </header>
 
         <div>
-          <h1 className="text-3xl font-bold mb-3">Welcome back</h1>
-          <p className="max-w-md">
-            Sign in to manage classes, bookings, and payments.
+          <h1 className="text-3xl font-bold mb-3">Hello!</h1>
+          <p className="max-w-lg text-md text-white/80">
+            Sign in to manage your classes, bookings, and payments in one place.
           </p>
+          <p className="max-w-md mt-3 text-[14px] leading-relaxed text-white/85">
+            We collect your{" "}
+            <span className="font-semibold text-white">name</span> to
+            personalize your training experience and certificates, your{" "}
+            <span className="font-semibold text-white">email</span> as your
+            secure login and for booking confirmations, and your{" "}
+            <span className="font-semibold text-white">
+              phone number
+            </span>{" "}
+            only for important updates such as schedule changes, weather
+            conditions, or last-minute class notifications. <br />
+            To keep your account protected, please choose a{" "}
+            <span className="font-semibold text-white">
+              strong password
+            </span>{" "}
+            with at least 8 characters, including uppercase and lowercase
+            letters, a number, and a symbol.
+          </p>
+          <h1 className="mt-6 text-2xl font-normal italic">All good? Let's CLIMBBB</h1>
         </div>
 
         <footer className="text-sm">

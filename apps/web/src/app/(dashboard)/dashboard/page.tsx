@@ -108,7 +108,7 @@ export default async function DashboardHome() {
   // ---- UI ----
   return (
     <div className="min-h-full text-black">
-      <div className="fixed inset-0 -z-10 bg-gradient-to-b from-white/70 via-amber-300 to-amber-500/90" />
+      <div className="fixed inset-0 -z-10 bg-gradient-to-b from-zinc-600 via-[#fab95b] to-amber-500" />
       <div className="p-6 space-y-6">
         <div>
           <h1 className="text-2xl font-bold hidden md:block">Admin Overview</h1>
