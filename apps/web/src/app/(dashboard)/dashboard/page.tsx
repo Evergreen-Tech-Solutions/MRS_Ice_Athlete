@@ -1,4 +1,5 @@
 // apps/web/src/app/(dashboard)/dashboard/page.tsx
+import Link from "next/link";
 import StatCard from "@/components/StatCard";
 import { createServerClientSafe } from "@/lib/supabaseServer";
 import { redirect } from "next/navigation";
@@ -35,7 +36,11 @@ export default async function DashboardHome() {
 
   // ---- Time bounds (MTD) ----
   const now = new Date();
-  const startOfMonthIso = new Date(now.getFullYear(), now.getMonth(), 1).toISOString();
+  const startOfMonthIso = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    1
+  ).toISOString();
   const nowIso = now.toISOString();
 
   // ---- Queries (parallel) ----
@@ -68,7 +73,9 @@ export default async function DashboardHome() {
       // 5) Recent payments (latest 10)
       supabase
         .from("payments")
-        .select("id, booking_id, amount_cents, currency, status, receipt_url, created_at")
+        .select(
+          "id, booking_id, amount_cents, currency, status, receipt_url, created_at"
+        )
         .order("created_at", { ascending: false })
         .limit(10),
     ]);
@@ -79,7 +86,10 @@ export default async function DashboardHome() {
   const mtdBookingsCount = bookingsRes.count ?? 0;
 
   const paymentsData =
-    (paymentsRes.data as Array<{ amount_cents: number | null; status: string }> | null) ?? [];
+    (paymentsRes.data as Array<{
+      amount_cents: number | null;
+      status: string;
+    }> | null) ?? [];
 
   const revenueCentsMTD = paymentsData
     .filter((p) => p.status === "succeeded")
@@ -110,14 +120,32 @@ export default async function DashboardHome() {
     <div className="min-h-full text-black">
       <div className="fixed inset-0 -z-10 bg-gradient-to-b from-zinc-600 via-[#fab95b] to-amber-500" />
       <div className="p-6 space-y-6">
-        <div>
-          <h1 className="text-2xl font-bold hidden md:block">Admin Overview</h1>
-          <p className="opacity-70 text-sm">Simple overview for the athlete admin.</p>
-          {hadErr ? (
-            <p className="mt-2 text-sm text-red-600">
-              Some metrics failed to load — check Supabase tables & RLS.
+        {/* Header + Admin-only CTA */}
+        <div className="flex items-center justify-between gap-4">
+          <div>
+            <h1 className="text-2xl font-bold hidden md:block">
+              Admin Overview
+            </h1>
+            <p className="opacity-70 text-sm">
+              Simple overview for the athlete admin.
             </p>
-          ) : null}
+            {hadErr && (
+              <p className="mt-2 text-sm text-red-600">
+                Some metrics failed to load — check Supabase tables &amp; RLS.
+              </p>
+            )}
+          </div>
+
+          {/* Admin / Athlete only (users never reach this page anyway) */}
+          {isAdmin && (
+            <Link
+              href="/dashboard/classes"
+              className="inline-flex items-center gap-2 rounded-2xl bg-amber-400/95 hover:bg-amber-300 text-black text-xs font-semibold px-4 py-2 shadow-md shadow-amber-500/30 transition-all"
+            >
+              <span className="text-lg leading-none">＋</span>
+              <span>Manage / Add Classes</span>
+            </Link>
+          )}
         </div>
 
         {/* KPIs */}
@@ -157,7 +185,8 @@ export default async function DashboardHome() {
                       <span className="font-mono text-xs">{p.booking_id}</span>
                     </td>
                     <td className="p-3 text-center">
-                      ${(p.amount_cents / 100).toFixed(2)} {p.currency?.toUpperCase?.()}
+                      ${(p.amount_cents / 100).toFixed(2)}{" "}
+                      {p.currency?.toUpperCase?.()}
                     </td>
                     <td className="p-3 text-center">
                       <span
@@ -177,7 +206,11 @@ export default async function DashboardHome() {
                     </td>
                     <td className="p-3 text-center">
                       {p.receipt_url ? (
-                        <a className="underline" href={p.receipt_url} target="_blank">
+                        <a
+                          className="underline"
+                          href={p.receipt_url}
+                          target="_blank"
+                        >
                           View
                         </a>
                       ) : (
@@ -200,7 +233,6 @@ export default async function DashboardHome() {
             </table>
           </div>
         </div>
-
       </div>
     </div>
   );

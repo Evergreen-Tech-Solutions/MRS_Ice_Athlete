@@ -207,7 +207,7 @@ export default function Sidebar({ me }: { me?: Me }) {
                     "group/nav flex items-center gap-3 px-4 py-2 rounded-lg transition text-base",
                     "hover:scale-[1.02]",
                     active
-                      ? "bg-amber-500/20 text-amber-500"
+                      ? "bg-amber-500/20 text-amber-100"
                       : "hover:bg-amber-400/60 text-black/80",
                   ].join(" ")}
                 >
@@ -247,7 +247,7 @@ export default function Sidebar({ me }: { me?: Me }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-center justify-center mb-2 h-8 rounded-lg border border-black/50 
-                   text-black/80 hover:text-amber-500 hover:border-amber-500 hover:bg-amber-500/10 
+                   text-black/80 hover:text-amber-600 hover:border-amber-600 hover:bg-amber-500/10 
                    transition-all duration-300 shadow-md hover:shadow-amber-500/20"
                   aria-label={s.label}
                   title={s.label}
