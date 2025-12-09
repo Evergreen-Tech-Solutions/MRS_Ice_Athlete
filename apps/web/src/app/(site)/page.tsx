@@ -179,7 +179,13 @@ export default function HomePage() {
         />
         <div className="absolute inset-0 bg-black/40" />
       </div> */}
-      <div className="fixed inset-0 -z-10 bg-gradient-to-b from-zinc-600 via-[#fab95b] to-amber-500" />
+      {/* <div
+  className="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_50%_100%,#ff7936_0%,#ff7f4d_15%,#ffde5c_20%,#fffb87_30%,#b5ffe1_45%,#c9e7ff_70%,#ebfbff_90%,#fff_100%)]"
+      /> */}
+      <div
+  className="fixed inset-0 -z-10 bg-white bg-gradient-to-b from-amber-200 via-amber-50 to-white"
+      /> 
+
 
       {/* Page content */}
       <div className="mx-auto w-full  px-3 sm:px-4 lg:px-2 py-2 lg:py-2 space-y-5 lg:space-y-4">
@@ -205,7 +211,7 @@ export default function HomePage() {
           <div className="space-y-3">
             {/* Name */}
             <h1 className="font-heading text-3xl text-black sm:text-4xl md:text-5xl tracking-tight leading-tight [text-wrap:balance]">
-              MOHAMMADREZA <br /> SAFDARIAN
+              REZA SAFDARIAN
             </h1>
 
             {/* Divider */}
