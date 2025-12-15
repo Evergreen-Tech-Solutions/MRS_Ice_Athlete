@@ -183,7 +183,7 @@ export default function HomePage() {
   className="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_50%_100%,#ff7936_0%,#ff7f4d_15%,#ffde5c_20%,#fffb87_30%,#b5ffe1_45%,#c9e7ff_70%,#ebfbff_90%,#fff_100%)]"
       /> */}
       <div
-  className="fixed inset-0 -z-10 bg-white bg-gradient-to-b from-amber-200 via-amber-50 to-white"
+  className="fixed inset-0 -z-10 bg-white bg-gradient-to-b from-zinc-900 via-zinc-500 to-black"
       /> 
 
 
