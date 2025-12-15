@@ -18,6 +18,7 @@ import {
   FaXTwitter,
   FaLinkedin,
   FaInstagram,
+  FaTrophy,
 } from "react-icons/fa6";
 
 type Item = {
@@ -49,6 +50,14 @@ const NAV_ITEMS: Item[] = [
         className="h-6 w-6 shrink-0 transition-transform group-hover:scale-110"
         aria-hidden="true"
       />
+    ),
+  },
+  {
+    label: "UIAA 2026",
+    href: "/worldcup",
+    match: "startsWith",
+    icon: (
+      <FaTrophy className="h-6 w-6 shrink-0 transition-transform group-hover:scale-110" />
     ),
   },
   {
@@ -208,7 +217,7 @@ export default function Sidebar({ me }: { me?: Me }) {
                     "hover:scale-[1.02]",
                     active
                       ? "bg-amber-500/20 text-amber-500"
-                      : "hover:bg-amber-400/60 text-black/80",
+                      : "hover:bg-amber-400/60 text-white/80",
                   ].join(" ")}
                 >
                   <span className="text-current pr-1">{item.icon}</span>
@@ -247,7 +256,7 @@ export default function Sidebar({ me }: { me?: Me }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-center justify-center mb-2 h-8 rounded-lg border border-black/50 
-                   text-black/80 hover:text-amber-300 hover:border-amber-300 hover:bg-amber-500/10 
+                   text-white/80 hover:text-amber-300 hover:border-amber-300 hover:bg-amber-500/10 
                    transition-all duration-300 shadow-md hover:shadow-amber-500/20"
                   aria-label={s.label}
                   title={s.label}
@@ -295,13 +304,13 @@ export default function Sidebar({ me }: { me?: Me }) {
                   "gap-0 group-hover:gap-3 transition-[gap]",
                   // visuals
                   "border border-amber-300 hover:border-amber-500",
-                  "bg-white/5 hover:bg-amber-300 hover:text-black text-sm font-medium",
+                  "bg-white/5 hover:bg-amber-300 hover:text-white text-sm font-medium",
                 ].join(" ")}
                 aria-label="Sign in"
                 title="Sign in"
               >
                 <FaRightToBracket
-                  className="h-5 w-5 shrink-0 text-black/80 hover:text-amber-300"
+                  className="h-5 w-5 shrink-0 text-white/80 hover:text-amber-300"
                   aria-hidden="true"
                 />
 
@@ -319,7 +328,7 @@ export default function Sidebar({ me }: { me?: Me }) {
 
             <div
               className={[
-                "mt-3 text-xs text-black/80",
+                "mt-3 text-xs text-white/80",
                 "opacity-0 group-hover:opacity-100 transition-opacity duration-200",
                 "max-h-0 group-hover:max-h-10 overflow-hidden",
               ].join(" ")}

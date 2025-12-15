@@ -117,9 +117,9 @@ function StatCard({
           <CountUpNumber
             to={value}
             start={start}
-            className="block font-heading text-3xl md:text-4xl leading-none text-black"
+            className="block font-heading text-3xl md:text-4xl leading-none text-white"
           />
-          <p className="mt-1 text-sm md:text-base text-black/80">{label}</p>
+          <p className="mt-1 text-sm md:text-base text-white/80">{label}</p>
         </div>
       </div>
     </div>
@@ -135,7 +135,7 @@ export function StatsSection() {
       <GlassSection id="stats" className="space-y-4 mt-4 sm:mt-6">
         <div className="flex items-center gap-3 mb-2">
           <div className="h-6 w-1 rounded-full bg-amber-500" />
-          <h2 className="font-heading text-black text-2xl md:text-3xl tracking-tight">
+          <h2 className="font-heading text-white text-2xl md:text-3xl tracking-tight">
             Achievements
           </h2>
         </div>
@@ -210,7 +210,7 @@ export default function HomePage() {
           </div>
           <div className="space-y-3">
             {/* Name */}
-            <h1 className="font-heading text-3xl text-black sm:text-4xl md:text-5xl tracking-tight leading-tight [text-wrap:balance]">
+            <h1 className="font-heading text-3xl text-white sm:text-4xl md:text-5xl tracking-tight leading-tight [text-wrap:balance]">
               REZA SAFDARIAN
             </h1>
 
@@ -218,7 +218,7 @@ export default function HomePage() {
             <div className="h-1 w-16 rounded-full bg-amber-500 mb-5" />
 
             {/* Tagline */}
-            <ul className="font-heading text-base sm:text-lg md:text-xl text-black/90 space-y-1.5">
+            <ul className="font-heading text-base sm:text-lg md:text-xl text-white/90 space-y-1.5">
               <li>World Champion Ice Climber</li>
               <li>Firefighter & Rescue Specialist</li>
               <li>Rope Access Level Three Technician (IRATA)</li>
@@ -228,11 +228,11 @@ export default function HomePage() {
           {/* About me */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             <div className="md:col-span-2 mt-5">
-              <h2 className="font-heading text-black text-xl md:text-2xl tracking-tight">
+              <h2 className="font-heading text-white text-xl md:text-2xl tracking-tight">
                 About Me
               </h2>
               <div className="mt-2 h-0.5 w-10 bg-amber-500 rounded-full" />
-              <p className="mt-3 text-black/85 leading-7">
+              <p className="mt-3 text-white/85 leading-7">
                 Hi, I&apos;m Mohammad Reza Safdarian, a professional ice climber
                     from Isfahan, Iran. I was born in November 1992 and started
                     rock climbing when I was 12 years old. By the age of 18, I
@@ -260,7 +260,7 @@ export default function HomePage() {
         <GlassSection id="experience" className="space-y-4">
           <div className="flex items-center gap-3 mb-8">
             <div className="h-6 w-1 rounded-full bg-amber-500" />
-            <h2 className="font-heading text-black text-2xl md:text-3xl tracking-tight">
+            <h2 className="font-heading text-white text-2xl md:text-3xl tracking-tight">
               Experience
             </h2>
           </div>
@@ -270,7 +270,7 @@ export default function HomePage() {
             <article className="rounded-2xl border border-white/10 bg-black/30 p-4 md:p-5">
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {/* left 1/3 */}
-                <div className="col-span-1 text-black/75">
+                <div className="col-span-1 text-white/75">
                   <p className="font-heading text-sm">Mar 2017 — Jan 2024</p>
                   <p className="mt-1 font-heading">
                     Isfahan Firefighting And Safety Services Organization (IFSO)
@@ -283,7 +283,7 @@ export default function HomePage() {
                     Chief of Rescue at height and mountain team
                   </h3>
                   <div className="mt-2 h-0.5 w-8 bg-amber-500 rounded-full" />
-                  <p className="mt-3 text-black/85 leading-7">
+                  <p className="mt-3 text-white/85 leading-7">
                     Mohammad Reza Safdarian is employed as a firefighter in the
                     Isfahan Fire Department, and after a short period, he is
                     appointed as the commander of the rescue team in high
@@ -299,7 +299,7 @@ export default function HomePage() {
             {/* Card 2 */}
             <article className="rounded-2xl border border-white/10 bg-black/30 p-4 md:p-5">
               <div className="grid grid-cols-3 gap-4">
-                <div className="col-span-1 text-black/75">
+                <div className="col-span-1 text-white/75">
                   <p className="font-heading text-sm">Jun 2017 — Present</p>
                   <p className="mt-1 font-heading">
                     Farafan amooz ilia (OT/7035) Irata
@@ -311,7 +311,7 @@ export default function HomePage() {
                     Rope Access Technician
                   </h3>
                   <div className="mt-2 h-0.5 w-8 bg-amber-500 rounded-full" />
-                  <p className="mt-3 text-black/85 leading-7">
+                  <p className="mt-3 text-white/85 leading-7">
                     Training in rope access and experience participating in
                     industrial and construction projects such as building façade
                     cleaning and repairs, as well as experience in teaching rope
@@ -324,7 +324,7 @@ export default function HomePage() {
             {/* Card 3 */}
             <article className="rounded-2xl border border-white/10 bg-black/30 p-4 md:p-5">
               <div className="grid grid-cols-3 gap-4">
-                <div className="col-span-1 text-black/75">
+                <div className="col-span-1 text-white/75">
                   <p className="font-heading text-sm">Oct 2012 — Present</p>
                   <p className="mt-1 font-heading">
                     I. R. Iran Mountaineering & Sport Climbing Federation
@@ -336,7 +336,7 @@ export default function HomePage() {
                     Member of Ice Climbing of the National team
                   </h3>
                   <div className="mt-2 h-0.5 w-8 bg-amber-500 rounded-full" />
-                  <p className="mt-3 text-black/85 leading-7">
+                  <p className="mt-3 text-white/85 leading-7">
                     Mohammad Reza Safdarian, with 22 international medals, is
                     one of the most prestigious Iranian figure skaters, who has
                     been actively participating as a key member of the national
@@ -352,7 +352,7 @@ export default function HomePage() {
         <GlassSection id="education" className="space-y-4">
           <div className="flex items-center gap-3 mb-8">
             <div className="h-6 w-1 rounded-full bg-amber-500" />
-            <h2 className="font-heading text-black text-2xl md:text-3xl tracking-tight">
+            <h2 className="font-heading text-white text-2xl md:text-3xl tracking-tight">
               Education
             </h2>
           </div>
@@ -364,10 +364,10 @@ export default function HomePage() {
                 Health, Safety, Environment (HSE)
               </h3>
               <div className="mt-2 h-0.5 w-8 bg-amber-500 rounded-full" />
-              <p className="mt-3 text-black/85 leading-7">
+              <p className="mt-3 text-white/85 leading-7">
                 University Of Applied Sience
               </p>
-              <span className="text-xs sm:text-sm text-black/75">
+              <span className="text-xs sm:text-sm text-white/75">
                 bachelor's degree 2017 - 2019
               </span>
             </article>
@@ -378,10 +378,10 @@ export default function HomePage() {
                 Health, Safety, Environment (HSE)
               </h3>
               <div className="mt-2 h-0.5 w-8 bg-amber-500 rounded-full" />
-              <p className="mt-3 text-black/85 leading-7">
+              <p className="mt-3 text-white/85 leading-7">
                 Amirkabir University of Technology
               </p>
-              <span className="text-xs sm:text-sm text-black/75">
+              <span className="text-xs sm:text-sm text-white/75">
                 Master's degree 2021 - 2023
               </span>
             </article>
@@ -392,10 +392,10 @@ export default function HomePage() {
                 Electrotechnics
               </h3>
               <div className="mt-2 h-0.5 w-8 bg-amber-500 rounded-full" />
-              <p className="mt-3 text-black/85 leading-7">
+              <p className="mt-3 text-white/85 leading-7">
                 Esfahan Technical and Vocational College (Mohajer)
               </p>
-              <span className="text-xs sm:text-sm text-black/75">
+              <span className="text-xs sm:text-sm text-white/75">
                 Associate’s degree 2011 - 2014
               </span>
             </article>
@@ -406,7 +406,7 @@ export default function HomePage() {
         <GlassSection id="tedx" className="space-y-4">
           <div className="flex items-center gap-3 mb-6">
             <div className="h-6 w-1 rounded-full bg-amber-500" />
-            <h2 className="font-heading text-black text-2xl md:text-3xl tracking-tight">
+            <h2 className="font-heading text-white text-2xl md:text-3xl tracking-tight">
               TEDx Talk
             </h2>
           </div>
@@ -429,12 +429,12 @@ export default function HomePage() {
 
             {/* Copy */}
             <div className="space-y-3 text-sm sm:text-base md:text-lg">
-              <h3 className="font-heading text-black text-xl md:text-2xl tracking-tight">
+              <h3 className="font-heading text-white text-xl md:text-2xl tracking-tight">
                 An ice climber from the heart of desert | Mohammad Reza
                 Safdarian Korouyeh | TEDx Esfahan
               </h3>
               <div className="h-0.5 w-10 bg-amber-500 rounded-full" />
-              <p className="text-black/85 leading-7">
+              <p className="text-white/85 leading-7">
                 In this TEDx talk, Mohammadreza shares the mindset, discipline,
                 and resilience behind his journey from a young climber in
                 Isfahan to a world champion in ice climbing. It’s a story about
