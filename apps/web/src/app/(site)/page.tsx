@@ -18,7 +18,7 @@ export function GlassSection({
   return (
     <section
       id={id}
-      className={`relative overflow-hidden rounded-lg bg-white/10 backdrop-blur ${className}`}
+      className={`relative overflow-hidden rounded-lg bg-black/20 backdrop-blur ${className}`}
     >
       {/* We’ll wrap children with a padded div inside the section */}
       <div className="relative z-10 p-4 sm:p-6 md:p-8">{children}</div>
@@ -183,7 +183,7 @@ export default function HomePage() {
   className="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_50%_100%,#ff7936_0%,#ff7f4d_15%,#ffde5c_20%,#fffb87_30%,#b5ffe1_45%,#c9e7ff_70%,#ebfbff_90%,#fff_100%)]"
       /> */}
       <div
-  className="fixed inset-0 -z-10 bg-white bg-gradient-to-b from-zinc-900 via-zinc-500 to-black"
+  className="fixed inset-0 -z-10 bg-white/5"
       /> 
 
 
@@ -193,17 +193,17 @@ export default function HomePage() {
         <GlassSection id="intro" className="space-y-6">
           <div className="pointer-events-none absolute inset-y-0 right-0 hidden sm:block sm:w-1/2 md:w-1/3">
             <Image
-              src="/images/mrs2.jpeg"
+              src="/images/athlete.png"
               alt=""
               fill
               className="object-cover"
               style={{
                 // fade from solid on the right to transparent on the left
                 WebkitMaskImage:
-                  "linear-gradient(to left, black 65%, transparent 100%)",
+                  "linear-gradient(to left, black 75%, transparent 100%)",
                 maskImage:
-                  "linear-gradient(to left, black 65%, transparent 100%)",
-                opacity: 0.9, // optional subtle blend
+                  "linear-gradient(to left, black 75%, transparent 100%)",
+                
               }}
               priority
             />
@@ -254,153 +254,8 @@ export default function HomePage() {
           </div>
         </GlassSection>
 
+        {/* ===== Achievements Section ===== */}
         <StatsSection />
-
-        {/* ===== Section 2: Experience ===== */}
-        <GlassSection id="experience" className="space-y-4">
-          <div className="flex items-center gap-3 mb-8">
-            <div className="h-6 w-1 rounded-full bg-amber-500" />
-            <h2 className="font-heading text-white text-2xl md:text-3xl tracking-tight">
-              Experience
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 gap-4">
-            {/* Card 1 */}
-            <article className="rounded-2xl border border-white/10 bg-black/30 p-4 md:p-5">
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                {/* left 1/3 */}
-                <div className="col-span-1 text-white/75">
-                  <p className="font-heading text-sm">Mar 2017 — Jan 2024</p>
-                  <p className="mt-1 font-heading">
-                    Isfahan Firefighting And Safety Services Organization (IFSO)
-                  </p>
-                  <p className="text-sm">Isfahan,Iran</p>
-                </div>
-                {/* right 2/3 */}
-                <div className="col-span-2">
-                  <h3 className="font-heading text-lg md:text-xl tracking-tight">
-                    Chief of Rescue at height and mountain team
-                  </h3>
-                  <div className="mt-2 h-0.5 w-8 bg-amber-500 rounded-full" />
-                  <p className="mt-3 text-white/85 leading-7">
-                    Mohammad Reza Safdarian is employed as a firefighter in the
-                    Isfahan Fire Department, and after a short period, he is
-                    appointed as the commander of the rescue team in high
-                    altitude and mountainous areas. He is repeatedly praised in
-                    written commendations as an outstanding firefighter, and he
-                    also takes action regarding the training of specialized
-                    personnel.
-                  </p>
-                </div>
-              </div>
-            </article>
-
-            {/* Card 2 */}
-            <article className="rounded-2xl border border-white/10 bg-black/30 p-4 md:p-5">
-              <div className="grid grid-cols-3 gap-4">
-                <div className="col-span-1 text-white/75">
-                  <p className="font-heading text-sm">Jun 2017 — Present</p>
-                  <p className="mt-1 font-heading">
-                    Farafan amooz ilia (OT/7035) Irata
-                  </p>
-                  <p className="text-sm">Isfahan Province, Iran</p>
-                </div>
-                <div className="col-span-2">
-                  <h3 className="font-heading text-lg md:text-xl tracking-tight">
-                    Rope Access Technician
-                  </h3>
-                  <div className="mt-2 h-0.5 w-8 bg-amber-500 rounded-full" />
-                  <p className="mt-3 text-white/85 leading-7">
-                    Training in rope access and experience participating in
-                    industrial and construction projects such as building façade
-                    cleaning and repairs, as well as experience in teaching rope
-                    access to international students.
-                  </p>
-                </div>
-              </div>
-            </article>
-
-            {/* Card 3 */}
-            <article className="rounded-2xl border border-white/10 bg-black/30 p-4 md:p-5">
-              <div className="grid grid-cols-3 gap-4">
-                <div className="col-span-1 text-white/75">
-                  <p className="font-heading text-sm">Oct 2012 — Present</p>
-                  <p className="mt-1 font-heading">
-                    I. R. Iran Mountaineering & Sport Climbing Federation
-                  </p>
-                  <p className="text-sm">Iran</p>
-                </div>
-                <div className="col-span-2">
-                  <h3 className="font-heading text-lg md:text-xl tracking-tight">
-                    Member of Ice Climbing of the National team
-                  </h3>
-                  <div className="mt-2 h-0.5 w-8 bg-amber-500 rounded-full" />
-                  <p className="mt-3 text-white/85 leading-7">
-                    Mohammad Reza Safdarian, with 22 international medals, is
-                    one of the most prestigious Iranian figure skaters, who has
-                    been actively participating as a key member of the national
-                    team for years, earning national and international honors.
-                  </p>
-                </div>
-              </div>
-            </article>
-          </div>
-        </GlassSection>
-
-        {/* ===== Section 3: Education ===== */}
-        <GlassSection id="education" className="space-y-4">
-          <div className="flex items-center gap-3 mb-8">
-            <div className="h-6 w-1 rounded-full bg-amber-500" />
-            <h2 className="font-heading text-white text-2xl md:text-3xl tracking-tight">
-              Education
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {/* Card A */}
-            <article className="rounded-2xl border border-white/10 bg-black/30 p-4 md:p-5">
-              <h3 className="font-heading text-base sm:text-lg md:text-xl tracking-tight">
-                Health, Safety, Environment (HSE)
-              </h3>
-              <div className="mt-2 h-0.5 w-8 bg-amber-500 rounded-full" />
-              <p className="mt-3 text-white/85 leading-7">
-                University Of Applied Sience
-              </p>
-              <span className="text-xs sm:text-sm text-white/75">
-                bachelor's degree 2017 - 2019
-              </span>
-            </article>
-
-            {/* Card B */}
-            <article className="rounded-2xl border border-white/10 bg-black/30 p-4 md:p-5">
-              <h3 className="font-heading text-base sm:text-lg md:text-xl tracking-tight">
-                Health, Safety, Environment (HSE)
-              </h3>
-              <div className="mt-2 h-0.5 w-8 bg-amber-500 rounded-full" />
-              <p className="mt-3 text-white/85 leading-7">
-                Amirkabir University of Technology
-              </p>
-              <span className="text-xs sm:text-sm text-white/75">
-                Master's degree 2021 - 2023
-              </span>
-            </article>
-
-            {/* Card C */}
-            <article className="rounded-2xl border border-white/10 bg-black/30 p-4 md:p-5">
-              <h3 className="font-heading text-base sm:text-lg md:text-xl tracking-tight">
-                Electrotechnics
-              </h3>
-              <div className="mt-2 h-0.5 w-8 bg-amber-500 rounded-full" />
-              <p className="mt-3 text-white/85 leading-7">
-                Esfahan Technical and Vocational College (Mohajer)
-              </p>
-              <span className="text-xs sm:text-sm text-white/75">
-                Associate’s degree 2011 - 2014
-              </span>
-            </article>
-          </div>
-        </GlassSection>
 
         {/* ===== Section 4: TEDx Talk ===== */}
         <GlassSection id="tedx" className="space-y-4">

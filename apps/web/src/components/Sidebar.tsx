@@ -19,6 +19,7 @@ import {
   FaLinkedin,
   FaInstagram,
   FaTrophy,
+  FaFile,
 } from "react-icons/fa6";
 
 type Item = {
@@ -74,6 +75,17 @@ const NAV_ITEMS: Item[] = [
     match: "exact",
     icon: (
       <FaMobile
+        className="h-6 w-6 shrink-0 transition-transform group-hover:scale-110"
+        aria-hidden="true"
+      />
+    ),
+  },
+  {
+    label: "Experiences",
+    href: "/experiences",
+    match: "startsWith",
+    icon: (
+      <FaFile
         className="h-6 w-6 shrink-0 transition-transform group-hover:scale-110"
         aria-hidden="true"
       />
@@ -165,7 +177,7 @@ export default function Sidebar({ me }: { me?: Me }) {
         <aside
           className={[
             // collapsed -> expanded width with smooth transition
-            "sticky top-0 z-10 h-screen border-r border-amber-300 bg-white/10 backdrop-blur",
+            "sticky top-0 z-10 h-screen border-r border-amber-300 bg-black/80 backdrop-blur",
             "w-20 group-hover:w-58", // collapsed/expanded widths
             "transition-[width] duration-300 ease-in-out",
             "overflow-hidden", // hide labels while collapsed
