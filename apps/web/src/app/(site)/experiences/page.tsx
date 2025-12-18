@@ -87,7 +87,7 @@ export default function ExperiencesPage() {
     <main className="relative">
       {/* Background: subtle, aligned with your site */}
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0" />
       </div>
 
       {/* Page container */}

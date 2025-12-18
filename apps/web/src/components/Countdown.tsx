@@ -38,14 +38,14 @@ export default function Countdown({ startISO, endISO }: Props) {
 
   if (now < start) {
     return (
-      <span className="inline-flex items-center rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-white ring-1 ring-white/20">
+      <span className="inline-flex items-center rounded-full bg-white/10 px-3 py-1 text-md font-medium text-white ring-2 ring-amber-200/50">
         Starts in {format(start - now)}
       </span>
     );
   }
 
   return (
-    <span className="inline-flex items-center rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-white ring-1 ring-white/20">
+    <span className="inline-flex items-center rounded-full bg-white/10 px-3 py-1 text-md font-medium text-white ring-2 ring-red-200/50">
       Event finished
     </span>
   );

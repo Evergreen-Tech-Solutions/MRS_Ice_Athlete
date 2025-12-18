@@ -28,7 +28,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${body.variable} ${heading.variable} h-full`}>
-      <body className="h-full overflow-hidden">
+      <body className="h-full overflow-hidden bg-stone-950">
         {children}
       </body>
     </html>

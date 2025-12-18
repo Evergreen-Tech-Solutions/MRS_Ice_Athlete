@@ -18,7 +18,7 @@ export function GlassSection({
   return (
     <section
       id={id}
-      className={`relative overflow-hidden rounded-lg bg-black/20 backdrop-blur ${className}`}
+      className={`relative overflow-hidden rounded-lg bg-black/10 backdrop-blur ${className}`}
     >
       {/* We’ll wrap children with a padded div inside the section */}
       <div className="relative z-10 p-4 sm:p-6 md:p-8">{children}</div>
@@ -102,7 +102,7 @@ function StatCard({
 }) {
   return (
     <div
-      className="rounded-2xl border border-white/10 bg-black/30 px-5 py-6 md:px-6 md:py-8
+      className="rounded-2xl border border-stone/10 bg-black/30 px-5 py-6 md:px-6 md:py-8
                     shadow-md hover:shadow-amber-500/10 transition"
     >
       <div className="flex items-center gap-4">
@@ -117,9 +117,9 @@ function StatCard({
           <CountUpNumber
             to={value}
             start={start}
-            className="block font-heading text-3xl md:text-4xl leading-none text-white"
+            className="block font-heading text-3xl md:text-4xl leading-none text-stone"
           />
-          <p className="mt-1 text-sm md:text-base text-white/80">{label}</p>
+          <p className="mt-1 text-sm md:text-base text-stone/80">{label}</p>
         </div>
       </div>
     </div>
@@ -135,7 +135,7 @@ export function StatsSection() {
       <GlassSection id="stats" className="space-y-4 mt-4 sm:mt-6">
         <div className="flex items-center gap-3 mb-2">
           <div className="h-6 w-1 rounded-full bg-amber-500" />
-          <h2 className="font-heading text-white text-2xl md:text-3xl tracking-tight">
+          <h2 className="font-heading text-stone text-2xl md:text-3xl tracking-tight">
             Achievements
           </h2>
         </div>
@@ -183,7 +183,7 @@ export default function HomePage() {
   className="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_50%_100%,#ff7936_0%,#ff7f4d_15%,#ffde5c_20%,#fffb87_30%,#b5ffe1_45%,#c9e7ff_70%,#ebfbff_90%,#fff_100%)]"
       /> */}
       <div
-  className="fixed inset-0 -z-10 bg-white/5"
+  className="fixed inset-0 -z-10 bg-stone-950"
       /> 
 
 
@@ -210,7 +210,7 @@ export default function HomePage() {
           </div>
           <div className="space-y-3">
             {/* Name */}
-            <h1 className="font-heading text-3xl text-white sm:text-4xl md:text-5xl tracking-tight leading-tight [text-wrap:balance]">
+            <h1 className="font-heading text-3xl text-stone-100 sm:text-4xl md:text-5xl tracking-tight leading-tight [text-wrap:balance]">
               REZA SAFDARIAN
             </h1>
 
@@ -218,7 +218,7 @@ export default function HomePage() {
             <div className="h-1 w-16 rounded-full bg-amber-500 mb-5" />
 
             {/* Tagline */}
-            <ul className="font-heading text-base sm:text-lg md:text-xl text-white/90 space-y-1.5">
+            <ul className="font-heading text-base sm:text-lg md:text-xl text-stone-100 space-y-1.5">
               <li>World Champion Ice Climber</li>
               <li>Firefighter & Rescue Specialist</li>
               <li>Rope Access Level Three Technician (IRATA)</li>
@@ -228,11 +228,11 @@ export default function HomePage() {
           {/* About me */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             <div className="md:col-span-2 mt-5">
-              <h2 className="font-heading text-white text-xl md:text-2xl tracking-tight">
+              <h2 className="font-heading text-stone-100 text-xl md:text-2xl tracking-tight">
                 About Me
               </h2>
               <div className="mt-2 h-0.5 w-10 bg-amber-500 rounded-full" />
-              <p className="mt-3 text-white/85 leading-7">
+              <p className="mt-3 text-stone/85 leading-7">
                 Hi, I&apos;m Mohammad Reza Safdarian, a professional ice climber
                     from Isfahan, Iran. I was born in November 1992 and started
                     rock climbing when I was 12 years old. By the age of 18, I
@@ -261,14 +261,14 @@ export default function HomePage() {
         <GlassSection id="tedx" className="space-y-4">
           <div className="flex items-center gap-3 mb-6">
             <div className="h-6 w-1 rounded-full bg-amber-500" />
-            <h2 className="font-heading text-white text-2xl md:text-3xl tracking-tight">
+            <h2 className="font-heading text-stone text-2xl md:text-3xl tracking-tight">
               TEDx Talk
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 items-start">
             {/* Video */}
-            <div className="rounded-2xl overflow-hidden border border-white/10 bg-black/30 min-h-0">
+            <div className="rounded-2xl overflow-hidden border border-stone/10 bg-black/30 min-h-0">
               <div className="relative aspect-video">
                 <iframe
                   className="absolute inset-0 h-full w-full"
@@ -284,12 +284,12 @@ export default function HomePage() {
 
             {/* Copy */}
             <div className="space-y-3 text-sm sm:text-base md:text-lg">
-              <h3 className="font-heading text-white text-xl md:text-2xl tracking-tight">
+              <h3 className="font-heading text-stone text-xl md:text-2xl tracking-tight">
                 An ice climber from the heart of desert | Mohammad Reza
                 Safdarian Korouyeh | TEDx Esfahan
               </h3>
               <div className="h-0.5 w-10 bg-amber-500 rounded-full" />
-              <p className="text-white/85 leading-7">
+              <p className="text-stone/85 leading-7">
                 In this TEDx talk, Mohammadreza shares the mindset, discipline,
                 and resilience behind his journey from a young climber in
                 Isfahan to a world champion in ice climbing. It’s a story about

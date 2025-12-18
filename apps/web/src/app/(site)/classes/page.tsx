@@ -75,7 +75,7 @@ export default async function ClassesPage() {
 
   return (
     <>
-      <div className="fixed inset-0 -z-10 bg-gradient-to-b from-zinc-600 via-[#fab95b] to-amber-500" />
+      <div className="fixed inset-0 -z-10 bg-stone-950" />
       <div className="px-4 md:px-8 py-10 space-y-4">
         <div>
           <h1 className="text-3xl font-semibold text-amber-300">

@@ -17,9 +17,9 @@ const EVENT = {
   name: "UIAA Ice Climbing World Cup 2026",
   // Update these for the specific round your athlete is attending:
   roundLabel: "World Cup Round",
-  location: "TBD (Host City, Country)",
-  venue: "TBD (Venue name)",
-  disciplines: ["Difficulty", "Speed"],
+  location: "South Korea",
+  venue: "Cheongsong",
+  disciplines: ["Difficulty", "Speed Format: Duel"],
 
   // IMPORTANT: set accurate timezone offsets
   startISO: "2026-01-09T09:00:00+09:00",
@@ -48,7 +48,7 @@ const EVENT = {
 
 function Pill({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex items-center rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white ring-1 ring-white/20">
+    <span className="inline-flex items-center rounded-full bg-white/10 px-3 py-1 ml-2 text-md font-medium text-stone-100 ring-2 ring-amber-200/50">
       {children}
     </span>
   );
@@ -68,7 +68,7 @@ function ActionLink({
   const styles =
     variant === "primary"
       ? "bg-white text-zinc-900 ring-white/20 hover:bg-white/90"
-      : "bg-transparent text-white ring-white/20 hover:bg-white/10";
+      : "bg-transparent text-stone-100 ring-white/20 hover:bg-white/10";
   return (
     <a className={`${base} ${styles}`} href={href} target="_blank" rel="noreferrer">
       {label}
@@ -81,7 +81,7 @@ export default function WorldCupPage() {
   return (
     <main className="relative">
       {/* HERO */}
-      <section className="relative overflow-hidden rounded-3xl pt-6 pb-8">
+      <section className="relative overflow-hidden rounded-3xl pt-6 pb-8 shadow-lg shadow-amber-200">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,#ff7936_0%,#ffde5c_18%,#b5ffe1_45%,#c9e7ff_70%,#0b1220_100%)] opacity-50" />
         <div className="absolute inset-0 -z-10 bg-[url('/images/homePage_bg.jpg')] bg-cover bg-center opacity-20" />
 
@@ -93,12 +93,12 @@ export default function WorldCupPage() {
               <Countdown startISO={EVENT.startISO} endISO={EVENT.endISO} />
             </div>
 
-            <h1 className="text-balance text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
+            <h1 className="text-balance text-3xl font-extrabold tracking-tight text-stone-100 sm:text-5xl">
               {EVENT.name}
             </h1>
 
-            <p className="max-w-2xl text-pretty text-base text-white/80 sm:text-lg">
-              Your single source for <span className="font-semibold text-white">{EVENT.athlete.name}</span>:
+            <p className="max-w-2xl text-pretty text-base text-stone-100/80 sm:text-lg">
+              Your single source for <span className="font-semibold text-stone-100">{EVENT.athlete.name}</span>:
               livestream, live results, schedule, and real-time updates—optimized for match-day refreshes.
             </p>
 
@@ -148,11 +148,11 @@ export default function WorldCupPage() {
             },
           ].map((c) => (
             <div key={c.title} className="rounded-2xl border border-white/10 bg-white/5 p-5 shadow-sm">
-              <h2 className="text-lg font-bold text-white">{c.title}</h2>
-              <p className="mt-2 text-sm text-white/75">{c.desc}</p>
+              <h2 className="text-lg font-bold text-stone-100">{c.title}</h2>
+              <p className="mt-2 text-sm text-stone-100/75">{c.desc}</p>
               <div className="mt-4">
                 <a
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-white hover:underline"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-stone-100 hover:underline"
                   href={c.href}
                   target={c.href.startsWith("http") ? "_blank" : undefined}
                   rel={c.href.startsWith("http") ? "noreferrer" : undefined}
@@ -169,8 +169,8 @@ export default function WorldCupPage() {
       <section className="mx-auto max-w-6xl px-4 pb-10">
         <div className="grid gap-6 rounded-2xl border border-white/10 bg-white/5 p-6 lg:grid-cols-3">
           <div className="lg:col-span-2">
-            <h2 className="text-2xl font-extrabold text-white">Athlete spotlight</h2>
-            <p className="mt-2 text-sm text-white/75">
+            <h2 className="text-2xl font-extrabold text-stone-100">Athlete spotlight</h2>
+            <p className="mt-2 text-sm text-stone-100/75">
               {EVENT.athlete.tagline}. We’ll keep this page updated with key links, round timing, and shareable updates
               so fans can stay locked in.
             </p>
@@ -182,8 +182,8 @@ export default function WorldCupPage() {
                 { k: "Updates", v: "Match-day refresh" },
               ].map((s) => (
                 <div key={s.k} className="rounded-xl border border-white/10 bg-black/20 p-4">
-                  <div className="text-xs font-semibold text-white/60">{s.k}</div>
-                  <div className="mt-1 text-sm font-bold text-white">{s.v}</div>
+                  <div className="text-xs font-semibold text-stone-100/60">{s.k}</div>
+                  <div className="mt-1 text-sm font-bold text-stone-100">{s.v}</div>
                 </div>
               ))}
             </div>
@@ -195,8 +195,8 @@ export default function WorldCupPage() {
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-black/20 p-5">
-            <h3 className="text-base font-bold text-white">Share & bring the crowd</h3>
-            <p className="mt-2 text-sm text-white/75">
+            <h3 className="text-base font-bold text-stone-100">Share & bring the crowd</h3>
+            <p className="mt-2 text-sm text-stone-100/75">
               The fastest growth lever is fan distribution. Make it easy to share the live hub.
             </p>
             <div className="mt-4 space-y-3">
@@ -211,7 +211,7 @@ export default function WorldCupPage() {
                 Share on X
               </a>
               <a
-                className="block rounded-xl bg-transparent px-4 py-3 text-center text-sm font-semibold text-white ring-1 ring-white/20 hover:bg-white/10"
+                className="block rounded-xl bg-transparent px-4 py-3 text-center text-sm font-semibold text-stone-100 ring-1 ring-white/20 hover:bg-white/10"
                 href="#schedule"
               >
                 Jump to schedule
@@ -224,16 +224,16 @@ export default function WorldCupPage() {
       {/* SCHEDULE */}
       <section id="schedule" className="mx-auto max-w-6xl px-4 pb-16">
         <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <h2 className="text-2xl font-extrabold text-white">Schedule at a glance</h2>
-          <p className="mt-2 text-sm text-white/75">
+          <h2 className="text-2xl font-extrabold text-stone-100">Schedule at a glance</h2>
+          <p className="mt-2 text-sm text-stone-100/75">
             Replace this placeholder with the official programme times (qualis / semis / finals) once published.
           </p>
 
           <div className="mt-6 grid gap-4 md:grid-cols-3">
             {EVENT.schedule.map((d) => (
               <div key={d.day} className="rounded-2xl border border-white/10 bg-black/20 p-5">
-                <div className="text-sm font-bold text-white">{d.day}</div>
-                <ul className="mt-3 space-y-2 text-sm text-white/75">
+                <div className="text-sm font-bold text-stone-100">{d.day}</div>
+                <ul className="mt-3 space-y-2 text-sm text-stone-100/75">
                   {d.items.map((it) => (
                     <li key={it} className="flex gap-2">
                       <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-white/60" />

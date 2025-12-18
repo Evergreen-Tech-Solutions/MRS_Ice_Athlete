@@ -19,7 +19,8 @@ import {
   FaLinkedin,
   FaInstagram,
   FaTrophy,
-  FaFile,
+  FaBullseye,
+  FaB,
 } from "react-icons/fa6";
 
 type Item = {
@@ -70,22 +71,22 @@ const NAV_ITEMS: Item[] = [
     ),
   },
   {
-    label: "Contact",
-    href: "/contact",
-    match: "exact",
+    label: "Experiences",
+    href: "/experiences",
+    match: "startsWith",
     icon: (
-      <FaMobile
+      <FaBullseye
         className="h-6 w-6 shrink-0 transition-transform group-hover:scale-110"
         aria-hidden="true"
       />
     ),
   },
   {
-    label: "Experiences",
-    href: "/experiences",
-    match: "startsWith",
+    label: "Contact",
+    href: "/contact",
+    match: "exact",
     icon: (
-      <FaFile
+      <FaMobile
         className="h-6 w-6 shrink-0 transition-transform group-hover:scale-110"
         aria-hidden="true"
       />
@@ -177,7 +178,7 @@ export default function Sidebar({ me }: { me?: Me }) {
         <aside
           className={[
             // collapsed -> expanded width with smooth transition
-            "sticky top-0 z-10 h-screen border-r border-amber-300 bg-black/80 backdrop-blur",
+            "sticky top-0 z-10 h-screen border-r border-amber-300 bg-stone-950 backdrop-blur",
             "w-20 group-hover:w-58", // collapsed/expanded widths
             "transition-[width] duration-300 ease-in-out",
             "overflow-hidden", // hide labels while collapsed
@@ -228,8 +229,8 @@ export default function Sidebar({ me }: { me?: Me }) {
                     "group/nav flex items-center gap-3 px-4 py-2 rounded-lg transition text-base",
                     "hover:scale-[1.02]",
                     active
-                      ? "bg-amber-500/20 text-amber-500"
-                      : "hover:bg-amber-400/60 text-white/80",
+                      ? "bg-amber-500/20 text-orange-500"
+                      : "hover:bg-orange-400 text-white/80",
                   ].join(" ")}
                 >
                   <span className="text-current pr-1">{item.icon}</span>
