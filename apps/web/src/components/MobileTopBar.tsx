@@ -17,16 +17,16 @@ export default function MobileTopBar({
   me?: Me; // optional if you later want avatar/account in header
 }) {
   return (
-    <div className="md:hidden sticky top-0 z-40 flex items-center justify-between bg-white/70 backdrop-blur border-b border-amber-500 px-3 h-12">
+    <div className="md:hidden sticky top-0 z-40 flex items-center justify-between bg-stone-950 backdrop-blur border-b border-amber-500 px-3 h-12">
       <button
         aria-label="Open navigation"
         onClick={onOpen}
         className="p-2 rounded hover:bg-black/5 focus:outline-none focus:ring-2 focus:ring-amber-500"
       >
         {/* dark bars to match light header */}
-        <div className="w-5 h-0.5 bg-black mb-1" />
-        <div className="w-5 h-0.5 bg-black mb-1" />
-        <div className="w-5 h-0.5 bg-black" />
+        <div className="w-5 h-0.5 bg-amber-200 mb-1" />
+        <div className="w-5 h-0.5 bg-amber-400 mb-1" />
+        <div className="w-5 h-0.5 bg-amber-600" />
       </button>
 
       <Link href="/" className="flex items-center gap-2">

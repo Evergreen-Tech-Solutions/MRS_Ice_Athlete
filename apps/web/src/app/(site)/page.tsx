@@ -166,89 +166,84 @@ export function StatsSection() {
 }
 
 export default function HomePage() {
+  const sideFadeMask = {
+  WebkitMaskImage:
+    "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
+  maskImage:
+    "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
+};
+
   return (
     <main className="relative w-full h-full">
-      {/* Background image */}
-      {/* <div className="fixed inset-0 -z-10">
-        <Image
-          src="/images/pic.jpg"
-          alt=""
-          fill
-          priority
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-black/40" />
-      </div> */}
-      {/* <div
-  className="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_50%_100%,#ff7936_0%,#ff7f4d_15%,#ffde5c_20%,#fffb87_30%,#b5ffe1_45%,#c9e7ff_70%,#ebfbff_90%,#fff_100%)]"
-      /> */}
-      <div
-  className="fixed inset-0 -z-10 bg-stone-950"
-      /> 
-
-
+      <div className="fixed inset-0 -z-10 bg-stone-950" />
       {/* Page content */}
-      <div className="mx-auto w-full  px-3 sm:px-4 lg:px-2 py-2 lg:py-2 space-y-5 lg:space-y-4">
+      <div className="mx-auto w-full px-3 sm:px-4 lg:px-2 py-2 lg:py-2 space-y-5 lg:space-y-4">
         {/* ===== Section 1: Hero / Intro ===== */}
-        <GlassSection id="intro" className="space-y-6">
+        <GlassSection id="intro" className="relative space-y-6">
+          {/* Mobile-only portrait */}
+          <div className="sm:hidden flex justify-center mb-6">
+            <div className="relative w-[100%] max-w-[320px] aspect-[3/4] overflow-hidden rounded-3xl">
+              <Image
+                src="/images/athlete.png"
+                alt="Mohammad Reza Safdarian"
+                fill
+                priority
+                style={sideFadeMask}
+                sizes="(max-width: 390px) 78vw, 320px"
+                className="object-cover object-top"
+              />
+
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+            </div>
+          </div>
+
+          {/* ✅ Desktop/Tablet background image */}
           <div className="pointer-events-none absolute inset-y-0 right-0 hidden sm:block sm:w-1/2 md:w-1/3">
             <Image
               src="/images/athlete.png"
               alt=""
               fill
-              className="object-cover"
+              className="object-cover object-top"
               style={{
-                // fade from solid on the right to transparent on the left
                 WebkitMaskImage:
                   "linear-gradient(to left, black 75%, transparent 100%)",
                 maskImage:
                   "linear-gradient(to left, black 75%, transparent 100%)",
-                
               }}
               priority
+              sizes="(min-width: 768px) 33vw, 50vw"
             />
           </div>
+
           <div className="space-y-3">
-            {/* Name */}
             <h1 className="font-heading text-3xl text-white-100 sm:text-4xl md:text-5xl tracking-tight leading-tight [text-wrap:balance]">
               REZA SAFDARIAN
             </h1>
 
-            {/* Divider */}
             <div className="h-1 w-16 rounded-full bg-amber-500 mb-5" />
 
-            {/* Tagline */}
             <ul className="font-heading text-base sm:text-lg md:text-xl text-white-100 space-y-1.5">
               <li>World Champion Ice Climber</li>
-              <li>Firefighter & Rescue Specialist</li>
+              <li>Firefighter &amp; Rescue Specialist</li>
               <li>Rope Access Level Three Technician (IRATA)</li>
             </ul>
           </div>
 
-          {/* About me */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             <div className="md:col-span-2 mt-5">
-              <h2 className="font-heading text-white-100 text-xl md:text-2xl tracking-tight">
-                About Me
-              </h2>
-              <div className="mt-2 h-0.5 w-10 bg-amber-500 rounded-full" />
               <p className="mt-3 text-white/85 leading-7">
                 Hi, I&apos;m Mohammad Reza Safdarian, a professional ice climber
-                    from Isfahan, Iran. I was born in November 1992 and started
-                    rock climbing when I was 12 years old. By the age of 18, I
-                    found my true passion in ice climbing and began competing
-                    professionally. In 2018, the International Climbing and
-                    Mountaineering Federation (UIAA) called me “the world&apos;s
-                    history-making ice-climbing boy” after I became the first
-                    Iranian to ever win a world gold medal in ice climbing at
-                    the UIAA World Cup in Italy. That same year, I also earned
-                    two bronze medals, one in Switzerland and another at the
-                    World Championships in Russia. In 2022, I won another gold
-                    medal at the UIAA Ice Climbing World Championship, bringing
-                    my total to 21 international medals from world and Asian
-                    competitions. I&apos;m proud to represent Iran on the global
-                    stage and to serve as a member of the UIAA Athletes&apos;
-                    Commission, helping grow and inspire the sport I love.
+                from Isfahan, Iran. I began rock climbing at the age of 12 and
+                transitioned to competitive ice climbing by 18. In 2018, I
+                became the first Iranian athlete to win a gold medal at the UIAA
+                Ice Climbing World Cup in Italy, an achievement recognized by
+                the UIAA as a historic milestone, alongside two bronze medals
+                earned in Switzerland and at the World Championships in Russia.
+                In 2022, I secured another gold medal at the UIAA Ice Climbing
+                World Championship, bringing my total to 21 international medals
+                across world and Asian competitions. I&apos;m proud to represent
+                Iran on the global stage and to serve on the UIAA Athletes&apos;
+                Commission, contributing to the growth and future of the sport.
               </p>
             </div>
           </div>
