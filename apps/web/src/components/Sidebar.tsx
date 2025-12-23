@@ -143,36 +143,20 @@ function isActive(pathname: string, item: Item) {
   return pathname === item.href || pathname.startsWith(item.href + "/");
 }
 
-export default function Sidebar({ me }: { me?: Me }) {
-  const pathname = usePathname();
-  const [open, setOpen] = useState(false); // mobile drawer
+type SidebarProps =
+  | { me?: Me } // desktop-only usage
+  | { me?: Me; mobileOpen: boolean; setMobileOpen: (v: boolean) => void }; // mobile drawer usage
+
+
+export default function Sidebar(props: SidebarProps) {
+  const { me } = props;
+  const pathname = usePathname(); const mobileOpen = "mobileOpen" in props ? props.mobileOpen : false;
+  const setMobileOpen = "setMobileOpen" in props ? props.setMobileOpen : undefined;
+const closeMobile = () => setMobileOpen?.(false);
+
 
   return (
     <>
-      {/* Mobile top bar */}
-      <div className="md:hidden sticky top-0 z-40 flex items-center justify-between bg-white/70 backdrop-blur border-b border-amber-500 px-3 h-12">
-        <button
-          aria-label="Open navigation"
-          onClick={() => setOpen(true)}
-          className="p-2 rounded hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-amber-500"
-        >
-          <div className="w-5 h-0.5 bg-white mb-1" />
-          <div className="w-5 h-0.5 bg-white mb-1" />
-          <div className="w-5 h-0.5 bg-white" />
-        </button>
-
-        <Link href="/" className="flex items-center gap-2">
-          <Image
-            src="/images/logo.svg"
-            alt="Ice Athlete"
-            width={24}
-            height={24}
-          />
-        </Link>
-
-        <div className="w-9" />
-      </div>
-
       {/* Desktop: hover-to-expand rail */}
       <div className="hidden md:block group relative">
         <aside
@@ -361,12 +345,13 @@ export default function Sidebar({ me }: { me?: Me }) {
       </div>
 
       {/* Mobile drawer */}
-      {open && (
+      {mobileOpen && (
         <div
           role="dialog"
           aria-modal="true"
           className="md:hidden fixed inset-0 z-50"
-          onClick={() => setOpen(false)}
+          onClick={closeMobile}
+
         >
           <div className="absolute inset-0 bg-black/60" />
           <div
@@ -382,7 +367,7 @@ export default function Sidebar({ me }: { me?: Me }) {
               />
               <button
                 aria-label="Close navigation"
-                onClick={() => setOpen(false)}
+                onClick={closeMobile}
                 className="ml-auto p-2 rounded hover:bg-white/10"
               >
                 ✕
@@ -397,7 +382,7 @@ export default function Sidebar({ me }: { me?: Me }) {
                     key={item.href}
                     href={item.href}
                     prefetch
-                    onClick={() => setOpen(false)}
+                    onClick={closeMobile}
                     aria-current={active ? "page" : undefined}
                     className={[
                       "block px-3 py-2 rounded-lg transition",
@@ -424,7 +409,7 @@ export default function Sidebar({ me }: { me?: Me }) {
                     href={s.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => setOpen(false)}
+                    onClick={closeMobile}
                     className="group flex items-center justify-center h-14 rounded-xl border border-white/10 bg-black/40 
                        text-white/80 hover:text-amber-300 hover:border-amber-500 hover:bg-amber-500/10 
                        transition-all duration-300 shadow-md hover:shadow-amber-500/20"
@@ -442,7 +427,7 @@ export default function Sidebar({ me }: { me?: Me }) {
               {me ? (
                 <Link
                   href="/dashboard"
-                  onClick={() => setOpen(false)}
+                  onClick={closeMobile}
                   className="flex items-center gap-3 rounded-lg px-2 py-2 hover:bg-amber-500/10 transition"
                   aria-label="Go to dashboard"
                 >
@@ -463,7 +448,7 @@ export default function Sidebar({ me }: { me?: Me }) {
               ) : (
                 <Link
                   href="/signin"
-                  onClick={() => setOpen(false)}
+                  onClick={closeMobile}
                   className="inline-flex items-center justify-center w-full rounded-lg border border-amber-500/60 hover:border-amber-500 px-3 py-2
                              bg-white/5 hover:bg-amber-500/10 text-sm font-medium transition"
                 >

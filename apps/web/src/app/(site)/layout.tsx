@@ -1,19 +1,19 @@
-import Sidebar from "@/components/Sidebar";
+// apps/web/src/app/(site)/layout.tsx
 import { getSessionProfile } from "@/lib/getSessionProfile";
+import SiteShell from "@/components/SiteShell";
 
 export default async function SiteLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const me = await getSessionProfile(); // { full_name, email, image? }
+  const me = await getSessionProfile();
 
   return (
-    <div className="flex h-screen min-h-0">
-      <Sidebar me={me ? { full_name: me.full_name || me.email } : null} />
-      <main className="flex-1 min-w-0 h-screen overflow-y-auto p-4 md:p-8">
-        {children}
-      </main>
-    </div>
+    <SiteShell
+      me={me ? { full_name: me.full_name || me.email, email: me.email } : null}
+    >
+      {children}
+    </SiteShell>
   );
 }
