@@ -167,11 +167,11 @@ export function StatsSection() {
 
 export default function HomePage() {
   const sideFadeMask = {
-  WebkitMaskImage:
-    "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
-  maskImage:
-    "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
-};
+    WebkitMaskImage:
+      "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
+    maskImage:
+      "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
+  };
 
   return (
     <main className="relative w-full h-full">
@@ -180,38 +180,37 @@ export default function HomePage() {
       <div className="mx-auto w-full px-3 sm:px-4 lg:px-2 py-2 lg:py-2 space-y-5 lg:space-y-4">
         {/* ===== Section 1: Hero / Intro ===== */}
         <GlassSection id="intro" className="relative space-y-6">
-          {/* Mobile-only portrait */}
-          <div className="sm:hidden flex justify-center mb-6">
-            <div className="relative w-[100%] max-w-[320px] aspect-[3/4] overflow-hidden rounded-3xl">
+          {/* Mobile-only portrait (also forces on touch devices) */}
+          <div className="flex justify-center mb-6 lg:hidden [@media(hover:none)]:flex">
+            <div className="relative w-[100%] max-w-[360px] aspect-[3/4] overflow-hidden rounded-3xl">
               <Image
                 src="/images/athlete.png"
                 alt="Mohammad Reza Safdarian"
                 fill
                 priority
                 style={sideFadeMask}
-                sizes="(max-width: 390px) 78vw, 320px"
+                sizes="(max-width: 1024px) 85vw, 360px"
                 className="object-cover object-top"
               />
-
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
             </div>
           </div>
 
-          {/* ✅ Desktop/Tablet background image */}
-          <div className="pointer-events-none absolute inset-y-0 right-0 hidden sm:block sm:w-1/2 md:w-1/3">
+          {/* Desktop image (only for real desktops; hidden on touch even if wide) */}
+          <div className="pointer-events-none absolute inset-y-0 right-0 hidden lg:block lg:w-1/2 xl:w-1/3 [@media(hover:none)]:hidden">
             <Image
               src="/images/athlete.png"
               alt=""
               fill
-              className="object-cover object-top"
+              priority
+              className="object-cover"
               style={{
                 WebkitMaskImage:
                   "linear-gradient(to left, black 75%, transparent 100%)",
                 maskImage:
                   "linear-gradient(to left, black 75%, transparent 100%)",
               }}
-              priority
-              sizes="(min-width: 768px) 33vw, 50vw"
+              sizes="(min-width: 1280px) 33vw, 50vw"
             />
           </div>
 
