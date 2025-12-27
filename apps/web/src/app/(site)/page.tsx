@@ -231,7 +231,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             <div className="md:col-span-2 mt-5">
               <p className="mt-3 text-white/85 leading-7">
-                Hi, I&apos;m Mohammad Reza Safdarian, a professional ice climber
+                I&apos;m Mohammad Reza Safdarian, a professional ice climber
                 from Isfahan, Iran. I began rock climbing at the age of 12 and
                 transitioned to competitive ice climbing by 18. In 2018, I
                 became the first Iranian athlete to win a gold medal at the UIAA
