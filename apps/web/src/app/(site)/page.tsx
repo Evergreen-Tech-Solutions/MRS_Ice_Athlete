@@ -102,13 +102,13 @@ function StatCard({
 }) {
   return (
     <div
-      className="rounded-2xl border border-stone/10 bg-black/30 px-5 py-6 md:px-6 md:py-8
-                    shadow-md hover:shadow-amber-500/10 transition"
+      className="rounded-2xl border border-amber-300 px-5 py-6 md:px-6 md:py-8
+                    shadow-lg shadow-amber-200 transition"
     >
       <div className="flex items-center gap-4">
         <div
           className="grid h-14 w-14 place-items-center rounded-xl 
-                        bg-gradient-to-br from-amber-400/30 to-amber-600/30 
+                        bg-gradient-to-br from-amber-400/70 to-amber-600/30 
                         border border-amber-300/30 text-amber-200"
         >
           <span className="text-3xl">{icon}</span>
@@ -231,7 +231,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             <div className="md:col-span-2 mt-5">
               <p className="mt-3 text-white/85 leading-7">
-                I&apos;m Mohammad Reza Safdarian, a professional ice climber
+                I&apos;m Mohammad Reza, a professional ice climber
                 from Isfahan, Iran. I began rock climbing at the age of 12 and
                 transitioned to competitive ice climbing by 18. In 2018, I
                 became the first Iranian athlete to win a gold medal at the UIAA
@@ -295,7 +295,7 @@ export default function HomePage() {
                 <Link
                   href="https://www.youtube.com/watch?v=3kEfysvyhHQ&t=2s"
                   target="_blank"
-                  className="inline-flex items-center gap-2 rounded-xl border border-amber-500/50 bg-amber-500/10 px-4 py-2 font-heading text-sm hover:bg-amber-500/20 transition"
+                  className="inline-flex items-center gap-2 rounded-xl border border-amber-300 bg-amber-500/40 px-4 py-2 font-heading text-sm hover:bg-amber-500/70 transition"
                 >
                   Watch on YouTube
                   <span aria-hidden>↗</span>

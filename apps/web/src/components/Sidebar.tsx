@@ -158,7 +158,7 @@ const closeMobile = () => setMobileOpen?.(false);
   return (
     <>
       {/* Desktop: hover-to-expand rail */}
-      <div className="hidden md:block group relative">
+      <div className="hidden xl:block group relative">
         <aside
           className={[
             // collapsed -> expanded width with smooth transition
@@ -349,7 +349,7 @@ const closeMobile = () => setMobileOpen?.(false);
         <div
           role="dialog"
           aria-modal="true"
-          className="md:hidden fixed inset-0 z-50"
+          className="xl:hidden fixed inset-0 z-50"
           onClick={closeMobile}
 
         >

@@ -17,7 +17,7 @@ export default function MobileTopBar({
   me?: Me; // optional if you later want avatar/account in header
 }) {
   return (
-    <div className="md:hidden sticky top-0 z-40 flex items-center justify-between bg-stone-950 backdrop-blur border-b border-amber-500 px-3 h-12">
+    <div className="xl:hidden sticky top-0 z-40 flex items-center justify-between bg-stone-950 backdrop-blur border-b border-amber-500 px-3 h-12">
       <button
         aria-label="Open navigation"
         onClick={onOpen}
