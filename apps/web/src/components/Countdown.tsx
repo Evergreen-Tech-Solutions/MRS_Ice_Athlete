@@ -85,6 +85,11 @@ export default function Countdown({
   const start = useMemo(() => new Date(startISO).getTime(), [startISO]);
   const end = useMemo(() => new Date(endISO).getTime(), [endISO]);
   const [now, setNow] = useState(() => Date.now());
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const t = setInterval(() => setNow(Date.now()), 1000);
@@ -96,6 +101,25 @@ export default function Countdown({
     return (
       <span className="inline-flex items-center rounded-full bg-white/10 px-3 py-1 text-md font-medium text-white ring-2 ring-red-200/50">
         Invalid event time
+      </span>
+    );
+  }
+
+  if (!mounted) {
+    if (variant === "digits") {
+      return (
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <div className="h-[86px] rounded-2xl border border-white/10 bg-white/5" />
+          <div className="h-[86px] rounded-2xl border border-white/10 bg-white/5" />
+          <div className="h-[86px] rounded-2xl border border-white/10 bg-white/5" />
+          <div className="h-[86px] rounded-2xl border border-white/10 bg-white/5" />
+        </div>
+      );
+    }
+
+    return (
+      <span className="inline-flex items-center rounded-full bg-white/10 px-3 py-1 text-md font-medium text-white ring-2 ring-white/15">
+        Loading…
       </span>
     );
   }
