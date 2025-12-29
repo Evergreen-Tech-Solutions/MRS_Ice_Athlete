@@ -147,13 +147,13 @@ type SidebarProps =
   | { me?: Me } // desktop-only usage
   | { me?: Me; mobileOpen: boolean; setMobileOpen: (v: boolean) => void }; // mobile drawer usage
 
-
 export default function Sidebar(props: SidebarProps) {
   const { me } = props;
-  const pathname = usePathname(); const mobileOpen = "mobileOpen" in props ? props.mobileOpen : false;
-  const setMobileOpen = "setMobileOpen" in props ? props.setMobileOpen : undefined;
-const closeMobile = () => setMobileOpen?.(false);
-
+  const pathname = usePathname();
+  const mobileOpen = "mobileOpen" in props ? props.mobileOpen : false;
+  const setMobileOpen =
+    "setMobileOpen" in props ? props.setMobileOpen : undefined;
+  const closeMobile = () => setMobileOpen?.(false);
 
   return (
     <>
@@ -179,7 +179,7 @@ const closeMobile = () => setMobileOpen?.(false);
                 <Image
                   src="/images/bg-orange.png"
                   alt="Ice Athlete"
-                  width={96} 
+                  width={96}
                   height={96}
                   quality={100}
                   className="origin-center transition-transform duration-300
@@ -350,15 +350,21 @@ const closeMobile = () => setMobileOpen?.(false);
           role="dialog"
           aria-modal="true"
           className="xl:hidden fixed inset-0 z-50"
-          onClick={closeMobile}
-
         >
-          <div className="absolute inset-0 bg-black/60" />
+          {/* Backdrop (click to close) */}
+          <button
+            aria-label="Close navigation backdrop"
+            className="absolute inset-0 bg-black/60"
+            onClick={closeMobile}
+          />
+
+          {/* Drawer */}
           <div
-            className="absolute left-0 top-0 bottom-0 w-72 bg-black border-r border-amber-500 p-3 flex flex-col"
+            className="absolute left-0 top-0 h-dvh w-72 bg-black border-r border-amber-500 p-3 flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="h-12 inline-flex items-center gap-2 border-b border-amber-500 mb-2">
+            {/* Header */}
+            <div className="h-12 shrink-0 inline-flex items-center gap-2 border-b border-amber-500 mb-2">
               <Image
                 src="/images/logo.svg"
                 alt="Ice Athlete"
@@ -374,56 +380,59 @@ const closeMobile = () => setMobileOpen?.(false);
               </button>
             </div>
 
-            <nav className="space-y-1">
-              {NAV_ITEMS.map((item) => {
-                const active = isActive(pathname, item);
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    prefetch
-                    onClick={closeMobile}
-                    aria-current={active ? "page" : undefined}
-                    className={[
-                      "block px-3 py-2 rounded-lg transition",
-                      active
-                        ? "bg-amber-500/20 text-amber-300"
-                        : "hover:bg-white/10 text-white/80",
-                    ].join(" ")}
-                  >
-                    <span className="inline-flex items-center gap-3">
-                      <span className="text-current">{item.icon}</span>
-                      <span>{item.label}</span>
-                    </span>
-                  </Link>
-                );
-              })}
-            </nav>
+            {/* ✅ Scrollable content (nav + socials) */}
+            <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain pr-1">
+              <nav className="space-y-1">
+                {NAV_ITEMS.map((item) => {
+                  const active = isActive(pathname, item);
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      prefetch
+                      onClick={closeMobile}
+                      aria-current={active ? "page" : undefined}
+                      className={[
+                        "block px-3 py-2 rounded-lg transition",
+                        active
+                          ? "bg-amber-500/20 text-amber-300"
+                          : "hover:bg-white/10 text-white/80",
+                      ].join(" ")}
+                    >
+                      <span className="inline-flex items-center gap-3">
+                        <span className="text-current">{item.icon}</span>
+                        <span>{item.label}</span>
+                      </span>
+                    </Link>
+                  );
+                })}
+              </nav>
 
-            {/* Socials (mobile ok) */}
-            <div className="mt-4 px-2">
-              <div className="grid grid-cols-2 gap-3">
-                {SOCIALS.map((s) => (
-                  <a
-                    key={s.label}
-                    href={s.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={closeMobile}
-                    className="group flex items-center justify-center h-14 rounded-xl border border-white/10 bg-black/40 
-                       text-white/80 hover:text-amber-300 hover:border-amber-500 hover:bg-amber-500/10 
-                       transition-all duration-300 shadow-md hover:shadow-amber-500/20"
-                    aria-label={s.label}
-                    title={s.label}
-                  >
-                    <span className="text-2xl">{s.icon}</span>
-                  </a>
-                ))}
+              {/* Socials */}
+              <div className="mt-4 px-2 pb-3">
+                <div className="grid grid-cols-2 gap-3">
+                  {SOCIALS.map((s) => (
+                    <a
+                      key={s.label}
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={closeMobile}
+                      className="group flex items-center justify-center h-14 rounded-xl border border-white/10 bg-black/40 
+                  text-white/80 hover:text-amber-300 hover:border-amber-500 hover:bg-amber-500/10 
+                  transition-all duration-300 shadow-md hover:shadow-amber-500/20"
+                      aria-label={s.label}
+                      title={s.label}
+                    >
+                      <span className="text-2xl">{s.icon}</span>
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
 
-            {/* Account block pinned to bottom on mobile */}
-            <div className="mt-auto pt-3 border-t border-white/10">
+            {/* Footer pinned bottom */}
+            <div className="shrink-0 pt-3 border-t border-white/10">
               {me ? (
                 <Link
                   href="/dashboard"
@@ -450,7 +459,7 @@ const closeMobile = () => setMobileOpen?.(false);
                   href="/signin"
                   onClick={closeMobile}
                   className="inline-flex items-center justify-center w-full rounded-lg border border-amber-500/60 hover:border-amber-500 px-3 py-2
-                             bg-white/5 hover:bg-amber-500/10 text-sm font-medium transition"
+              bg-white/5 hover:bg-amber-500/10 text-sm font-medium transition"
                 >
                   Sign in
                 </Link>
