@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { FaMedal, FaPersonRunning, FaTrophy } from "react-icons/fa6";
+import WorldCupCountdownBanner from "@/components/WorldCupCountdownBanner";
 
 export function GlassSection({
   id,
@@ -231,15 +232,15 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             <div className="md:col-span-2 mt-5">
               <p className="mt-3 text-white/85 leading-7">
-                I&apos;m Mohammad Reza, a professional ice climber
-                from Isfahan, Iran. I began rock climbing at the age of 12 and
-                transitioned to competitive ice climbing by 18. In 2018, I
-                became the first Iranian athlete to win a gold medal at the UIAA
-                Ice Climbing World Cup in Italy, an achievement recognized by
-                the UIAA as a historic milestone, alongside two bronze medals
-                earned in Switzerland and at the World Championships in Russia.
-                In 2022, I secured another gold medal at the UIAA Ice Climbing
-                World Championship, bringing my total to 21 international medals
+                I&apos;m Mohammad Reza, a professional ice climber from Isfahan,
+                Iran. I began rock climbing at the age of 12 and transitioned to
+                competitive ice climbing by 18. In 2018, I became the first
+                Iranian athlete to win a gold medal at the UIAA Ice Climbing
+                World Cup in Italy, an achievement recognized by the UIAA as a
+                historic milestone, alongside two bronze medals earned in
+                Switzerland and at the World Championships in Russia. In 2022, I
+                secured another gold medal at the UIAA Ice Climbing World
+                Championship, bringing my total to 21 international medals
                 across world and Asian competitions. I&apos;m proud to represent
                 Iran on the global stage and to serve on the UIAA Athletes&apos;
                 Commission, contributing to the growth and future of the sport.
@@ -250,6 +251,14 @@ export default function HomePage() {
 
         {/* ===== Achievements Section ===== */}
         <StatsSection />
+
+        {/* ===== Section 3: UIAA World Cup Reminder ===== */}
+        <WorldCupCountdownBanner
+          startISO="2026-01-09T13:00:00Z"
+          endISO="2026-01-09T16:00:00Z"
+          uiaaHref="https://www.theuiaa.org/"
+          hubHref="/worldcup"
+        />
 
         {/* ===== Section 4: TEDx Talk ===== */}
         <GlassSection id="tedx" className="space-y-4">
