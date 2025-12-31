@@ -36,7 +36,7 @@ export function ClassList({ classes }: { classes: ClassType[] }) {
           <button
             key={cls.id}
             onClick={() => setSelected(cls)}
-            className="group flex flex-col items-stretch text-left rounded-3xl border border-white/10 bg-black/60 backdrop-blur p-5 hover:border-amber-400/60 hover:-translate-y-1 transition-all"
+            className="group flex flex-col items-stretch text-left rounded-3xl border border-white/10 bg-gradient-to-b from-zinc-900 via-slate-400 to-slate-800  backdrop-blur p-5 hover:border-amber-500 hover:-translate-y-1 transition-all hover:shadow-xl hover:shadow-amber-300/20"
           >
             {cls.cover_url && (
               <div className="relative mb-4 h-40 w-full overflow-hidden rounded-2xl">
@@ -50,21 +50,21 @@ export function ClassList({ classes }: { classes: ClassType[] }) {
             )}
 
             <div className="flex items-center justify-between gap-2 mb-2">
-              <h3 className="text-lg font-semibold text-amber-300">
+              <h3 className="text-lg font-semibold text-amber-400 text-[20px]">
                 {cls.title}
               </h3>
               {cls.skill_level && (
-                <span className="rounded-full border border-amber-400/40 px-3 py-0.5 text-[9px] uppercase tracking-wide text-amber-200">
+                <span className="rounded-full border border-amber-400 px-5 py-0.5 text-[12px] uppercase tracking-wide text-amber-300">
                   {cls.skill_level}
                 </span>
               )}
             </div>
 
-            <p className="text-sm text-white/70 mb-3 line-clamp-3">
+            <p className="text-sm text-white/90 mb-3 line-clamp-3">
               {cls.summary}
             </p>
 
-            <div className="flex items-center justify-between text-[10px] text-white/60 mt-auto">
+            <div className="flex items-center justify-between text-[14px] text-white/90 border-t border-amber-400 mt-auto">
               <span>
                 {cls.price_cents > 0
                   ? `${cls.currency} ${(cls.price_cents / 100).toFixed(0)}`
@@ -82,7 +82,7 @@ export function ClassList({ classes }: { classes: ClassType[] }) {
           onClick={() => setSelected(null)}
         >
           <div
-            className="relative max-w-xl w-full mx-4 rounded-3xl bg-neutral-950 border border-amber-500/40 p-6 shadow-2xl"
+            className="relative max-w-xl w-full mx-4 rounded-3xl bg-neutral-950 border border-amber-400/40 p-6"
             onClick={(e) => e.stopPropagation()}
           >
             <button

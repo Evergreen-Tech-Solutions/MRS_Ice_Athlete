@@ -11,6 +11,8 @@
      BBH Sans Bartle comes from the <link> in <head> */
   --font-heading: var(--font-michroma), system-ui, sans-serif; 
   --font-body: var(--font-roboto-flex), system-ui, sans-serif;
+
+  color-scheme: dark;
 }
 
 /* Dark mode (auto via OS preference; you can also toggle via a .dark class if you want) */
