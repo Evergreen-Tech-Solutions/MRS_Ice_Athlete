@@ -14,7 +14,7 @@ type Props = {
 };
 
 export default function WorldCupCountdownBanner({
-  title = "UIAA Ice Climbing World Cup",
+  title = "2026 UIAA Ice Climbing World Cup",
   subtitle = "Watch the livestream, follow results, and stay updated in real time.",
   startISO,
   endISO,

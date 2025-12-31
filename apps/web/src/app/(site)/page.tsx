@@ -145,13 +145,13 @@ export function StatsSection() {
           <StatCard
             icon={<FaPersonRunning aria-hidden className="shrink-0" />}
             label="International competitions"
-            value={42}
+            value={52}
             start={inView}
           />
           <StatCard
             icon={<FaMedal aria-hidden className="shrink-0" />}
             label="International medals"
-            value={25}
+            value={31}
             start={inView}
           />
           <StatCard
