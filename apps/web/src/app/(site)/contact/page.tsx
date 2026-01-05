@@ -31,19 +31,27 @@ export default function ContactPage() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("sending");
+
     const form = e.currentTarget;
     const data = new FormData(form);
+    const payload = Object.fromEntries(data.entries());
 
     try {
-      // here you can later add logic to send via email API, resend, formspree, etc.
-      console.log(Object.fromEntries(data.entries()));
-      await new Promise((r) => setTimeout(r, 1000)); // fake delay
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) throw new Error("Request failed");
+
       setStatus("sent");
       form.reset();
     } catch {
       setStatus("error");
     }
   }
+
 
   const SOCIALS = [
     {
@@ -81,7 +89,7 @@ export default function ContactPage() {
   return (
     <main className="relative min-h-screen">
       {/* Background image */}
-            {/* <div className="fixed inset-0 -z-10">
+      {/* <div className="fixed inset-0 -z-10">
               <Image
                 src="/images/pic.jpg"
                 alt=""
@@ -90,7 +98,7 @@ export default function ContactPage() {
                 className="object-cover"
               />
             </div> */}
-            <div className="fixed inset-0 -z-10 bg-stone-950" />
+      <div className="fixed inset-0 -z-10 bg-stone-950" />
 
       <div className="mx-auto max-w-4xl px-4 py-10 md:py-16 text-stone-100">
         <GlassSection id="contact" className="space-y-8">
@@ -107,6 +115,17 @@ export default function ContactPage() {
 
           {/* Contact form */}
           <form onSubmit={handleSubmit} className="grid gap-5">
+            {/* Honeypot field (hidden from users, bots will fill it) */}
+            <div className="hidden">
+              <label htmlFor="company">Company</label>
+              <input
+                id="company"
+                name="company"
+                type="text"
+                autoComplete="off"
+                tabIndex={-1}
+              />
+            </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
               <div>
                 <label htmlFor="name" className="block text-sm font-semibold text-stone-100 mb-1">
@@ -145,7 +164,7 @@ export default function ContactPage() {
                 id="subject"
                 name="subject"
                 type="text"
-                placeholder="What’s this about?"
+                placeholder="What's this about?"
                 className="w-full rounded-xl bg-black/30 border border-white/10 px-4 py-2 text-white placeholder-white/40 focus:border-amber-500 focus:outline-none"
               />
             </div>
@@ -172,6 +191,12 @@ export default function ContactPage() {
             >
               {status === "sending" ? "Sending..." : status === "sent" ? "Sent!" : "Send Message"}
             </button>
+
+            {status === "sent" && (
+              <p className="text-emerald-300 text-sm">
+                Message sent — I'll get back to you soon.
+              </p>
+            )}
 
             {status === "error" && (
               <p className="text-red-400 text-sm">There was a problem sending your message. Try again later.</p>
