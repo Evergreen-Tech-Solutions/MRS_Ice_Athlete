@@ -249,9 +249,6 @@ export default function HomePage() {
           </div>
         </GlassSection>
 
-        {/* ===== Achievements Section ===== */}
-        <StatsSection />
-
         {/* ===== Section 3: UIAA World Cup Reminder ===== */}
         <WorldCupCountdownBanner
           startISO="2026-01-09T13:00:00Z"
@@ -259,6 +256,9 @@ export default function HomePage() {
           uiaaHref="https://www.theuiaa.org/"
           hubHref="/worldcup"
         />
+
+        {/* ===== Achievements Section ===== */}
+        <StatsSection />
 
         {/* ===== Section 4: TEDx Talk ===== */}
         <GlassSection id="tedx" className="space-y-4">

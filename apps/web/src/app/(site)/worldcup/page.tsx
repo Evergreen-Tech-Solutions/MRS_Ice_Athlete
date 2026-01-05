@@ -19,7 +19,7 @@ const EVENT = {
   roundLabel: "World Cup Round",
   location: "South Korea",
   venue: "Cheongsong",
-  disciplines: ["Difficulty", "Speed Format: Duel"],
+  disciplines: ["Speed Format", "Duel"],
 
   // IMPORTANT: set accurate timezone offsets
   startISO: "2026-01-09T09:00:00+09:00",
@@ -28,7 +28,7 @@ const EVENT = {
   // External authority links (official)
   links: {
     livestream: "https://iceclimbing.sport/",
-    liveResults: "https://uiaa.results.info/",
+    liveResults: "https://uiaa.results.info/event/121/",
     officialEvent: "https://iceclimbing.sport/",
     resultsHub: "https://iceclimbing.sport/results/",
   },
@@ -81,7 +81,7 @@ export default function WorldCupPage() {
   return (
     <main className="relative">
       {/* HERO */}
-      <section className="relative overflow-hidden rounded-3xl pt-6 pb-8 shadow-lg shadow-amber-200">
+      <section className="relative overflow-hidden rounded-3xl shadow-lg shadow-amber-200">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,#ff7936_0%,#ffde5c_18%,#b5ffe1_45%,#c9e7ff_70%,#0b1220_100%)] opacity-50" />
         <div className="absolute inset-0 -z-10 bg-[url('/images/homePage_bg.jpg')] bg-cover bg-center opacity-20" />
 
@@ -98,15 +98,10 @@ export default function WorldCupPage() {
             </h1>
 
             <p className="max-w-2xl text-pretty text-base text-stone-100/80 sm:text-lg">
-              Your single source for <span className="font-semibold text-stone-100">{EVENT.athlete.name}</span>:
+              Your single source for{" "}
+              <span className="font-semibold text-stone-100">{EVENT.athlete.name}</span>:
               livestream, live results, schedule, and real-time updates—optimized for match-day refreshes.
             </p>
-
-            <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
-              <ActionLink href={EVENT.links.livestream} label="Watch livestream" />
-              <ActionLink href={EVENT.links.liveResults} label="Open live results" variant="secondary" />
-              <ActionLink href={EVENT.links.resultsHub} label="Season results hub" variant="secondary" />
-            </div>
 
             <div className="flex flex-wrap gap-2 pt-2">
               {EVENT.disciplines.map((d) => (
@@ -118,9 +113,41 @@ export default function WorldCupPage() {
         </div>
       </section>
 
+      {/* YOUTUBE LIVESTREAM */}
+      <section className="mx-auto max-w-6xl px-4 py-10">
+        <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-sm">
+          <div className="flex items-center justify-between gap-4 border-b border-white/10 px-5 py-4">
+            <div>
+              <h2 className="text-lg font-bold text-stone-100">Live stream</h2>
+              <p className="mt-1 text-sm text-stone-100/75">Watch the event live right here.</p>
+            </div>
+            <a
+              className="hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-stone-100 hover:underline"
+              href="https://www.youtube.com/watch?v=QWmwgCRiYXM"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Open on YouTube <span aria-hidden>→</span>
+            </a>
+          </div>
+
+          <div className="relative w-full overflow-hidden bg-black">
+            <div className="aspect-video w-full">
+              <iframe
+                className="h-full w-full"
+                src="https://www.youtube.com/embed/QWmwgCRiYXM"
+                title="YouTube livestream"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* QUICK ACCESS GRID */}
       <section className="mx-auto max-w-6xl px-4 py-10">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-2">
           {[
             {
               title: "Livestream",
@@ -133,18 +160,6 @@ export default function WorldCupPage() {
               desc: "Real-time rankings, attempts, and round progression.",
               href: EVENT.links.liveResults,
               cta: "Open results",
-            },
-            {
-              title: "Start lists",
-              desc: "Who climbs when, bibs, and round start orders.",
-              href: EVENT.links.officialEvent,
-              cta: "Find start lists",
-            },
-            {
-              title: "Schedule",
-              desc: "Qualifications → Semis → Finals, in one glance.",
-              href: "#schedule",
-              cta: "View schedule",
             },
           ].map((c) => (
             <div key={c.title} className="rounded-2xl border border-white/10 bg-white/5 p-5 shadow-sm">
@@ -169,7 +184,7 @@ export default function WorldCupPage() {
       <section className="mx-auto max-w-6xl px-4 pb-10">
         <div className="grid gap-6 rounded-2xl border border-white/10 bg-white/5 p-6 lg:grid-cols-3">
           <div className="lg:col-span-2">
-            <h2 className="text-2xl font-extrabold text-stone-100">Athlete spotlight</h2>
+            <h2 className="text-2xl font-extrabold text-stone-100">Athlete summary</h2>
             <p className="mt-2 text-sm text-stone-100/75">
               {EVENT.athlete.tagline}. We’ll keep this page updated with key links, round timing, and shareable updates
               so fans can stay locked in.
@@ -208,46 +223,15 @@ export default function WorldCupPage() {
                 target="_blank"
                 rel="noreferrer"
               >
-                Share on X
+                Share on Instagram
               </a>
               <a
                 className="block rounded-xl bg-transparent px-4 py-3 text-center text-sm font-semibold text-stone-100 ring-1 ring-white/20 hover:bg-white/10"
                 href="#schedule"
               >
-                Jump to schedule
+                Share on Facebook
               </a>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SCHEDULE */}
-      <section id="schedule" className="mx-auto max-w-6xl px-4 pb-16">
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <h2 className="text-2xl font-extrabold text-stone-100">Schedule at a glance</h2>
-          <p className="mt-2 text-sm text-stone-100/75">
-            Replace this placeholder with the official programme times (qualis / semis / finals) once published.
-          </p>
-
-          <div className="mt-6 grid gap-4 md:grid-cols-3">
-            {EVENT.schedule.map((d) => (
-              <div key={d.day} className="rounded-2xl border border-white/10 bg-black/20 p-5">
-                <div className="text-sm font-bold text-stone-100">{d.day}</div>
-                <ul className="mt-3 space-y-2 text-sm text-stone-100/75">
-                  {d.items.map((it) => (
-                    <li key={it} className="flex gap-2">
-                      <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-white/60" />
-                      <span>{it}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <ActionLink href={EVENT.links.liveResults} label="Keep live results open" />
-            <ActionLink href={EVENT.links.livestream} label="Open livestream" variant="secondary" />
           </div>
         </div>
       </section>
