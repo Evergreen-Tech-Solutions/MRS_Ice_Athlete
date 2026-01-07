@@ -6,6 +6,7 @@ import Link from "next/link";
 import React from "react";
 import { FaMedal, FaPersonRunning, FaTrophy } from "react-icons/fa6";
 import WorldCupCountdownBanner from "@/components/WorldCupCountdownBanner";
+import { WORLDCUP_EVENT } from "@/lib/worldcup";
 
 export function GlassSection({
   id,
@@ -89,7 +90,7 @@ function useInViewOnce<T extends HTMLElement>(rootMargin = "0px") {
   return { ref, inView };
 }
 
-/** Pretty stat card */
+/** Stat card */
 function StatCard({
   icon,
   label,
@@ -250,9 +251,10 @@ export default function HomePage() {
         </GlassSection>
 
         {/* ===== Section 3: UIAA World Cup Reminder ===== */}
+
         <WorldCupCountdownBanner
-          startISO="2026-01-09T13:00:00Z"
-          endISO="2026-01-09T16:00:00Z"
+          startISO={WORLDCUP_EVENT.startISO}
+          endISO={WORLDCUP_EVENT.endISO}
           uiaaHref="https://www.theuiaa.org/"
           hubHref="/worldcup"
         />
