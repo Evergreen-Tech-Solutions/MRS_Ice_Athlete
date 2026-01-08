@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
 import { FaEnvelope, FaWhatsapp, FaLinkedin, FaInstagram, FaFacebook, FaXTwitter } from "react-icons/fa6";
 import Link from "next/link";
 import Image from "next/image";
@@ -34,16 +35,29 @@ export default function ContactPage() {
 
     const form = e.currentTarget;
     const data = new FormData(form);
-    const payload = Object.fromEntries(data.entries());
+
+    // Honeypot (keep this!)
+    const company = String(data.get("company") ?? "").trim();
+    if (company) {
+      setStatus("sent");
+      form.reset();
+      return;
+    }
+
+    const templateParams = {
+      from_name: String(data.get("name") ?? ""),
+      reply_to: String(data.get("email") ?? ""),
+      subject: String(data.get("subject") ?? ""),
+      message: String(data.get("message") ?? ""),
+    };
 
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-
-      if (!res.ok) throw new Error("Request failed");
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        templateParams,
+        { publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY! }
+      );
 
       setStatus("sent");
       form.reset();
@@ -51,6 +65,7 @@ export default function ContactPage() {
       setStatus("error");
     }
   }
+
 
 
   const SOCIALS = [

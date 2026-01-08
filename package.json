@@ -1,11 +1,16 @@
 {
   "name": "mrs-ice-athlete",
   "private": true,
-  "workspaces": ["apps/*"],
+  "workspaces": [
+    "apps/*"
+  ],
   "scripts": {
     "dev:web": "npm --workspace apps/web run dev",
     "dev:studio": "npm --workspace apps/studio run dev",
     "format": "prettier . --write",
     "lint": "eslint ."
+  },
+  "dependencies": {
+    "@emailjs/browser": "^4.4.1"
   }
 }
