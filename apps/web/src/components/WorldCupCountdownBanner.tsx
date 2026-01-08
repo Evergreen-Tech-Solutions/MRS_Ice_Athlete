@@ -166,7 +166,7 @@ export default function WorldCupCountdownBanner({
             rel="noreferrer"
             className="underline underline-offset-2 hover:text-white/80"
           >
-            Video by Florian Delée
+            Florian Delée
           </a>{" "}
           via Pexels
         </div>
