@@ -1,8 +1,8 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Countdown from "@/components/Countdown";
-
 
 type Props = {
   title?: string;
@@ -21,6 +21,22 @@ export default function WorldCupCountdownBanner({
   uiaaHref,
   hubHref = "/worldcup",
 }: Props) {
+
+
+  const [hasStarted, setHasStarted] = useState(false);
+
+  useEffect(() => {
+    const startTime = new Date(startISO).getTime();
+
+    const check = () => {
+      setHasStarted(Date.now() >= startTime);
+    };
+
+    check();
+    const interval = setInterval(check, 1000);
+    return () => clearInterval(interval);
+  }, [startISO]);
+
   return (
     <section className="relative">
       {/* subtle ambient glow */}
@@ -73,13 +89,25 @@ export default function WorldCupCountdownBanner({
                 <span className="text-white/70">↗</span>
               </a>
 
-              <Link
-                href={hubHref}
-                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-amber-400/90 via-orange-400/90 to-amber-300/90 px-5 py-3 text-sm font-extrabold text-black transition hover:scale-[1.02] active:scale-[0.99]"
-              >
-                Open World Cup Hub
-                <span>→</span>
-              </Link>
+              {hasStarted ? (
+                <a
+                  href={uiaaHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-emerald-400/90 via-teal-400/90 to-cyan-400/90 px-5 py-3 text-sm font-extrabold text-black transition hover:scale-[1.02] active:scale-[0.99]"
+                >
+                  Watch Livestream
+                  <span>→</span>
+                </a>
+              ) : (
+                <Link
+                  href={hubHref}
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-amber-400/90 via-orange-400/90 to-amber-300/90 px-5 py-3 text-sm font-extrabold text-black transition hover:scale-[1.02] active:scale-[0.99]"
+                >
+                  Open World Cup Hub
+                  <span></span>
+                </Link>
+              )}
             </div>
           </div>
 
@@ -90,27 +118,9 @@ export default function WorldCupCountdownBanner({
                 Event starts in
               </div>
 
-              {/* 
-                IMPORTANT:
-                This uses your existing Countdown component.
-                If your Countdown prop name differs, adjust the line below.
-              */}
               <div className="w-full md:w-auto">
-                <div
-                  className="
-                    relative inline-block rounded-2xl border border-white/10 bg-white/5 px-5 py-4
-                    shadow-[0_0_0_1px_rgba(255,255,255,0.06)]
-                  "
-                >
-                  {/* icy text styling wrapper */}
-                  <div
-                    className="
-                      text-center text-3xl font-extrabold tracking-tight md:text-5xl
-                      text-transparent bg-clip-text
-                      bg-[linear-gradient(180deg,rgba(255,255,255,0.95)_0%,rgba(165,243,252,0.95)_45%,rgba(59,130,246,0.55)_100%)]
-                      drop-shadow-[0_10px_22px_rgba(56,189,248,0.18)]
-                    "
-                  >
+                <div className="relative inline-block rounded-2xl border border-white/10 bg-white/5 px-5 py-4 shadow-[0_0_0_1px_rgba(255,255,255,0.06)]">
+                  <div className="text-center text-3xl font-extrabold tracking-tight md:text-5xl text-transparent bg-clip-text bg-[linear-gradient(180deg,rgba(255,255,255,0.95)_0%,rgba(165,243,252,0.95)_45%,rgba(59,130,246,0.55)_100%)] drop-shadow-[0_10px_22px_rgba(56,189,248,0.18)]">
                     <Countdown
                       startISO={startISO}
                       endISO={endISO}
@@ -118,7 +128,6 @@ export default function WorldCupCountdownBanner({
                     />
                   </div>
 
-                  {/* frost highlight */}
                   <div className="pointer-events-none absolute inset-0 rounded-2xl bg-[radial-gradient(circle_at_30%_25%,rgba(255,255,255,0.18),transparent_55%)]" />
                 </div>
               </div>
@@ -157,6 +166,7 @@ export default function WorldCupCountdownBanner({
             and use your hub to curate highlights.
           </p>
         </div>
+
         {/* Video credit */}
         <div className="m-6  pt-3 text-[10px] text-white/50">
           Video by{" "}
