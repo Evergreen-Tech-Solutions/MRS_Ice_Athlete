@@ -1,3 +1,4 @@
+import type React from "react";
 import type { Metadata } from "next";
 import Countdown from "../../../components/Countdown";
 import YouTubeLive from "../../../components/YouTubeLive";
@@ -160,6 +161,21 @@ function ActionLink({
   );
 }
 
+function DisclosurePill() {
+  return (
+    <span className="shrink-0 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm font-semibold text-stone-100">
+      <span className="group-open:hidden">Show</span>
+      <span className="hidden group-open:inline">Hide</span>{" "}
+      <span
+        aria-hidden
+        className="ml-1 inline-block transition group-open:rotate-180"
+      >
+        ▾
+      </span>
+    </span>
+  );
+}
+
 // Server-safe, stable formatting (prevents hydration weirdness)
 function formatInTZ(
   iso: string,
@@ -184,10 +200,13 @@ function formatInTZ(
 // Persian (fa-IR) with Persian calendar + Persian digits
 function formatPersianIran(iso: string) {
   return formatInTZ(iso, "Asia/Tehran", "fa-IR", {
-    calendar: "persian",
-    numberingSystem: "arabext",
-    month: "long",
-    weekday: "long",
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    ...({
+      calendar: "persian",
+      numberingSystem: "arabext",
+      month: "long",
+      weekday: "long",
+    } as any),
   });
 }
 
@@ -265,145 +284,245 @@ export default function WorldCupPage() {
         </div>
       </section>
 
-      {/* IRAN START TIMES (below banner, above livestream) */}
+      {/* START TIMES — COLLAPSIBLE */}
       <section className="mx-auto max-w-6xl px-4 pt-8">
         <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <h2 className="text-xl font-extrabold text-stone-100">
-                Start times (Iran){" "}
-                <span className="ml-2 text-stone-100/70">
-                  | زمان‌بندی (ایران)
-                </span>
-              </h2>
-              <p className="mt-2 text-base text-stone-100/75">
-                Converted to{" "}
-                <span className="font-semibold text-stone-100">
-                  Asia/Tehran
-                </span>{" "}
-                <span className="mx-2 text-stone-100/40">•</span>
-                <span className="font-semibold">
-                  تبدیل‌شده به وقت ایران (تهران)
-                </span>
-              </p>
-            </div>
-
-            <div className="text-sm text-stone-100/60">
-              Event timezone reference: Asia/Seoul{" "}
-              <span className="mx-2 text-stone-100/40">•</span>
-              مرجع زمانی رویداد: کره (سئول)
-            </div>
-          </div>
-
-          <div className="mt-6 overflow-hidden rounded-xl border border-white/10">
-            {/* Header */}
-            <div className="grid grid-cols-1 sm:grid-cols-4 bg-black/20 text-base font-bold text-stone-100/80">
-              <div className="px-4 py-4">
-                <div className="flex items-center justify-between">
-                  <span>Milestone</span>
-                  <span className="text-stone-100/70" dir="rtl">
-                    رویداد
+          <details className="group" open>
+            <summary className="flex cursor-pointer list-none items-start justify-between gap-4 rounded-xl border border-white/10 bg-black/20 px-4 py-4 hover:bg-black/30">
+              <div className="min-w-0">
+                <div className="text-lg font-extrabold text-stone-100">
+                  Start times (Iran){" "}
+                  <span className="ml-2 text-stone-100/70">
+                    | زمان‌بندی (ایران)
                   </span>
+                </div>
+
+                <div className="mt-1 text-sm text-stone-100/75">
+                  Converted to{" "}
+                  <span className="font-semibold text-stone-100">
+                    Asia/Tehran
+                  </span>{" "}
+                  <span className="mx-2 text-stone-100/40">•</span>
+                  <span className="font-semibold" dir="rtl">
+                    تبدیل‌شده به وقت ایران (تهران)
+                  </span>
+                </div>
+
+                <div className="mt-1 text-xs text-stone-100/60">
+                  Event timezone reference: Asia/Seoul{" "}
+                  <span className="mx-2 text-stone-100/40">•</span>
+                  <span dir="rtl">مرجع زمانی رویداد: کره (سئول)</span>
                 </div>
               </div>
 
-              <div className="px-4 py-4">
-                <div className="flex items-center justify-between">
-                  <span>Iran (Tehran)</span>
-                  <span className="text-stone-100/70" dir="rtl">
-                    ایران (تهران)
-                  </span>
-                </div>
+              <DisclosurePill />
+            </summary>
+
+            {/* Content */}
+            <div className="mt-4">
+              {/* MOBILE: timezone cards */}
+              <div className="grid gap-3 sm:hidden">
+                {[
+                  {
+                    titleEn: "Iran (Tehran)",
+                    titleFa: "ایران (تهران)",
+                    start: iranStart,
+                    end: iranEnd,
+                    rtl: true,
+                    accent: "ring-amber-200/30",
+                  },
+                  {
+                    titleEn: "Korea (Seoul)",
+                    titleFa: "کره (سئول)",
+                    start: koreaStart,
+                    end: koreaEnd,
+                    rtl: false,
+                    accent: "ring-cyan-200/25",
+                  },
+                  {
+                    titleEn: "Vancouver (Canada)",
+                    titleFa: "ونکوور (کانادا)",
+                    start: vanStart,
+                    end: vanEnd,
+                    rtl: false,
+                    accent: "ring-white/15",
+                  },
+                ].map((c) => (
+                  <div
+                    key={c.titleEn}
+                    className={[
+                      "rounded-2xl border border-white/10 bg-black/20 p-4",
+                      "shadow-[0_0_0_1px_rgba(255,255,255,0.06)]",
+                      `ring-1 ${c.accent}`,
+                    ].join(" ")}
+                  >
+                    <div className="flex items-end justify-between gap-3">
+                      <div className="min-w-0">
+                        <div className="text-sm font-extrabold text-stone-100">
+                          {c.titleEn}
+                        </div>
+                        <div
+                          className="text-xs font-semibold text-stone-100/65"
+                          dir="rtl"
+                        >
+                          {c.titleFa}
+                        </div>
+                      </div>
+
+                      <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold text-stone-100/70">
+                        Times
+                      </div>
+                    </div>
+
+                    <div className="mt-4 grid gap-3">
+                      <div className="rounded-xl border border-white/10 bg-white/5 p-3">
+                        <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-[0.18em] text-stone-100/60">
+                          <span>Event start</span>
+                          <span dir="rtl">شروع رویداد</span>
+                        </div>
+                        <div
+                          className="mt-2 text-base font-bold text-stone-100 leading-snug"
+                          dir={c.rtl ? "rtl" : "ltr"}
+                        >
+                          {c.start}
+                        </div>
+                      </div>
+
+                      <div className="rounded-xl border border-white/10 bg-white/5 p-3">
+                        <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-[0.18em] text-stone-100/60">
+                          <span>Event end</span>
+                          <span dir="rtl">پایان رویداد</span>
+                        </div>
+                        <div
+                          className="mt-2 text-base font-bold text-stone-100 leading-snug"
+                          dir={c.rtl ? "rtl" : "ltr"}
+                        >
+                          {c.end}
+                        </div>
+                      </div>
+                    </div>
+
+                    {c.titleEn.startsWith("Vancouver") && (
+                      <div className="mt-3 text-xs text-stone-100/60">
+                        Note: Vancouver time may fall on the previous day.{" "}
+                        <span className="mx-2 text-stone-100/40">•</span>
+                        <span dir="rtl">
+                          توجه: زمان ونکوور ممکن است مربوط به روز قبل باشد.
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                ))}
               </div>
 
-              <div className="px-4 py-4">
-                <div className="flex items-center justify-between">
-                  <span>Korea (Seoul)</span>
-                  <span className="text-stone-100/70" dir="rtl">
-                    کره (سئول)
-                  </span>
-                </div>
-              </div>
+              {/* DESKTOP: table */}
+              <div className="hidden overflow-hidden rounded-xl border border-white/10 sm:block">
+                <div className="grid grid-cols-4 bg-black/20 text-base font-bold text-stone-100/80">
+                  <div className="px-4 py-4">
+                    <div className="flex items-center justify-between">
+                      <span>Milestone</span>
+                      <span className="text-stone-100/70" dir="rtl">
+                        رویداد
+                      </span>
+                    </div>
+                  </div>
 
-              <div className="px-4 py-4">
-                <div className="flex items-center justify-between">
-                  <span>Vancouver (Canada)</span>
-                  <span className="text-stone-100/70" dir="rtl">
-                    ونکوور (کانادا)
-                  </span>
+                  <div className="px-4 py-4">
+                    <div className="flex items-center justify-between">
+                      <span>Iran (Tehran)</span>
+                      <span className="text-stone-100/70" dir="rtl">
+                        ایران (تهران)
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="px-4 py-4">
+                    <div className="flex items-center justify-between">
+                      <span>Korea (Seoul)</span>
+                      <span className="text-stone-100/70" dir="rtl">
+                        کره (سئول)
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="px-4 py-4">
+                    <div className="flex items-center justify-between">
+                      <span>Vancouver (Canada)</span>
+                      <span className="text-stone-100/70" dir="rtl">
+                        ونکوور (کانادا)
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-4 border-t border-white/10">
+                  <div className="px-4 py-4 text-lg text-stone-100">
+                    <div className="flex items-center justify-between">
+                      <span>Event start</span>
+                      <span className="text-stone-100/75" dir="rtl">
+                        شروع رویداد
+                      </span>
+                    </div>
+                  </div>
+
+                  <div
+                    className="px-4 py-4 text-lg font-semibold text-stone-100"
+                    dir="rtl"
+                  >
+                    {iranStart}
+                  </div>
+
+                  <div className="px-4 py-4 text-lg text-stone-100/85">
+                    {koreaStart}
+                  </div>
+
+                  <div className="px-4 py-4 text-lg text-stone-100/85">
+                    {vanStart}
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-4 border-t border-white/10">
+                  <div className="px-4 py-4 text-lg text-stone-100">
+                    <div className="flex items-center justify-between">
+                      <span>Event end</span>
+                      <span className="text-stone-100/75" dir="rtl">
+                        پایان رویداد
+                      </span>
+                    </div>
+                  </div>
+
+                  <div
+                    className="px-4 py-4 text-lg font-semibold text-stone-100"
+                    dir="rtl"
+                  >
+                    {iranEnd}
+                  </div>
+
+                  <div className="px-4 py-4 text-lg text-stone-100/85">
+                    {koreaEnd}
+                  </div>
+
+                  <div className="px-4 py-4 text-lg text-stone-100/85">
+                    {vanEnd}
+                  </div>
+                </div>
+
+                <div className="border-t border-white/10 bg-black/10 px-4 py-3 text-sm text-stone-100/65">
+                  Note: Vancouver time may fall on the previous day.{" "}
+                  <span className="mx-2 text-stone-100/40">•</span>
+                  توجه: زمان ونکوور ممکن است مربوط به روز قبل باشد.
                 </div>
               </div>
             </div>
-
-            {/* Row 1 */}
-            <div className="grid grid-cols-1 sm:grid-cols-4 border-t border-white/10">
-              <div className="px-4 py-4 text-lg text-stone-100">
-                <div className="flex items-center justify-between">
-                  <span>Event start</span>
-                  <span className="text-stone-100/75" dir="rtl">
-                    شروع رویداد
-                  </span>
-                </div>
-              </div>
-
-              <div
-                className="px-4 py-4 text-lg font-semibold text-stone-100"
-                dir="rtl"
-              >
-                {iranStart}
-              </div>
-
-              <div className="px-4 py-4 text-lg text-stone-100/85">
-                {koreaStart}
-              </div>
-
-              <div className="px-4 py-4 text-lg text-stone-100/85">
-                {vanStart}
-              </div>
-            </div>
-
-            {/* Row 2 */}
-            <div className="grid grid-cols-1 sm:grid-cols-4 border-t border-white/10">
-              <div className="px-4 py-4 text-lg text-stone-100">
-                <div className="flex items-center justify-between">
-                  <span>Event end</span>
-                  <span className="text-stone-100/75" dir="rtl">
-                    پایان رویداد
-                  </span>
-                </div>
-              </div>
-
-              <div
-                className="px-4 py-4 text-lg font-semibold text-stone-100"
-                dir="rtl"
-              >
-                {iranEnd}
-              </div>
-
-              <div className="px-4 py-4 text-lg text-stone-100/85">
-                {koreaEnd}
-              </div>
-
-              <div className="px-4 py-4 text-lg text-stone-100/85">
-                {vanEnd}
-              </div>
-            </div>
-
-            {/* Footnote */}
-            <div className="border-t border-white/10 bg-black/10 px-4 py-3 text-sm text-stone-100/65">
-              Note: Vancouver time may fall on the previous day.{" "}
-              <span className="mx-2 text-stone-100/40">•</span>
-              توجه: زمان ونکوور ممکن است مربوط به روز قبل باشد.
-            </div>
-          </div>
+          </details>
         </div>
       </section>
 
-      {/* PROGRAM SCHEDULE (EN + FA) — COLLAPSIBLE */}
+      {/* PROGRAM SCHEDULE — COLLAPSIBLE + MOBILE CARDS */}
       <section className="mx-auto max-w-6xl px-4 pt-4">
         <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
           <details className="group">
-            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-xl border border-white/10 bg-black/20 px-4 py-4 hover:bg-black/30">
+            <summary className="flex cursor-pointer list-none items-start justify-between gap-4 rounded-xl border border-white/10 bg-black/20 px-4 py-4 hover:bg-black/30">
               <div className="min-w-0">
                 <div className="text-lg font-extrabold text-stone-100">
                   Competition schedule{" "}
@@ -423,182 +542,220 @@ export default function WorldCupPage() {
                 </div>
               </div>
 
-              {/* Chevron */}
-              <span className="shrink-0 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm font-semibold text-stone-100">
-                <span className="group-open:hidden">Show</span>
-                <span className="hidden group-open:inline">Hide</span>{" "}
-                <span
-                  aria-hidden
-                  className="ml-1 inline-block transition group-open:rotate-180"
-                >
-                  ▾
-                </span>
-              </span>
+              <DisclosurePill />
             </summary>
 
             {/* Content */}
-            <div className="mt-4 overflow-hidden rounded-xl border border-white/10">
-              {/* Mobile-first stacked layout; becomes 4-col grid on sm+ */}
-              <div className="grid grid-cols-1 sm:grid-cols-4 bg-black/20 text-sm font-bold text-stone-100/80">
-                <div className="px-4 py-4">
-                  <div className="flex items-center justify-between">
-                    <span>Date</span>
-                    <span className="text-stone-100/70" dir="rtl">
-                      تاریخ
-                    </span>
+            <div className="mt-4">
+              {/* MOBILE: day cards + items (no swipe) */}
+              <div className="grid gap-3 sm:hidden">
+                {PROGRAM.map((day) => (
+                  <div
+                    key={day.dateEn}
+                    className="rounded-2xl border border-white/10 bg-black/20 p-4 shadow-[0_0_0_1px_rgba(255,255,255,0.06)]"
+                  >
+                    <div className="flex items-end justify-between gap-3">
+                      <div className="min-w-0">
+                        <div className="text-sm font-extrabold text-stone-100">
+                          {day.dateEn}
+                        </div>
+                        <div
+                          className="text-xs font-semibold text-stone-100/65"
+                          dir="rtl"
+                        >
+                          {day.dateFa}
+                        </div>
+                      </div>
+
+                      <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold text-stone-100/70">
+                        KST
+                      </div>
+                    </div>
+
+                    <div className="mt-4 grid gap-3">
+                      {day.items.map((it, idx) => (
+                        <div
+                          key={`${day.dateEn}-${idx}`}
+                          className="rounded-xl border border-white/10 bg-white/5 p-3"
+                        >
+                          <div className="flex items-center justify-between gap-3">
+                            <div className="text-xs font-semibold uppercase tracking-[0.18em] text-stone-100/60">
+                              Time
+                            </div>
+                            <div className="text-sm font-extrabold text-stone-100">
+                              {it.time}
+                            </div>
+                          </div>
+
+                          <div className="mt-3">
+                            <div className="text-sm font-bold text-stone-100">
+                              {it.titleEn}
+                            </div>
+                            <div
+                              className="mt-1 text-sm text-stone-100/75"
+                              dir="rtl"
+                            >
+                              {it.titleFa}
+                            </div>
+                          </div>
+
+                          <div className="mt-3 border-t border-white/10 pt-3">
+                            <div className="text-xs font-semibold uppercase tracking-[0.18em] text-stone-100/60">
+                              Remarks
+                            </div>
+                            <div className="mt-1 text-sm text-stone-100/85">
+                              {it.remarksEn}
+                            </div>
+                            <div
+                              className="mt-1 text-sm text-stone-100/70"
+                              dir="rtl"
+                            >
+                              {it.remarksFa}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
-                <div className="px-4 py-4">
-                  <div className="flex items-center justify-between">
-                    <span>Time</span>
-                    <span className="text-stone-100/70" dir="rtl">
-                      ساعت
-                    </span>
-                  </div>
-                </div>
-                <div className="px-4 py-4">
-                  <div className="flex items-center justify-between">
-                    <span>Schedule</span>
-                    <span className="text-stone-100/70" dir="rtl">
-                      برنامه
-                    </span>
-                  </div>
-                </div>
-                <div className="px-4 py-4">
-                  <div className="flex items-center justify-between">
-                    <span>Remarks</span>
-                    <span className="text-stone-100/70" dir="rtl">
-                      توضیحات
-                    </span>
-                  </div>
+                ))}
+
+                <div className="rounded-xl border border-white/10 bg-black/10 px-4 py-3 text-sm text-stone-100/65">
+                  Schedule times are in Seoul (KST).{" "}
+                  <span className="mx-2 text-stone-100/40">•</span>
+                  <span dir="rtl">زمان‌های برنامه بر اساس وقت سئول هستند.</span>
                 </div>
               </div>
 
-              {PROGRAM.map((day, idx) => (
-                <div
-                  key={day.dateEn}
-                  className={idx === 0 ? "" : "border-t border-white/10"}
-                >
-                  {day.items.map((it, j) => (
-                    <div
-                      key={`${day.dateEn}-${j}`}
-                      className="grid grid-cols-1 sm:grid-cols-4 border-t border-white/10 first:border-t-0"
-                    >
-                      {/* Date */}
-                      <div className="px-4 py-4 text-base text-stone-100">
-                        {j === 0 ? (
-                          <div className="flex items-center justify-between">
-                            <span className="font-semibold">{day.dateEn}</span>
+              {/* DESKTOP: keep table */}
+              <div className="hidden overflow-hidden rounded-xl border border-white/10 sm:block">
+                <div className="grid grid-cols-4 bg-black/20 text-sm font-bold text-stone-100/80">
+                  <div className="px-4 py-4">
+                    <div className="flex items-center justify-between">
+                      <span>Date</span>
+                      <span className="text-stone-100/70" dir="rtl">
+                        تاریخ
+                      </span>
+                    </div>
+                  </div>
+                  <div className="px-4 py-4">
+                    <div className="flex items-center justify-between">
+                      <span>Time</span>
+                      <span className="text-stone-100/70" dir="rtl">
+                        ساعت
+                      </span>
+                    </div>
+                  </div>
+                  <div className="px-4 py-4">
+                    <div className="flex items-center justify-between">
+                      <span>Schedule</span>
+                      <span className="text-stone-100/70" dir="rtl">
+                        برنامه
+                      </span>
+                    </div>
+                  </div>
+                  <div className="px-4 py-4">
+                    <div className="flex items-center justify-between">
+                      <span>Remarks</span>
+                      <span className="text-stone-100/70" dir="rtl">
+                        توضیحات
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {PROGRAM.map((day, idx) => (
+                  <div
+                    key={day.dateEn}
+                    className={idx === 0 ? "" : "border-t border-white/10"}
+                  >
+                    {day.items.map((it, j) => (
+                      <div
+                        key={`${day.dateEn}-${j}`}
+                        className="grid grid-cols-4 border-t border-white/10 first:border-t-0"
+                      >
+                        <div className="px-4 py-4 text-base text-stone-100">
+                          {j === 0 ? (
+                            <div className="flex items-center justify-between">
+                              <span className="font-semibold">
+                                {day.dateEn}
+                              </span>
+                              <span className="text-stone-100/75" dir="rtl">
+                                {day.dateFa}
+                              </span>
+                            </div>
+                          ) : (
+                            <span className="text-stone-100/40">—</span>
+                          )}
+                        </div>
+
+                        <div className="px-4 py-4 text-base font-semibold text-stone-100">
+                          {it.time}
+                        </div>
+
+                        <div className="px-4 py-4 text-base text-stone-100">
+                          <div className="flex flex-col gap-1">
+                            <span className="font-semibold">{it.titleEn}</span>
                             <span className="text-stone-100/75" dir="rtl">
-                              {day.dateFa}
+                              {it.titleFa}
                             </span>
                           </div>
-                        ) : (
-                          <span className="text-stone-100/40">—</span>
-                        )}
-                      </div>
+                        </div>
 
-                      {/* Time */}
-                      <div className="px-4 py-4 text-base font-semibold text-stone-100">
-                        {it.time}
-                      </div>
-
-                      {/* Schedule */}
-                      <div className="px-4 py-4 text-base text-stone-100">
-                        <div className="flex flex-col gap-1">
-                          <span className="font-semibold">{it.titleEn}</span>
-                          <span className="text-stone-100/75" dir="rtl">
-                            {it.titleFa}
-                          </span>
+                        <div className="px-4 py-4 text-base text-stone-100/85">
+                          <div className="flex flex-col gap-1">
+                            <span>{it.remarksEn}</span>
+                            <span className="text-stone-100/70" dir="rtl">
+                              {it.remarksFa}
+                            </span>
+                          </div>
                         </div>
                       </div>
+                    ))}
+                  </div>
+                ))}
 
-                      {/* Remarks */}
-                      <div className="px-4 py-4 text-base text-stone-100/85">
-                        <div className="flex flex-col gap-1">
-                          <span>{it.remarksEn}</span>
-                          <span className="text-stone-100/70" dir="rtl">
-                            {it.remarksFa}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
+                <div className="border-t border-white/10 bg-black/10 px-4 py-3 text-sm text-stone-100/65">
+                  Schedule times are in Seoul (KST).{" "}
+                  <span className="mx-2 text-stone-100/40">•</span>
+                  <span dir="rtl">زمان‌های برنامه بر اساس وقت سئول هستند.</span>
                 </div>
-              ))}
-
-              {/* Tiny footnote (optional) */}
-              <div className="border-t border-white/10 bg-black/10 px-4 py-3 text-sm text-stone-100/65">
-                Schedule times are in Seoul (KST).{" "}
-                <span className="mx-2 text-stone-100/40">•</span>
-                <span dir="rtl">زمان‌های برنامه بر اساس وقت سئول هستند.</span>
               </div>
             </div>
           </details>
         </div>
       </section>
 
-      {/* QUICK ACCESS GRID */}
+      {/* ATHLETE SUMMARY + RESULTS STATUS */}
       <section className="mx-auto max-w-6xl px-4 py-10">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-2">
-          {[
-            {
-              title: "Livestream",
-              desc: "Official event hub (may list streams and updates).",
-              href: EVENT.links.livestream,
-              cta: "Open hub",
-            },
-            {
-              title: "Live results",
-              desc: "Real-time rankings, attempts, and round progression.",
-              href: EVENT.links.liveResults,
-              cta: "Open results",
-            },
-          ].map((c) => (
-            <div
-              key={c.title}
-              className="rounded-2xl border border-white/10 bg-white/5 p-5 shadow-sm"
-            >
-              <h2 className="text-lg font-bold text-stone-100">{c.title}</h2>
-              <p className="mt-2 text-sm text-stone-100/75">{c.desc}</p>
-              <div className="mt-4">
-                <a
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-stone-100 hover:underline"
-                  href={c.href}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {c.cta} <span aria-hidden>→</span>
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ATHLETE SUMMARY */}
-      <section className="mx-auto max-w-6xl px-4 pb-10">
         <div className="rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6">
-          {/* Layout grid */}
-          <div className="grid gap-6 lg:grid-cols-3 lg:items-start">
-            {/* Left: main content */}
+          <div className="grid gap-6 lg:grid-cols-1 lg:items-start">
+            {/* Left: Athlete + Status */}
             <div className="lg:col-span-2">
-              <h2 className="text-2xl font-extrabold text-stone-100">
-                Athlete summary
-              </h2>
+              <div className="flex items-start justify-between gap-4">
+                <div className="min-w-0">
+                  <h2 className="text-2xl font-extrabold text-stone-100">
+                    Athlete summary
+                  </h2>
+                  <p className="mt-2 text-sm text-stone-100/75">
+                    <span className="font-semibold text-stone-100">
+                      {EVENT.athlete.name}
+                    </span>{" "}
+                    — {EVENT.athlete.tagline}. This hub will publish results
+                    quickly after each round, with UIAA as the source of truth.
+                  </p>
+                </div>
 
-              <p className="mt-2 text-sm text-stone-100/75">
-                {EVENT.athlete.tagline}. We’ll keep this page updated with key
-                links, round timing, and shareable updates so fans can stay
-                locked in.
-              </p>
+                <div className="hidden sm:flex shrink-0 items-center rounded-full border border-white/10 bg-black/20 px-3 py-2 text-xs font-semibold text-stone-100/70">
+                  Live hub
+                </div>
+              </div>
 
-              {/* Stat pills/cards */}
-              <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {/* Quick context chips */}
+              <div className="mt-5 grid gap-3 sm:grid-cols-3">
                 {[
                   { k: "Disciplines", v: EVENT.disciplines.join(" • ") },
-                  { k: "Status", v: "Follow live hub" },
-                  { k: "Updates", v: "Match-day refresh" },
+                  { k: "Venue", v: EVENT.venue },
+                  { k: "Status", v: "Waiting for results" },
                 ].map((s) => (
                   <div
                     key={s.k}
@@ -614,50 +771,94 @@ export default function WorldCupPage() {
                 ))}
               </div>
 
-              {/* Actions */}
-              <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                <ActionLink
-                  href={EVENT.links.officialEvent}
-                  label="Official event page"
-                  variant="secondary"
-                />
-                <ActionLink
-                  href={EVENT.links.resultsHub}
-                  label="Full season results"
-                  variant="secondary"
-                />
+              {/* Results dashboard */}
+              <div className="mt-6">
+                <div className="flex items-center justify-between">
+                  <div className="text-base font-extrabold text-stone-100">
+                    Results board
+                    <span className="ml-2 text-stone-100/60 text-sm font-semibold">
+                      | scoreboard
+                    </span>
+                  </div>
+
+                  <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold text-stone-100/70">
+                    Auto-update ready
+                  </div>
+                </div>
+
+                <div className="mt-3 grid gap-3 sm:grid-cols-3">
+                  {[
+                    {
+                      title: "Speed",
+                      subtitle: "Final",
+                      tone: "ring-amber-200/25",
+                    },
+                    {
+                      title: "Lead",
+                      subtitle: "Semifinal",
+                      tone: "ring-cyan-200/20",
+                    },
+                    { title: "Lead", subtitle: "Final", tone: "ring-white/15" },
+                  ].map((r) => (
+                    <div
+                      key={`${r.title}-${r.subtitle}`}
+                      className={[
+                        "rounded-2xl border border-white/10 bg-black/20 p-4",
+                        "shadow-[0_0_0_1px_rgba(255,255,255,0.06)]",
+                        `ring-1 ${r.tone}`,
+                      ].join(" ")}
+                    >
+                      <div className="flex items-start justify-between gap-3">
+                        <div className="min-w-0">
+                          <div className="text-sm font-extrabold text-stone-100">
+                            {r.title}
+                          </div>
+                          <div className="text-xs font-semibold text-stone-100/60">
+                            {r.subtitle}
+                          </div>
+                        </div>
+
+                        <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold text-stone-100/70">
+                          Pending
+                        </div>
+                      </div>
+
+                      <div className="mt-4 rounded-xl border border-white/10 bg-white/5 p-3">
+                        <div className="text-xs font-semibold uppercase tracking-[0.18em] text-stone-100/55">
+                          Result
+                        </div>
+                        <div className="mt-2 text-sm font-bold text-stone-100">
+                          Waiting for the result
+                        </div>
+                        <div className="mt-1 text-xs text-stone-100/55">
+                          We’ll publish immediately after the round is posted.
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
-            {/* Right: share card */}
-            <aside className="lg:sticky lg:top-6">
-              <div className="rounded-2xl border border-white/10 bg-black/20 p-5">
-                <h3 className="text-base font-bold text-stone-100">
-                  Share & bring the crowd
-                </h3>
-
-                <p className="mt-2 text-sm text-stone-100/75">
-                  Help grow the audience by sharing the World Cup hub directly
-                  on Facebook.
-                </p>
-
-                <div className="mt-4">
-                  <a
-                    href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-                      WORLDCUP_URL
-                    )}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="block w-full rounded-xl px-4 py-3 text-center text-sm font-extrabold
-                         text-white transition active:scale-[0.98]
-                         bg-[#1877F2] hover:bg-[#166FE5]
-                         shadow-lg shadow-blue-500/25"
-                  >
-                    Share on Facebook
-                  </a>
-                </div>
-              </div>
-            </aside>
+            {/* Official results CTA */}
+            <div className="mt-6 flex justify-center">
+              <a
+                href="https://uiaa.results.info/event/121/"
+                target="_blank"
+                rel="noreferrer"
+                className="
+      inline-flex items-center gap-2
+      rounded-xl px-6 py-3
+      text-sm font-extrabold
+      bg-white text-zinc-900
+      ring-1 ring-white/20
+      transition hover:bg-white/90
+    "
+              >
+                View official UIAA results
+                <span aria-hidden>→</span>
+              </a>
+            </div>
           </div>
         </div>
       </section>

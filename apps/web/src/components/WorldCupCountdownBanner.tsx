@@ -3,7 +3,6 @@
 import Link from "next/link";
 import Countdown from "@/components/Countdown";
 
-
 type Props = {
   title?: string;
   subtitle?: string;
@@ -63,16 +62,6 @@ export default function WorldCupCountdownBanner({
 
             {/* CTAs */}
             <div className="mt-4 flex flex-col gap-3 sm:flex-row md:mt-0">
-              <a
-                href={uiaaHref}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white/10 px-5 py-3 text-sm font-bold text-white/90 transition hover:bg-white/15"
-              >
-                UIAA Livestream & Results
-                <span className="text-white/70">↗</span>
-              </a>
-
               <Link
                 href={hubHref}
                 className="inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-amber-400/90 via-orange-400/90 to-amber-300/90 px-5 py-3 text-sm font-extrabold text-black transition hover:scale-[1.02] active:scale-[0.99]"
@@ -126,29 +115,53 @@ export default function WorldCupCountdownBanner({
 
             {/* supporting info */}
             <div className="mt-4 grid gap-3 md:grid-cols-3">
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+              {/* Watch Live */}
+              <a
+                href="https://www.rezasafdarian.world/worldcup"
+                target=""
+                rel="noreferrer"
+                className="group rounded-2xl border border-white/10 bg-white/5 p-4 transition
+               hover:bg-white/8 focus:outline-none focus-visible:ring-2
+               focus-visible:ring-cyan-300/50 cursor-pointer"
+              >
                 <p className="text-sm font-bold text-white/90">Watch Live</p>
                 <p className="mt-1 text-xs text-white/65">
                   Tap the UIAA link for the official livestream when it goes
                   live.
                 </p>
-              </div>
+              </a>
 
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+              {/* Results */}
+              <a
+                href="https://uiaa.results.info/event/121/"
+                target=""
+                rel="noreferrer"
+                className="group rounded-2xl border border-white/10 bg-white/5 p-4 transition
+               hover:bg-white/8 focus:outline-none focus-visible:ring-2
+               focus-visible:ring-amber-300/50 cursor-pointer"
+              >
                 <p className="text-sm font-bold text-white/90">Results</p>
                 <p className="mt-1 text-xs text-white/65">
                   Follow heat-by-heat standings and final rankings on the UIAA
                   page.
                 </p>
-              </div>
+              </a>
 
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+              {/* Highlights */}
+              <a
+                href="https://www.rezasafdarian.world/worldcup"
+                target=""
+                rel="noreferrer"
+                className="group rounded-2xl border border-white/10 bg-white/5 p-4 transition
+               hover:bg-white/8 focus:outline-none focus-visible:ring-2
+               focus-visible:ring-emerald-300/50 cursor-pointer"
+              >
                 <p className="text-sm font-bold text-white/90">Highlights</p>
                 <p className="mt-1 text-xs text-white/65">
                   Recaps and key moments will be centralized in your World Cup
                   hub.
                 </p>
-              </div>
+              </a>
             </div>
           </div>
 
