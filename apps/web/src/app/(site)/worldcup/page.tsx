@@ -123,7 +123,7 @@ const PROGRAM = [
   },
 ] as const;
 
-const YT_WATCH_URL = "https://www.youtube.com/watch?v=SIPNeCV0fvo";
+const YT_WATCH_URL = "https://www.youtube.com/watch?v=CjrzVgSfrV8";
 
 function Pill({ children }: { children: React.ReactNode }) {
   return (
