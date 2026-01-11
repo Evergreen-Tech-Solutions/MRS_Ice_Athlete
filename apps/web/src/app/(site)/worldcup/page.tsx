@@ -123,7 +123,7 @@ const PROGRAM = [
   },
 ] as const;
 
-const YT_WATCH_URL = "https://www.youtube.com/watch?v=CjrzVgSfrV8";
+const YT_WATCH_URL = "https://www.youtube.com/watch?v=45T5tuRfi-Q";
 
 function Pill({ children }: { children: React.ReactNode }) {
   return (
@@ -791,14 +791,24 @@ export default function WorldCupPage() {
                     {
                       title: "Speed",
                       subtitle: "Final",
-                      tone: "ring-amber-200/25",
+                      tone: "ring-slate-300/50", // 🥈 Silver
+                      status: "2nd place",
+                      result: "Silver medal — World Cup Final",
                     },
                     {
                       title: "Lead",
                       subtitle: "Semifinal",
-                      tone: "ring-cyan-200/20",
+                      tone: "ring-amber-300/60", // 🥇 Gold
+                      status: "1st place",
+                      result: "Qualified as leader — Semifinal win",
                     },
-                    { title: "Lead", subtitle: "Final", tone: "ring-white/15" },
+                    {
+                      title: "Lead",
+                      subtitle: "Final",
+                      tone: "ring-white/15",
+                      status: "Pending",
+                      result: "Waiting for the result",
+                    },
                   ].map((r) => (
                     <div
                       key={`${r.title}-${r.subtitle}`}
@@ -819,7 +829,7 @@ export default function WorldCupPage() {
                         </div>
 
                         <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold text-stone-100/70">
-                          Pending
+                          {r.status}
                         </div>
                       </div>
 
@@ -828,11 +838,13 @@ export default function WorldCupPage() {
                           Result
                         </div>
                         <div className="mt-2 text-sm font-bold text-stone-100">
-                          Waiting for the result
+                          {r.result}
                         </div>
-                        <div className="mt-1 text-xs text-stone-100/55">
-                          We’ll publish immediately after the round is posted.
-                        </div>
+                        {r.status === "Pending" && (
+                          <div className="mt-1 text-xs text-stone-100/55">
+                            We’ll publish immediately after the round is posted.
+                          </div>
+                        )}
                       </div>
                     </div>
                   ))}
