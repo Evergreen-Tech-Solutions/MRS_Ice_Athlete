@@ -5,8 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { FaMedal, FaPersonRunning, FaTrophy } from "react-icons/fa6";
-import WorldCupCountdownBanner from "@/components/WorldCupCountdownBanner";
-import { WORLDCUP_EVENT } from "@/lib/worldcup";
+// import WorldCupCountdownBanner from "@/components/WorldCupCountdownBanner";
+// import { WORLDCUP_EVENT } from "@/lib/worldcup";
 
 export function GlassSection({
   id,
@@ -252,12 +252,12 @@ export default function HomePage() {
 
         {/* ===== Section 3: UIAA World Cup Reminder ===== */}
 
-        <WorldCupCountdownBanner
+        {/* <WorldCupCountdownBanner
           startISO={WORLDCUP_EVENT.startISO}
           endISO={WORLDCUP_EVENT.endISO}
           uiaaHref="https://www.theuiaa.org/"
           hubHref="/worldcup"
-        />
+        /> */}
 
         {/* ===== Achievements Section ===== */}
         <StatsSection />
