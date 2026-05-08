@@ -18,7 +18,7 @@ import {
   FaXTwitter,
   FaLinkedin,
   FaInstagram,
-  FaTrophy,
+  // FaTrophy,
   FaBullseye,
   FaB,
 } from "react-icons/fa6";
@@ -54,14 +54,14 @@ const NAV_ITEMS: Item[] = [
       />
     ),
   },
-  {
-    label: "UIAA 2026",
-    href: "/worldcup",
-    match: "startsWith",
-    icon: (
-      <FaTrophy className="h-6 w-6 shrink-0 transition-transform group-hover:scale-110" />
-    ),
-  },
+  // {
+  //   label: "UIAA 2026",
+  //   href: "/worldcup",
+  //   match: "startsWith",
+  //   icon: (
+  //     <FaTrophy className="h-6 w-6 shrink-0 transition-transform group-hover:scale-110" />
+  //   ),
+  // },
   {
     label: "Classes",
     href: "/classes",
