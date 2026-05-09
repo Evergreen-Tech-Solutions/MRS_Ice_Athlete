@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { FaMedal, FaPersonRunning, FaTrophy } from "react-icons/fa6";
+import MedalTimeline from "@/components/timeline/MedalTimeline";
 // import WorldCupCountdownBanner from "@/components/WorldCupCountdownBanner";
 // import { WORLDCUP_EVENT } from "@/lib/worldcup";
 
@@ -249,6 +250,10 @@ export default function HomePage() {
             </div>
           </div>
         </GlassSection>
+
+        {/* ===== Medal Timeline Section ===== */}
+        <MedalTimeline />
+
 
         {/* ===== Section 3: UIAA World Cup Reminder ===== */}
 
