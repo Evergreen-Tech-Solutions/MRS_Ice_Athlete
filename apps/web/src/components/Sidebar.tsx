@@ -18,9 +18,9 @@ import {
   FaXTwitter,
   FaLinkedin,
   FaInstagram,
-  // FaTrophy,
   FaBullseye,
-  FaB,
+  FaTrophy,
+  FaHandshake,
 } from "react-icons/fa6";
 
 type Item = {
@@ -49,6 +49,28 @@ const NAV_ITEMS: Item[] = [
     match: "exact",
     icon: (
       <FaBookOpen
+        className="h-6 w-6 shrink-0 transition-transform group-hover:scale-110"
+        aria-hidden="true"
+      />
+    ),
+  },
+  {
+    label: "Portfolio",
+    href: "/portfolio",
+    match: "startsWith",
+    icon: (
+      <FaTrophy
+        className="h-6 w-6 shrink-0 transition-transform group-hover:scale-110"
+        aria-hidden="true"
+      />
+    ),
+  },
+  {
+    label: "Sponsors",
+    href: "/sponsorship",
+    match: "startsWith",
+    icon: (
+      <FaHandshake
         className="h-6 w-6 shrink-0 transition-transform group-hover:scale-110"
         aria-hidden="true"
       />
