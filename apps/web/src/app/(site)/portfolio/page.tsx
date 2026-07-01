@@ -1,10 +1,10 @@
 const careerStats = [
   {
-    value: "52",
+    value: "56",
     label: "International competitions",
   },
   {
-    value: "31",
+    value: "35",
     label: "International medals",
   },
   {
