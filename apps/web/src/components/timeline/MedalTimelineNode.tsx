@@ -36,7 +36,7 @@ export default function MedalTimelineNode({
       onClick={onSelect}
       aria-pressed={isActive}
       className={[
-        "group relative w-full max-w-[230px] rounded-3xl border p-4 text-left transition-all duration-300 sm:w-[210px]",
+        "group relative w-full max-w-[230px] rounded-3xl border p-4 text-left transition-all duration-300 sm:w-[210px] lg:w-[165px] xl:w-[180px] 2xl:w-[210px]",
         "focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-300",
         isActive
           ? "scale-[1.03] border-amber-300/70 bg-black shadow-2xl shadow-amber-500/20"
@@ -56,7 +56,7 @@ export default function MedalTimelineNode({
         <div className="flex items-start justify-between gap-3">
           <span
             className={[
-              "font-heading text-4xl leading-none tracking-tight transition-colors",
+              "font-heading text-3xl leading-none tracking-tight transition-colors xl:text-4xl",
               isActive ? "text-amber-300" : "text-white",
             ].join(" ")}
           >

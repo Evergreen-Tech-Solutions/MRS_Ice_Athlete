@@ -44,9 +44,9 @@ export default function MedalTimeline() {
 
         {/* Content */}
         <div className="grid gap-6 xl:grid-cols-[1.35fr_0.65fr] xl:items-stretch">
-          {/* Wall-inspired timeline board */}
+          {/* Timeline board */}
           <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(245,158,11,0.16),transparent_32%),linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.025))] p-4 shadow-2xl shadow-black/30 sm:p-6">
-            {/* subtle background texture */}
+            {/* Subtle background texture */}
             <div
               aria-hidden="true"
               className="pointer-events-none absolute inset-0 opacity-[0.07]"
@@ -65,23 +65,25 @@ export default function MedalTimeline() {
               preserveAspectRatio="none"
             >
               <path
-                d="M90 115 C240 70, 330 185, 455 130 S690 55, 805 130"
+                d="M115 110 C230 65, 340 115, 455 80 S680 60, 785 120"
                 fill="none"
                 stroke="rgba(255,255,255,0.36)"
                 strokeWidth="7"
                 strokeLinecap="round"
                 strokeDasharray="1 22"
               />
+
               <path
-                d="M820 140 C760 240, 635 235, 505 230 S290 245, 120 235"
+                d="M795 150 C710 235, 615 245, 505 240 S280 225, 120 255"
                 fill="none"
                 stroke="rgba(245,158,11,0.38)"
                 strokeWidth="7"
                 strokeLinecap="round"
                 strokeDasharray="1 22"
               />
+
               <path
-                d="M115 250 C180 360, 330 345, 455 355 S690 390, 810 330"
+                d="M125 300 C210 405, 340 390, 455 410 S690 410, 790 345"
                 fill="none"
                 stroke="rgba(255,255,255,0.3)"
                 strokeWidth="7"
@@ -90,34 +92,15 @@ export default function MedalTimeline() {
               />
             </svg>
 
-            <div className="relative z-10 grid min-h-[520px] gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {medalTimelineData.map((item, index) => {
-                const desktopPositionClass =
-                  [
-                    "lg:self-start lg:justify-self-start",
-                    "lg:self-center lg:justify-self-center lg:-translate-y-10",
-                    "lg:self-start lg:justify-self-end",
-                    "lg:self-center lg:justify-self-start",
-                    "lg:self-center lg:justify-self-center lg:translate-y-8",
-                    "lg:self-center lg:justify-self-end",
-                    "lg:self-end lg:justify-self-start",
-                    "lg:self-end lg:justify-self-center",
-                    "lg:self-end lg:justify-self-end",
-                  ][index] ?? "";
-
-                return (
-                  <div
-                    key={item.year}
-                    className={["flex", desktopPositionClass].join(" ")}
-                  >
-                    <MedalTimelineNode
-                      item={item}
-                      isActive={activeItem.year === item.year}
-                      onSelect={() => setActiveYear(item.year)}
-                    />
-                  </div>
-                );
-              })}
+            <div className="relative z-10 grid gap-4 sm:grid-cols-2 lg:min-h-[560px] lg:grid-cols-3 lg:grid-rows-3 lg:items-center lg:justify-items-center lg:gap-x-5 lg:gap-y-8 xl:gap-x-7 2xl:gap-x-10">
+              {medalTimelineData.map((item) => (
+                <MedalTimelineNode
+                  key={item.year}
+                  item={item}
+                  isActive={activeItem.year === item.year}
+                  onSelect={() => setActiveYear(item.year)}
+                />
+              ))}
             </div>
           </div>
 
