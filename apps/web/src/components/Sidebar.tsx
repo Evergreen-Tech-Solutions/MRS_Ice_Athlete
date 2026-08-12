@@ -65,17 +65,17 @@ const NAV_ITEMS: Item[] = [
       />
     ),
   },
-  {
-    label: "Sponsors",
-    href: "/sponsorship",
-    match: "startsWith",
-    icon: (
-      <FaHandshake
-        className="h-6 w-6 shrink-0 transition-transform group-hover:scale-110"
-        aria-hidden="true"
-      />
-    ),
-  },
+  // {
+  //   label: "Sponsors",
+  //   href: "/sponsorship",
+  //   match: "startsWith",
+  //   icon: (
+  //     <FaHandshake
+  //       className="h-6 w-6 shrink-0 transition-transform group-hover:scale-110"
+  //       aria-hidden="true"
+  //     />
+  //   ),
+  // },
   // {
   //   label: "UIAA 2026",
   //   href: "/worldcup",
