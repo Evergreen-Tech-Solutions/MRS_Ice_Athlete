@@ -30,6 +30,7 @@ export default function RootLayout({
     <html lang="en" className={`${body.variable} ${heading.variable} h-full`}>
       <body className="h-full overflow-hidden bg-stone-950">
         {children}
+        <Analytics />
       </body>
     </html>
   );
